@@ -5,13 +5,13 @@ import { Toaster } from 'react-hot-toast'
 import AdminRoute from './components/Routes/AdminRoutes';
 // import AdminRoute from './components/Routes/AdminRoute';
 import AdminDashboard from "./pages/Admin/AdminDashboard";
-// import CreateCategory from "./pages/Admin/CreateCategory";
-// import CreateProduct from "./pages/Admin/CreateProduct";
-// import Users from "./pages/Admin/Users";
 import { useState } from 'react'
 import './App.css'
 import Login from "./pages/Auth/Login";
 import ForgotPassword from "./pages/Auth/Forgotpassword";
+import CreateTeacher from "./pages/Admin/CreateTeacher";
+import CreateProduct from "./pages/Admin/CreateProduct";
+import Users from "./pages/Admin/Users";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,14 +34,19 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/login" element={<Login/>} />
 
 
           <Route path="/dashboard" element={<AdminRoute />}>
             <Route path="admin" element={<AdminDashboard />} />
+            <Route path="admin/create-teacher" element={<CreateTeacher />} />
+            <Route path="admin/create-product" element={<CreateProduct />} />
+            <Route path="admin/users" element={<Users />} />
           </Route>
+
+      
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
 
       </>
