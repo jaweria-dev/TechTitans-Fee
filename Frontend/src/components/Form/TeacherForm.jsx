@@ -1,4 +1,5 @@
 import React from "react";
+// import "../../styles/Admin.css"
 
 const TeacherForm = ({ handleSubmit, value, setValue }) => {
   return (
@@ -9,7 +10,7 @@ const TeacherForm = ({ handleSubmit, value, setValue }) => {
             onChange={(e) => setValue(e.target.value)}/>
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn-btn btn-primary">
           Submit</button>
       </form>
     </>

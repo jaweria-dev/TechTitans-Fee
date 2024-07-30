@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
-import AdminHeader from './AdminHeader';
-import Sidebar from './Sidebar';
-import AdminDashboard from '../../pages/Admin/AdminDashboard';
+import React, {useState} from 'react';
+import { BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify } from 'react-icons/bs';
 
-const AdminLayout = () => {
-  const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+function AdminHeader({OpenMenu}) {
 
-  const OpenSidebar = () => {
-    setOpenSidebarToggle(!openSidebarToggle);
-  };
+    return (
+        <header className='header'>
+            <div className='menu-icon'>
+                <BsJustify className='icon' onClick={OpenMenu} />
+            </div>
+            <div className='header-left'>
+                <BsSearch className='icon' />
+            </div>
+            <div className='header-right'>
+                {/* <BsFillBellFill className='icon' />
+                <BsFillEnvelopeFill className='icon' /> */}
+                <BsPersonCircle className='icon'
+                    />
+            </div>
+        </header>
+    );
+}
 
-  return (
-    <div className='grid-container'>
-      <AdminHeader OpenSidebar={OpenSidebar} />
-      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
-      <AdminDashboard />
-    </div>
-  );
-};
-
-export default AdminLayout;
+export default AdminHeader;

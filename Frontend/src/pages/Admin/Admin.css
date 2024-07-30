@@ -1,17 +1,26 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.row>*{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .icon {
   vertical-align: middle;
   line-height: 1px;
   font-size: 20px;
+  color: gray;
 }
-
 .icon_header {
   vertical-align: middle;
   line-height: 1px;
   font-size: 26px;
+  color: white;
 }
-
-.icon,
-.icon_header {
+.icon, .icon_header {
   margin-right: 5px;
 }
 
@@ -35,25 +44,27 @@
 /* Header  */
 .header {
   grid-area: header;
-  height: 60px;
+  height: 10vh;
+  width: 74vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px 0 30px;
-  box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+  background-color: transparent;
+  /* box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35); */
 }
 
 .menu-icon {
   display: none;
 }
-
 /* End Header  */
 
 /* Sidebar  */
 #sidebar {
   grid-area: sidebar;
-  height: 100%;
-  background-color: #263043;
+  height: 100vh;
+  /* background-color: #263043; */
+  background-color: #4b7bec;
   overflow-y: auto;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -67,7 +78,7 @@
   margin-bottom: 30px;
 }
 
-.sidebar-title>span {
+.sidebar-title > span {
   display: none;
 }
 
@@ -75,6 +86,7 @@
   margin-top: 15px;
   font-size: 20px;
   font-weight: 700;
+  color: white;
 }
 
 .sidebar-list {
@@ -85,6 +97,7 @@
 .sidebar-list-item {
   padding: 20px 20px 20px 20px;
   font-size: 18px;
+  color: white;
 }
 
 .sidebar-list-item:hover {
@@ -92,36 +105,37 @@
   cursor: pointer;
 }
 
-.sidebar-list-item>a {
+.sidebar-list-item > a {
   text-decoration: none;
-  color: #9e9ea4;
+  color: white;
 }
 
 .sidebar-responsive {
   display: inline !important;
   position: absolute;
   /*
-      we want the z-index of the sidebar higher so that
-      the charts are not showing over the sidebar 
-      on small screens
-    */
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
   z-index: 12 !important;
 }
 
 /* End Sidebar  */
 
 
-/* Main  */
+/* Main  */  
 .main-container {
   grid-area: main;
   overflow-y: auto;
-  padding: 20px 20px;
+  /* padding: 20px 20px; */
   color: rgba(255, 255, 255, 0.95);
 }
 
 .main-title {
   display: flex;
   justify-content: space-between;
+  color: #2962ff;
 }
 
 .main-cards {
@@ -135,8 +149,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 8px 15px;
+  padding: 10px 15px;
   border-radius: 5px;
+  margin: 10px;
 }
 
 .card:first-child {
@@ -161,7 +176,7 @@
   justify-content: space-between;
 }
 
-.card-inner>.card_icon {
+.card-inner > .card_icon {
   font-size: 25px;
 }
 
@@ -177,7 +192,7 @@
 
 
 /* Medium <= 992px */
-
+  
 @media screen and (max-width: 992px) {
   .grid-container {
     grid-template-columns: 1fr;
@@ -195,13 +210,12 @@
     display: inline;
   }
 
-  .sidebar-title>span {
+  .sidebar-title > span {
     display: inline;
   }
 }
-
 /* Small <= 768px */
-
+  
 @media screen and (max-width: 768px) {
   .main-cards {
     grid-template-columns: 1fr;
@@ -221,4 +235,24 @@
   .hedaer-left {
     display: none;
   }
+
+  .header{
+    width: 100vw;
+  }
+}
+
+.btn-btn{
+  height: 50px;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #8AC642;
+  border: 2px solid #fafafa;
+  color: white;
+}
+
+.btn-btn:hover {
+  background-color: #91c453;
+  color: #fff;
 }
