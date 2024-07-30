@@ -5,7 +5,8 @@ const { hashPassword, comparePassword } = require("../helpers/authhelper");
 
 const createStudentController = async (req, res) => {
   try {
-    const { name, email, phone, rollNo, batchNo, teacher, password, answer } = req.fields;
+    const { name, email, phone, rollNo, batchNo, teacher, password, answer } =
+      req.fields;
     const { photo } = req.files;
     //alidation
     switch (true) {
@@ -21,20 +22,24 @@ const createStudentController = async (req, res) => {
         return res.status(500).send({ error: "batchNo is Required" });
       case !teacher:
         return res.status(500).send({ error: "Teacher is Required" });
-        case !password:
+      case !password:
         return res.status(500).send({ error: "Password is Required" });
-        case !answer:
+      case !answer:
         return res.status(500).send({ error: "Answer is Required" });
       case photo && photo.size > 1000000:
         return res
           .status(500)
           .send({ error: "photo is Required and should be less then 1mb" });
     }
- 
+
     // Hash password
     const hashedPassword = await hashPassword(password);
 
-    const students = new studentModel({ ...req.fields, password: hashedPassword, slug: slugify(name) });
+    const students = new studentModel({
+      ...req.fields,
+      password: hashedPassword,
+      slug: slugify(name),
+    });
     if (photo) {
       students.photo.data = fs.readFileSync(photo.path);
       students.photo.contentType = photo.type;
@@ -55,6 +60,151 @@ const createStudentController = async (req, res) => {
   }
 };
 
+//get all STUDENTS
+const getStudentController = async (req, res) => {
+  try {
+    const students = await studentModel
+      .find({})
+      .populate("teacher")
+      .select("-photo")
+      .limit(12)
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      counTotal: students.length,
+      message: "ALl Students ",
+      students,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Erorr in getting students",
+      error: error.message,
+    });
+  }
+};
+
+// get single Student
+const getSingleStudentController = async (req, res) => {
+  try {
+    const student = await studentModel
+      .findOne({ slug: req.params.slug })
+      .select("-photo")
+      .populate("teacher");
+    res.status(200).send({
+      success: true,
+      message: "Single Student Fetched",
+      student,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Eror while getitng single student",
+      error,
+    });
+  }
+};
+
+// get photo
+const studentPhotoController = async (req, res) => {
+  try {
+    const student = await studentModel.findById(req.params.sid).select("photo");
+    if (student.photo.data) {
+      res.set("Content-type", student.photo.contentType);
+      return res.status(200).send(student.photo.data);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Erorr while getting photo",
+      error,
+    });
+  }
+};
+
+
+//update student
+const updateStudentController = async (req, res) => {
+  try {
+    const { name, email, phone, rollNo, batchNo, teacher, password, answer } = req.fields;
+    const { photo } = req.files;
+
+    // Validation
+    switch (true) {
+      case !name:
+        return res.status(400).send({ error: "Name is Required" });
+      case !email:
+        return res.status(400).send({ error: "Email is Required" });
+      case !phone:
+        return res.status(400).send({ error: "Phone is Required" });
+      case !rollNo:
+        return res.status(400).send({ error: "RollNo is Required" });
+      case !batchNo:
+        return res.status(400).send({ error: "BatchNo is Required" });
+      case !teacher:
+        return res.status(400).send({ error: "Teacher is Required" });
+      case !password:
+        return res.status(400).send({ error: "Password is Required" });
+      case !answer:
+        return res.status(400).send({ error: "Answer is Required" });
+      case photo && photo.size > 1000000:
+        return res.status(400).send({ error: "Photo should be less than 1MB" });
+    }
+    // Hash password
+    const hashedPassword = await hashPassword(password);
+
+    const student = await studentModel.findByIdAndUpdate(
+      req.params.sid,
+      { ...req.fields, password: hashedPassword, slug: slugify(name) },
+      { new: true }
+    );
+
+    if (photo) {
+      student.photo.data = fs.readFileSync(photo.path);
+      student.photo.contentType = photo.type;
+    }
+    await student.save();
+
+    res.status(201).send({
+      success: true,
+      message: "Student Updated Successfully",
+      student, 
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      error: error.message,
+      message: "Error in updating student",
+    });
+  }
+};
+
+
+//delete controller
+const deleteStudentController = async (req, res) => {
+  try {
+    await studentModel.findByIdAndDelete(req.params.sid).select("-photo");
+    res.status(200).send({
+      success: true,
+      message: "Student Deleted successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while deleting student",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createStudentController,
+  getStudentController,
+  getSingleStudentController, studentPhotoController, updateStudentController, deleteStudentController
 };
+
