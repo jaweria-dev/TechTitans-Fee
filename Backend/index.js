@@ -9,6 +9,7 @@ const cors = require("cors");
 const connectToDatabase = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
+const studentsRoutes = require("./routes/studentsRoutes");
 
 // Rest object
 const app = express();
@@ -21,6 +22,7 @@ app.use(morgan("dev"));
 // Routes
 app.use("/api/fee/portal", authRoutes);
 app.use("/api/fee/portal/teacher", teacherRoutes);
+app.use("/api/fee/portal/students", studentsRoutes)
 
 // rest api
 app.get("/", (req, res) => {
