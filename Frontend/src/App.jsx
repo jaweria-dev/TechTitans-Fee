@@ -12,6 +12,10 @@ import ForgotPassword from "./pages/Auth/Forgotpassword";
 import CreateTeacher from "./pages/Admin/CreateTeacher";
 import CreateProduct from "./pages/Admin/CreateProduct";
 import Users from "./pages/Admin/Users";
+// import AdminHeader from './components/Layout/AdminHeader';
+// import AdminMenu from "./components/Layout/AdminMenu"
+import "./pages/Admin/Admin.css";
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -23,6 +27,7 @@ function App() {
     }, 1000);
   }
 
+ 
 
 
   return (
@@ -43,7 +48,6 @@ function App() {
             <Route path="admin/users" element={<Users />} />
           </Route>
 
-      
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/login" element={<Login />} />

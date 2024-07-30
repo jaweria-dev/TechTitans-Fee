@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./../../components/Layout/Layout";
+// import Layout from "./../../components/Layout/Layout";
 import toast from "react-hot-toast";
 import axios from "axios";
 import TeacherForm from "./../../components/Form/TeacherForm";
 import { Modal } from "antd";
-import AdminLayout from "../../components/Layout/AdminLayout";
+import AdminMenu from "../../components/Layout/AdminMenu";
+import AdminHeader from '../../components/Layout/AdminHeader';
 const CreateTeacher = () => {
   const [teachers, setTeachers] = useState([]);
   const [name, setName] = useState("");
@@ -39,7 +40,7 @@ const CreateTeacher = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something wwent wrong in getting teachers");
+      toast.error("Something went wrong in getting teachers");
     }
   };
 
@@ -86,75 +87,76 @@ const CreateTeacher = () => {
     }
   };
   return (
-    <Layout>
-      <div className="container-fluid m-3 p-3 dashboard">
-        <div className="row">
+    <div className="container-fluid dashboard">
+      <div className="row">
+        <div className="col-md-3">
+          <AdminMenu />
+        </div>
+        <div className="col-md-9">
           <div className="col-md-3">
-            <AdminLayout/>
+            <AdminHeader />
           </div>
-          <div className="col-md-9">
-            <h1>Manage Teacher</h1>
-            <div className="p-3 w-50">
-              <TeacherForm
-                handleSubmit={handleSubmit}
-                value={name}
-                setValue={setName}
-              />
-            </div>
-            <div className="w-75">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {teachers?.map((c) => (
-                    <>
-                      <tr>
-                        <td key={c._id}>{c.name}</td>
-                        <td>
-                          <button
-                            className="btn btn-primary ms-2"
-                            onClick={() => {
-                              setopen(true);
-                              setUpdatedName(c.name);
-                              setSelected(c);
-                            }}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            className="btn btn-danger ms-2"
-                            onClick={() => {
-                              handleDelete(c._id);
-                            }}
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    </>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <Modal
-              onCancel={() => setopen(false)}
-              footer={null}
-              open={open}
-            >
-              <TeacherForm
-                value={updatedName}
-                setValue={setUpdatedName}
-                handleSubmit={handleUpdate}
-              />
-            </Modal>
+          <h1 className="teahcer-heading">Manage Teacher</h1>
+          <div className="p-3 w-50">
+            <TeacherForm
+              handleSubmit={handleSubmit}
+              value={name}
+              setValue={setName}
+            />
           </div>
+          <div className="w-75">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Teachers Name</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {teachers?.map((c) => (
+                  <>
+                    <tr>
+                      <td key={c._id}>{c.name}</td>
+                      <td>
+                        <button
+                          className="btn btn-primary ms-2"
+                          onClick={() => {
+                            setopen(true);
+                            setUpdatedName(c.name);
+                            setSelected(c);
+                          }}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="btn btn-danger ms-2"
+                          onClick={() => {
+                            handleDelete(c._id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <Modal
+            onCancel={() => setopen(false)}
+            footer={null}
+            open={open}
+          >
+            <TeacherForm
+              value={updatedName}
+              setValue={setUpdatedName}
+              handleSubmit={handleUpdate}
+            />
+          </Modal>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
