@@ -22,9 +22,6 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand"> Saylani Fee Portal</Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink to="/" className="nav-link">Home</NavLink>
-              </li>
               {!auth?.user ? (
                 <>
                   <li className="nav-item">
@@ -55,6 +52,9 @@ const Header = () => {
                 </li>
               </>)}
 
+              <li className="nav-item">
+                <NavLink to="/" className="nav-link">Home</NavLink>
+              </li>
 
 
             </ul>
