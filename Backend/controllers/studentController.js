@@ -2,6 +2,7 @@ const studentModel = require("../models/studentModel");
 const fs = require("fs");
 const slugify = require("slugify");
 const { hashPassword, comparePassword } = require("../helpers/authhelper");
+const teacherModel = require("../models/teacherModel");
 
 const createStudentController = async (req, res) => {
   try {
@@ -125,11 +126,11 @@ const studentPhotoController = async (req, res) => {
   }
 };
 
-
 //update student
 const updateStudentController = async (req, res) => {
   try {
-    const { name, email, phone, rollNo, batchNo, teacher, password, answer } = req.fields;
+    const { name, email, phone, rollNo, batchNo, teacher, password, answer } =
+      req.fields;
     const { photo } = req.files;
 
     // Validation
@@ -171,7 +172,7 @@ const updateStudentController = async (req, res) => {
     res.status(201).send({
       success: true,
       message: "Student Updated Successfully",
-      student, 
+      student,
     });
   } catch (error) {
     console.log(error);
@@ -182,7 +183,6 @@ const updateStudentController = async (req, res) => {
     });
   }
 };
-
 
 //delete controller
 const deleteStudentController = async (req, res) => {
@@ -202,9 +202,112 @@ const deleteStudentController = async (req, res) => {
   }
 };
 
+// filter syudent by teacher
+const getStudentDataByTeacherId = async (req, res) => {
+  try {
+    const { teacherId } = req.params;
+    const students = await studentModel.find({ teacher: teacherId });
+    res.status(200).send({
+      success: true,
+      students,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error while fetching student data",
+      error,
+    });
+  }
+};
+
+// Search Student ny keyword
+const searchStudentController = async (req, res) => {
+  try {
+    const { keyword } = req.params;
+    const results = await studentModel
+      .find({
+        $or: [
+          { name: { $regex: keyword, $options: "i" } },
+          { email: { $regex: keyword, $options: "i" } },
+          { rollNo: { $regex: keyword, $options: "i" } },
+        ],
+      })
+      .select("-photo");
+    res.json(results);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error In Search Student API",
+      error,
+    });
+  }
+};
+
+// Simmilar student
+const relatedStudentController = async (req, res) => {
+  try {
+    const { sid, tid } = req.params;
+    const students = await studentModel
+      .find({
+        teacher: tid,
+        _id: { $ne: sid },
+      })
+      .select("-photo")
+      .limit(3)
+      .populate("teacher");
+    res.status(200).send({
+      success: true,
+      students,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error while getting related students",
+      error,
+    });
+  }
+};
+
+// get studebt bt teacher
+const getStudentsByTeacherController = async (req, res) => {
+  try {
+    const teacher = await teacherModel.findOne({ slug: req.params.slug });
+    if (!teacher) {
+      return res.status(404).send({
+        success: false,
+        message: "Teacher not found",
+      });
+    }
+    const students = await studentModel
+      .find({ teacher: teacher._id })
+      .populate("teacher");
+    res.status(200).send({
+      success: true,
+      teacher,
+      students,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      error,
+      message: "Error while getting students",
+    });
+  }
+};
+
 module.exports = {
   createStudentController,
   getStudentController,
-  getSingleStudentController, studentPhotoController, updateStudentController, deleteStudentController
+  getSingleStudentController,
+  studentPhotoController,
+  updateStudentController,
+  deleteStudentController,
+  getStudentDataByTeacherId,
+  searchStudentController,
+  relatedStudentController,
+  getStudentsByTeacherController,
 };
-
