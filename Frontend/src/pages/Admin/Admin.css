@@ -242,7 +242,7 @@
 }
 
 .btn-btn{
-  height: 50px;
+  height: 40px;
   width: 150px;
   border-radius: 10px;
   font-size: 16px;
@@ -256,3 +256,16 @@
   background-color: #91c453;
   color: #fff;
 }
+
+/* .form-control{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* form{
+  position: relative;
+  text-align: center;
+  left: 240px;
+} */

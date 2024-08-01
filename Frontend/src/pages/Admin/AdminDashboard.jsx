@@ -36,6 +36,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 
 import AdminMenu from './../../components/Layout/AdminMenu';
 import AdminHeader from '../../components/Layout/AdminHeader';
+import { useAuth } from '../../components/context/Context'
 
 function AdminDashboard() {
     const data = [
@@ -58,6 +59,8 @@ function AdminDashboard() {
         setOpenMenuToggle(!openMenuToggle);
     };
 
+    const [auth] = useAuth()
+    
     return (
         <div className="container-fluid">
             <div className="row">

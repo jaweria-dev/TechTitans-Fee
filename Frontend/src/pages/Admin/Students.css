@@ -1,0 +1,15 @@
+.students .info{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.students .info h1{
+    margin: 10px;
+}
+
+.students .info button{
+    padding: 5px;
+      cursor: pointer;
+}

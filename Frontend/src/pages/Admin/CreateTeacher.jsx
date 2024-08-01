@@ -6,6 +6,8 @@ import TeacherForm from "./../../components/Form/TeacherForm";
 import { Modal } from "antd";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from '../../components/Layout/AdminHeader';
+import "../Admin/Admin.css"
+
 const CreateTeacher = () => {
   const [teachers, setTeachers] = useState([]);
   const [name, setName] = useState("");
@@ -26,7 +28,7 @@ const CreateTeacher = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("somthing went wrong in input form");
     }
   };
@@ -39,7 +41,7 @@ const CreateTeacher = () => {
         setTeachers(data?.category);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Something went wrong in getting teachers");
     }
   };
@@ -66,9 +68,10 @@ const CreateTeacher = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
+
   //delete teacher
   const handleDelete = async (pId) => {
     try {
@@ -86,17 +89,30 @@ const CreateTeacher = () => {
       toast.error("Something went wrong");
     }
   };
+
+
+  const [openMenuToggle, setOpenMenuToggle] = useState(false);
+
+  useEffect(() => {
+    console.log('Sidebar toggle state:', openMenuToggle);
+  }, [openMenuToggle]);
+
+  const OpenMenu = () => {
+    setOpenMenuToggle(!openMenuToggle);
+  };
+
+
   return (
     <div className="container-fluid dashboard">
       <div className="row">
         <div className="col-md-3">
-          <AdminMenu />
+          <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
         </div>
         <div className="col-md-9">
           <div className="col-md-3">
-            <AdminHeader />
+            <AdminHeader OpenMenu={OpenMenu} />
           </div>
-          <h1 className="teahcer-heading">Manage Teacher</h1>
+          <h1 className="teahcer-heading p-3 m-3">Manage Teacher</h1>
           <div className="p-3 w-50">
             <TeacherForm
               handleSubmit={handleSubmit}
@@ -105,7 +121,7 @@ const CreateTeacher = () => {
             />
           </div>
           <div className="w-75">
-            <table className="table">
+            <table className="table" style={{ margin: "40px" }}>
               <thead>
                 <tr>
                   <th scope="col">Teachers Name</th>
@@ -116,26 +132,20 @@ const CreateTeacher = () => {
                 {teachers?.map((c) => (
                   <>
                     <tr>
-                      <td key={c._id}>{c.name}</td>
+                      <td key={t._id}>{t.name}</td>
                       <td>
                         <button
                           className="btn btn-primary ms-2"
                           onClick={() => {
                             setopen(true);
-                            setUpdatedName(c.name);
+                            setUpdatedName(t.name);
                             setSelected(c);
-                          }}
-                        >
-                          Edit
-                        </button>
+                          }}>Edit</button>
                         <button
                           className="btn btn-danger ms-2"
                           onClick={() => {
-                            handleDelete(c._id);
-                          }}
-                        >
-                          Delete
-                        </button>
+                            handleDelete(t._id);
+                          }} > Delete</button>
                       </td>
                     </tr>
                   </>

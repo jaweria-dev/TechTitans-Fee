@@ -25,7 +25,7 @@ const Register = () => {
               token: res.data.token,
             })
             localStorage.setItem('auth', JSON.stringify(res.data))
-            navigate(location.state || '/')
+            navigate(location.state || '/dashboard/admin')
           } else {
             toast.error(res.data.message, { duration: 5000 })
           }
@@ -46,7 +46,7 @@ const Register = () => {
                         <p className="text-para">
                             Don't have an account?
                             <span>
-                                <Link to='/register' style={{ color: "#8AC642", textDecoration: "none" }}> Register...</Link>
+                                <Link to='/' style={{ color: "#8AC642", textDecoration: "none" }}> Register...</Link>
                             </span>
                         </p>
                         <div className="input-container">
