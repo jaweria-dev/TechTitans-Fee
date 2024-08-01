@@ -16,7 +16,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-          const res = await axios.post('http://localhost:9001/api/fee/portal/login', { rollNo, password })
+          const res = await axios.post('http://localhost:9000/api/fee/portal/login', { rollNo, password })
           if (res.data.success) {
             toast.success(res.data && res.data.message, { duration: 5000 })
             setAuth({

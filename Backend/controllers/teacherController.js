@@ -9,7 +9,7 @@ const createTeacherController = async (req, res) => {
     }
     const existingteacher = await teacherModel.findOne({ name });
     if (existingteacher) {
-      res.status(200).send({
+      return res.status(200).send({
         success: true,
         message: "Teacher Already Exists",
       });
@@ -18,18 +18,20 @@ const createTeacherController = async (req, res) => {
       name,
       slug: slugify(name),
     }).save();
-    res.status(201).send({
+    return res.status(201).send({
       success: true,
       message: "new teacher created",
       teacher,
     });
   } catch (error) {
     console.log(error);
-    res.status(500).send({
-      success: false,
-      error,
-      message: "Error in teacher name",
-    });
+    if (!res.headersSent) {
+      return res.status(500).send({
+        success: false,
+        error,
+        message: "Error in teacher name",
+      });
+    }
   }
 };
 
@@ -58,7 +60,7 @@ const updateTeacherController = async (req, res) => {
   }
 };
 
-// get all category
+// get all teacher
 const teacherController = async (req, res) => {
   try {
     const teacher = await teacherModel.find({});
