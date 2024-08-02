@@ -1,9 +1,9 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
-.row>*{
+.row>* {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -14,13 +14,16 @@
   font-size: 20px;
   color: gray;
 }
+
 .icon_header {
   vertical-align: middle;
   line-height: 1px;
   font-size: 26px;
   color: white;
 }
-.icon, .icon_header {
+
+.icon,
+.icon_header {
   margin-right: 5px;
 }
 
@@ -57,12 +60,13 @@
 .menu-icon {
   display: none;
 }
+
 /* End Header  */
 
 /* Sidebar  */
 #sidebar {
   grid-area: sidebar;
-  height: 100vh;
+  height: 100%;
   /* background-color: #263043; */
   background-color: #4b7bec;
   overflow-y: auto;
@@ -78,7 +82,7 @@
   margin-bottom: 30px;
 }
 
-.sidebar-title > span {
+.sidebar-title>span {
   display: none;
 }
 
@@ -105,7 +109,7 @@
   cursor: pointer;
 }
 
-.sidebar-list-item > a {
+.sidebar-list-item>a {
   text-decoration: none;
   color: white;
 }
@@ -124,11 +128,11 @@
 /* End Sidebar  */
 
 
-/* Main  */  
+/* Main  */
 .main-container {
   grid-area: main;
   overflow-y: auto;
-  /* padding: 20px 20px; */
+  padding: 20px 20px;
   color: rgba(255, 255, 255, 0.95);
 }
 
@@ -176,7 +180,7 @@
   justify-content: space-between;
 }
 
-.card-inner > .card_icon {
+.card-inner>.card_icon {
   font-size: 25px;
 }
 
@@ -192,7 +196,7 @@
 
 
 /* Medium <= 992px */
-  
+
 @media screen and (max-width: 992px) {
   .grid-container {
     grid-template-columns: 1fr;
@@ -210,12 +214,13 @@
     display: inline;
   }
 
-  .sidebar-title > span {
+  .sidebar-title>span {
     display: inline;
   }
 }
+
 /* Small <= 768px */
-  
+
 @media screen and (max-width: 768px) {
   .main-cards {
     grid-template-columns: 1fr;
@@ -227,6 +232,10 @@
     grid-template-columns: 1fr;
     margin-top: 30px;
   }
+
+  .header {
+    width: 100vw;
+  }
 }
 
 /* Extra Small <= 576px */
@@ -235,14 +244,10 @@
   .hedaer-left {
     display: none;
   }
-
-  .header{
-    width: 100vw;
-  }
 }
 
-.btn-btn{
-  height: 40px;
+.btn-btn {
+  height: 50px;
   width: 150px;
   border-radius: 10px;
   font-size: 16px;
@@ -253,19 +258,10 @@
 }
 
 .btn-btn:hover {
-  background-color: #91c453;
+  background-color: #86c23d;
   color: #fff;
 }
 
-/* .form-control{
+.form-control{
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* form{
-  position: relative;
-  text-align: center;
-  left: 240px;
-} */
+}

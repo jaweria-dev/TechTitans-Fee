@@ -15,6 +15,7 @@ import Students from "./pages/Admin/Students";
 // import AdminHeader from './components/Layout/AdminHeader';
 // import AdminMenu from "./components/Layout/AdminMenu"
 import "./pages/Admin/Admin.css";
+import HomePage from "../src/pages/HomePage"
 // import { useSpring, animated } from 'react-spring';
 
 
@@ -44,7 +45,7 @@ function App() {
           reverseOrder={false}
         />
         <Routes>
-          {/* <Route path="/" element={<HomePage />} /> */}
+          <Route path="/" element={<HomePage />} />
 
 
           <Route path="/dashboard" element={<AdminRoute />}>
@@ -52,10 +53,9 @@ function App() {
             <Route path="admin/create-teacher" element={<CreateTeacher />} />
             <Route path="admin/create-product" element={<CreateProduct />} />
             <Route path="admin/students" element={<Students />} />
-            {/* <Route path="admin/students" element={<Students />} /> */}
           </Route>
 
-          <Route path="/" element={<Register />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
         </Routes>

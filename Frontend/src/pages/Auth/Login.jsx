@@ -16,7 +16,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-          const res = await axios.post('http://localhost:9001/api/fee/portal/login', { rollNo, password })
+          const res = await axios.post('http://localhost:9000/api/fee/portal/login', { rollNo, password })
           if (res.data.success) {
             toast.success(res.data && res.data.message, { duration: 5000 })
             setAuth({
@@ -25,7 +25,7 @@ const Register = () => {
               token: res.data.token,
             })
             localStorage.setItem('auth', JSON.stringify(res.data))
-            navigate(location.state || '/dashboard/admin')
+            navigate(location.state || '/')
           } else {
             toast.error(res.data.message, { duration: 5000 })
           }

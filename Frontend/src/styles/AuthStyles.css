@@ -1,5 +1,5 @@
 /* register */
-.container{
+.container {
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
@@ -13,9 +13,9 @@
     background-color: #8AC642;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
-              0 -4px 8px rgba(0, 0, 0, 0.1),
-              4px 0 8px rgba(0, 0, 0, 0.1),
-              -4px 0 8px rgba(0, 0, 0, 0.1);
+        0 -4px 8px rgba(0, 0, 0, 0.1),
+        4px 0 8px rgba(0, 0, 0, 0.1),
+        -4px 0 8px rgba(0, 0, 0, 0.1);
     box-shadow: #8AC642;
     z-index: 1000;
     overflow: hidden;
@@ -43,8 +43,12 @@ form {
     z-index: 10;
     overflow: hidden;
     position: relative;
+    margin-top: 30px;
 }
 
+/* #form{
+    margin: 20px;
+} */
 .title {
     color: black;
     font-weight: 500;
@@ -73,17 +77,20 @@ form {
     transition: 0.3s;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus , input[type="number"]:focus{
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
     border-color: #8AC642;
     box-shadow: 0 0 8px rgba(138, 198, 66, 1);
     background-color: #ddffb3;
-  }
-  
+}
+
 .input::placeholder {
     color: #8AC642;
 }
 
-.input-container.success input{
+.input-container.success input {
     border-color: #fafafa;
 }
 

@@ -32,6 +32,14 @@
     background-color: green;
 }
 
+.button-btn1:hover{
+    background-color: rgb(37, 163, 37);
+}
+
+.button-btn2:hover{
+    background-color: rgb(232, 53, 53);
+}
+
 .button-btn2 {
     width: 60px;
     border-radius: 10px;

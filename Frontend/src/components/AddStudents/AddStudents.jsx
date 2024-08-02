@@ -1,14 +1,17 @@
 // import { DataGrid } from "@mui/x-data-grid";
 import "../AddStudents/AddStudents.css";
 
-const Add = (props) => {
+const AddStudents = (props) => {
+  // slug: string;
+  // columns: DataGrid;
+  // setOpen: React.Dispatch < React.SetStateAction < boolean >>;
+}
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    
-    props.setOpen(false);
-  };
+
+  props.setOpen(false);
 
   return (
     <div className="add">
@@ -33,4 +36,4 @@ const Add = (props) => {
   );
 };
 
-export default Add;
+export default AddStudents;

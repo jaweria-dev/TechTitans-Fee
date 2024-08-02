@@ -1,5 +1,4 @@
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import "../dataTable/DataTable.css";
 import { Link } from "react-router-dom";
 import "../dataTable/DataTable.css"
 

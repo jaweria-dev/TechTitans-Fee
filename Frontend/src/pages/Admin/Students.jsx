@@ -84,7 +84,7 @@ const Students = () => {
                     <div className="students">
                         <div className="info">
                             <h1>All Students List</h1>
-                            <button onClick={() => setOpen(true)}>Add New User</button>
+                            <button className='std-btn' onClick={() => setOpen(true)}>Add New User</button>
                         </div>
                         <DataTable slug="users" columns={columns} rows={studentsData} />
 
