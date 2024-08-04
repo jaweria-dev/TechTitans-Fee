@@ -1,5 +1,5 @@
 import React from "react";
-// import "../../styles/Admin.css"
+import "../../pages/Admin/Admin.css"
 
 const TeacherForm = ({ handleSubmit, value, setValue }) => {
   return (
@@ -18,3 +18,5 @@ const TeacherForm = ({ handleSubmit, value, setValue }) => {
 };
 
 export default TeacherForm;
+
+

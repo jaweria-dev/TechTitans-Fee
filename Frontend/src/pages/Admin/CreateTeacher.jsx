@@ -6,6 +6,7 @@ import { Modal } from "antd";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from '../../components/Layout/AdminHeader';
 import { useAuth } from "../../components/context/Context";
+import "./Students.css"
 
 const CreateTeacher = () => {
   const [teachers, setTeachers] = useState([]);
@@ -16,7 +17,7 @@ const CreateTeacher = () => {
   const [auth] = useAuth();  
 
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:9000/api/fee/portal/teacher",
+    baseURL: "http://localhost:9001/api/fee/portal/teacher",
     headers: {
       "Authorization": `Bearer ${auth?.token}` 
     }
@@ -42,7 +43,7 @@ const CreateTeacher = () => {
   const getAllTeachers = async () => {
     try {
       console.log("Fetching all teachers");
-      const { data } = await axios.get("http://localhost:9000/api/fee/portal/teacher/get-teacher");
+      const { data } = await axios.get("http://localhost:9001/api/fee/portal/teacher/get-teacher");
       console.log("Response data:", data);
       if (data.success) {
         setTeachers(data.teacher);
@@ -83,7 +84,7 @@ const CreateTeacher = () => {
     try {
       const { data } = await axiosInstance.delete(`/delete-teacher/${teacherId}`);
       if (data.success) {
-        toast.success(`Teacher is deleted`);
+        toast.success(`${name} is deleted`);
         getAllTeachers();
       } else {
         toast.error(data.message);
@@ -93,14 +94,24 @@ const CreateTeacher = () => {
     }
   };
 
+  const [openMenuToggle, setOpenMenuToggle] = useState(false);
+
+  useEffect(() => {
+      console.log('Sidebar toggle state:', openMenuToggle);
+  }, [openMenuToggle]);
+
+  const OpenMenu = () => {
+      setOpenMenuToggle(!openMenuToggle);
+  };
+
   return (
     <div className="container-fluid dashboard">
       <div className="row">
         <div className="col-md-3">
-          <AdminMenu />
+          <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu}/>
         </div>
         <div className="col-md-9">
-          <AdminHeader />
+          <AdminHeader OpenMenu={OpenMenu}/>
           <h1 className="teacher-heading">Manage Teacher</h1>
           <div className="p-3 w-50">
             <TeacherForm handleSubmit={handleSubmit} value={name} setValue={setName} />
@@ -118,10 +129,10 @@ const CreateTeacher = () => {
                   <tr key={teacher._id}>
                     <td>{teacher.name}</td>
                     <td>
-                      <button className="btn btn-primary ms-2" onClick={() => { setOpen(true); setUpdatedName(teacher.name); setSelected(teacher); }}>
+                      <button className="btn1 btn-primary ms-2" onClick={() => { setOpen(true); setUpdatedName(teacher.name); setSelected(teacher); }}>
                         Edit
                       </button>
-                      <button className="btn btn-danger ms-2" onClick={() => handleDelete(teacher._id)}>
+                      <button className="btn2 btn-danger ms-2" onClick={() => handleDelete(teacher._id)}>
                         Delete
                       </button>
                     </td>

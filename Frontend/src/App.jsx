@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+// import HomePage from "./pages/HomePage";
 import Register from "./pages/Auth/Register";
 import { Toaster } from 'react-hot-toast'
 import AdminRoute from './components/Routes/AdminRoutes';
@@ -11,10 +11,12 @@ import Login from "./pages/Auth/Login";
 import ForgotPassword from "./pages/Auth/Forgotpassword";
 import CreateTeacher from "./pages/Admin/CreateTeacher";
 import CreateProduct from "./pages/Admin/CreateProduct";
-import Users from "./pages/Admin/Users";
+import Students from "./pages/Admin/Students";
 // import AdminHeader from './components/Layout/AdminHeader';
 // import AdminMenu from "./components/Layout/AdminMenu"
 import "./pages/Admin/Admin.css";
+import HomePage from "../src/pages/HomePage"
+// import { useSpring, animated } from 'react-spring';
 
 
 function App() {
@@ -27,8 +29,13 @@ function App() {
     }, 1000);
   }
 
- 
 
+//   const {number} = useSpring({
+//     from:{number:0},
+//     delay:200,
+//     config:{mass:1, tension: 20, friction:10},
+// })
+// return <animated.div>{number.to((n) => n.toFixed(0))}</animated.div>;
 
   return (
     !loading && (
@@ -45,12 +52,12 @@ function App() {
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="admin/create-teacher" element={<CreateTeacher />} />
             <Route path="admin/create-product" element={<CreateProduct />} />
-            <Route path="admin/users" element={<Users />} />
+            <Route path="admin/students" element={<Students />} />
           </Route>
 
           <Route path="/register" element={<Register />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
         </Routes>
 
       </>

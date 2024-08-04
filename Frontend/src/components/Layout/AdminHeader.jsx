@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import { BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify } from 'react-icons/bs';
+import React, { useState } from 'react';
+import { BsPersonCircle, BsSearch, BsJustify } from 'react-icons/bs';
 
-function AdminHeader({OpenMenu}) {
+function AdminHeader({ OpenMenu }) {
 
     return (
         <header className='header'>
@@ -12,10 +12,8 @@ function AdminHeader({OpenMenu}) {
                 <BsSearch className='icon' />
             </div>
             <div className='header-right'>
-                {/* <BsFillBellFill className='icon' />
-                <BsFillEnvelopeFill className='icon' /> */}
                 <BsPersonCircle className='icon'
-                    />
+                />
             </div>
         </header>
     );

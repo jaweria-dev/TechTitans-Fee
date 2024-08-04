@@ -24,7 +24,7 @@ function AdminMenu({ openMenuToggle, OpenMenu }) {
                     </NavLink>
                 </li>
                 <li className='sidebar-list-item'>
-                    <NavLink to='/dashboard/admin/users'>
+                    <NavLink to='/dashboard/admin/students'>
                         <BsFillGrid3X3GapFill className='icon-icon' /> Students
                     </NavLink>
                 </li>
