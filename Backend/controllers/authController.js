@@ -128,9 +128,9 @@ const loginController = async (req, res) => {
 // forgot Password Controller
 const forgotPasswordController = async (req, res) => {
   try {
-    const { email, answer, newPassword } = req.body;
-    if (!email) {
-      res.status(400).send({ message: "Emai is required" });
+    const { rollNo, answer, newPassword } = req.body;
+    if (!rollNo) {
+      res.status(400).send({ message: "Roll No is required" });
     }
     if (!answer) {
       res.status(400).send({ message: "answer is required" });
@@ -139,12 +139,12 @@ const forgotPasswordController = async (req, res) => {
       res.status(400).send({ message: "New Password is required" });
     }
     //check
-    const user = await userModel.findOne({ email, answer });
+    const user = await userModel.findOne({ rollNo, answer });
     //validation
     if (!user) {
       return res.status(404).send({
         success: false,
-        message: "Wrong Email Or Answer",
+        message: "Wrong RollNo Or Answer",
       });
     }
     const hashed = await hashPassword(newPassword);
