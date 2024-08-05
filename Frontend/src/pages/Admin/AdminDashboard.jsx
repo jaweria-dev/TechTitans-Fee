@@ -1,35 +1,3 @@
-// import React from 'react'
-// import Layout from '../../components/Layout/Layout'
-// // import AdminMenu from '../../components/Layout/AdminMenu'
-// import AdminLayout from '../../components/Layout/AdminLayout'
-// import { useAuth } from '../../components/context/Context'
-
-// const AdminDashboard = () => {
-//     const [auth] = useAuth()
-//     return (
-//         <Layout>
-//           <div className="container-fluid m-3 p-3">
-//             <div className="row">
-//                 <div className="col-md-3">
-//                    <AdminLayout/> 
-//                 </div>
-//                 <div className="col-md-9">
-//                     <div className="card w-75 p-3">
-//                         <h1>Admin Name : {auth?.user?.name}</h1>
-//                         <h1>Admin Email : {auth?.user?.email}</h1>
-//                         <h1>Admin Phone : {auth?.user?.phone}</h1>
-//                     </div>
-//                 </div>
-//             </div>
-//           </div>
-//         </Layout>
-//     )
-// }
-
-// export default AdminDashboard
-
-
-
 import React, {useState , useEffect} from 'react';
 import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill } from 'react-icons/bs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';

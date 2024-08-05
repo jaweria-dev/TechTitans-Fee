@@ -10,7 +10,7 @@ const AddStudents = ({ open, setOpen, addStudent }) => {
 // console.log(auth);
 
   const axiosInstance = axios.create({  
-    baseURL: "http://localhost:9001/api/fee/portal/students",  
+    baseURL: "http://localhost:9000/api/fee/portal/students",  
     headers: {  
       "Authorization": `${auth?.token}`,
       "Content-Type": "multipart/form-data"  

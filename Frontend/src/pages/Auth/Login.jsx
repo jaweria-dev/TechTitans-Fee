@@ -8,6 +8,7 @@ import { useAuth } from '../../components/context/Context';
 
 const Register = () => {
     const [rollNo, setRollNo] = useState(""); 
+    // const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
@@ -38,11 +39,9 @@ const Register = () => {
       }
 
     return (
-        <div className="container">
+        <div className="container" style={{marginTop:"40px"}}>
             <div className="form">
                 <div className="contact-form">
-                    <span className="circle one" />
-                    <span className="circle two" />
                     <form onSubmit={handleSubmit}>
                         <h3 className="title">Login</h3>
                         <p className="text-para">
@@ -64,6 +63,19 @@ const Register = () => {
                                 required
                             />
                         </div>
+                        {/* <div className="input-container">
+                            <input
+                                type="text"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                name="text"
+                                className="input"
+                                id="text"
+                                autoComplete="off"
+                                placeholder="Enter Your Email"
+                                required
+                            />
+                        </div> */}
                         <div className="input-container">
                             <input
                                 type="password"
@@ -79,11 +91,11 @@ const Register = () => {
                         </div>
 
                         <div className="forgotpassword">
-                        <Link to='/forgotpassword' style={{ color: "#8AC642", textDecoration: "none", position:"relative", left:"200px"}}> Forgot Password?</Link>
+                        <Link to='/forgotpassword' style={{ color: "#8AC642", textDecoration: "none"}}> Forgot Password?</Link>
                         </div>
                         
 
-                        <button type="submit" className="btn" style={{marginTop:20}}>
+                        <button type="submit" className="btn" >
                             LOGIN
                         </button>
                     </form>

@@ -30,7 +30,7 @@ const DataTable = ({ students, getAllStudents }) => {
 
         try {
             const response = await axios.delete(
-                `http://localhost:9001/api/fee/portal/students/delete-student/${id}`,
+                `http://localhost:9000/api/fee/portal/students/delete-student/${id}`,
                 {
                     headers: {
                         "Authorization": `Bearer ${auth?.token}`
@@ -54,7 +54,7 @@ const DataTable = ({ students, getAllStudents }) => {
 
         try {
             const response = await axios.put(
-                `http://localhost:9001/api/fee/portal/students/update-student/${selectedStudent._id}`,
+                `http://localhost:9000/api/fee/portal/students/update-student/${selectedStudent._id}`,
                 updatedData,
                 {
                     headers: {
