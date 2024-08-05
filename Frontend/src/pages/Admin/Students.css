@@ -67,14 +67,18 @@
 }
 
 .teacher-heading {
-    margin-left: 36px;
+    margin-left: 22px;
 }
 
-.std-btn{
+/* .std-btn{
     padding: 5px;
     cursor: pointer;
     background-color: #4b7bec;
-}
+    border: 1px solid #4b7bec;
+    border-radius: 10px;
+    height: 8vh;
+    color: #ffffff;
+} */
 
 /* .table {
     width: 74vw;

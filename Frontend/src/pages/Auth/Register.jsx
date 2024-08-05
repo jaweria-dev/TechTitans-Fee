@@ -28,7 +28,7 @@ const Register = () => {
         }
 
         try {
-            const res = await axios.post('http://localhost:9000/api/fee/portal/register', { name, email, password, phone, Trainer, batchNo, rollNo, answer });
+            const res = await axios.post('http://localhost:9001/api/fee/portal/register', { name, email, password, phone, Trainer, batchNo, rollNo, answer });
             if (res.data.success) {
                 toast.success(res.data.message, { duration: 5000 });
                 navigate('/login');

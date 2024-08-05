@@ -28,11 +28,6 @@ function AdminMenu({ openMenuToggle, OpenMenu }) {
                         <BsFillGrid3X3GapFill className='icon-icon' /> Students
                     </NavLink>
                 </li>
-                <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsFillGearFill className='icon-icon' /> Setting
-                    </a>
-                </li>
             </ul>
         </aside>
     );
