@@ -43,7 +43,7 @@ form {
     z-index: 10;
     overflow: hidden;
     position: relative;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 /* #form{
@@ -105,7 +105,8 @@ input[type="number"]:focus {
     outline: none;
     cursor: pointer;
     transition: 0.3s;
-    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 180px;
 }
 
@@ -131,10 +132,20 @@ input[type="number"]:focus {
     font-size: 1.6rem;
 }
 
+.forgotpassword {
+    text-align: right;
+    left: -10px;
+    position: relative;
+}
+
 /* =======Media Query========= */
 @media (max-width: 850px) {
     .form {
         grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        display: none;
     }
 
     .contact-info:before {
@@ -169,9 +180,13 @@ input[type="number"]:focus {
         display: none;
     }
 
-    form {
-        padding: 1.7rem 1.6rem;
+    .text-para{
+        font-size: 15px;
     }
+
+    /* form {
+        padding: 1.7rem 1.6rem;
+    } */
 
     .input {
         padding: 0.45rem 1.2rem;

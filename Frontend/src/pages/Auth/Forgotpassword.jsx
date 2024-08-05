@@ -16,7 +16,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post('http://localhost:9001/api/fee/portal/forgot-password', { rollNo, newPassword, answer, })
+      const res = await axios.post('http://localhost:9010/api/fee/portal/forgot-password', { rollNo, newPassword, answer, })
       if (res && res.data.success) {
         toast.success(res.data && res.data.message, { duration: 5000 })
 
@@ -31,9 +31,7 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div className="contact-form" style={{
-      margin:"70px"
-    }}>
+    <div className="contact-form" style={{margin:"70px"}}>
       <form onSubmit={handleSubmit}>
         <h3 className="title">Forgot Password</h3>
         <div className="input-container">
