@@ -17,7 +17,7 @@ const CreateTeacher = () => {
   const [auth] = useAuth();  
 
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:9001/api/fee/portal/teacher",
+    baseURL: "http://localhost:9010/api/fee/portal/teacher",
     headers: {
       "Authorization": `Bearer ${auth?.token}` 
     }
@@ -43,7 +43,7 @@ const CreateTeacher = () => {
   const getAllTeachers = async () => {
     try {
       console.log("Fetching all teachers");
-      const { data } = await axios.get("http://localhost:9001/api/fee/portal/teacher/get-teacher");
+      const { data } = await axios.get("http://localhost:9010/api/fee/portal/teacher/get-teacher");
       console.log("Response data:", data);
       if (data.success) {
         setTeachers(data.teacher);

@@ -1,5 +1,6 @@
 import React from "react";
 import "../../pages/Admin/Admin.css"
+import { Button } from '@mui/material';
 
 const TeacherForm = ({ handleSubmit, value, setValue }) => {
   return (
@@ -10,8 +11,12 @@ const TeacherForm = ({ handleSubmit, value, setValue }) => {
             onChange={(e) => setValue(e.target.value)}/>
         </div>
 
-        <button type="submit" className="btn-btn btn-primary">
-          Submit</button>
+        {/* <button type="submit" className="btn-btn btn-primary">
+          Submit</button> */}
+
+          <Button type="submit" variant="contained" color="primary">  
+            Submit  
+          </Button> 
       </form>
     </>
   );
