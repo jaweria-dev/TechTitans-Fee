@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import DataTable from "../../components/dataTable/DataTable";
-// import studentsData from "../../components/data/studentsData";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from '../../components/Layout/AdminHeader';
 import "./Students.css"
 import AddStudents from '../../components/AddStudents/AddStudents';
 import { Button } from '@mui/material';
 import { useAuth } from "../../components/context/Context";
-// import studentsData from './../../components/data/studentsData';
 
 const Students = () => {
     // const [updatedName, setUpdatedName] = useState("");
