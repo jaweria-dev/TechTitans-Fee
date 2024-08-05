@@ -6,6 +6,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '95000',
         batchno: '10',
+        teacher:"Jasmine",
         createdAt: '2019-04-11',
         verified: true
     },
@@ -16,6 +17,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '80000',
         batchno: '10',
+        teacher:"Jasmine",
         createdAt: '2019-04-17',
         verified: true
     },
@@ -26,6 +28,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '79000',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2019-05-01',
         verified: true
     },
@@ -36,6 +39,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '56000',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2019-05-03',
         verified: true
     },
@@ -46,6 +50,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '65000',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2019-06-13',
         verified: true
     },
@@ -56,6 +61,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '120000',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2019-07-30',
         verified: true
     },
@@ -66,6 +72,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '90000',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2019-08-15',
         verified: true
     },
@@ -76,6 +83,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '60000',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2019-10-10',
         verified: true
     },
@@ -86,6 +94,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '71000',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2019-10-15',
         verified: true
     },
@@ -96,6 +105,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '110000',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2020-01-15',
         verified: true
     },
@@ -106,6 +116,7 @@ const studentsData = [
         phone: "1234567890",
         rollno: '127424',
         batchno:'10',
+        teacher:"Jasmine",
         createdAt: '2024-08-01',
         verified: true
     }

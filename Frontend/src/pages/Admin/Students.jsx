@@ -1,65 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import DataTable from "../../components/dataTable/DataTable";
-import AddStudents from "../../components/AddStudents/AddStudents";
-import studentsData from "../../components/data/studentsData";
+// import studentsData from "../../components/data/studentsData";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from '../../components/Layout/AdminHeader';
 import "./Students.css"
-// import "../../components/dataTable/DataTable.css"
-// import AdminMenu from '../../components/Layout/AdminMenu'
+import AddStudents from '../../components/AddStudents/AddStudents';
+import { Button } from '@mui/material';
+import { useAuth } from "../../components/context/Context";
+// import studentsData from './../../components/data/studentsData';
 
 const Students = () => {
+    // const [updatedName, setUpdatedName] = useState("");
+    const [rows, setRows] = useState("");
+    const [open, setOpen] = useState(false);
+    const [openMenuToggle, setOpenMenuToggle] = useState(false);
+    const [auth] = useAuth(); 
+
     const columns = [
         { field: "id", headerName: "ID", width: 90 },
-        {
-            field: "img",
-            headerName: "Avatar",
-            width: 100,
-            renderCell: (params) => {
-                return <img src={params.row.img || "/noavatar.png"} alt="" />;
-            },
-        },
-        {
-            field: "Name",
-            headerName: "Name",
-            width: 150,
-            editable: true,
-        },
-        {
-            field: "email",
-            headerName: "Email",
-            width: 200,
-        },
-        {
-            field: "phone",
-            headerName: "Phone",
-            width: 200,
-        },
-        {
-            field: "rollno",
-            headerName: "Roll No",
-            width: 150,
-        },
-        {
-            field: "batchno",
-            headerName: "Batch No",
-            width: 150,
-        },
-        {
-            field: "createdAt",
-            headerName: "Created At",
-            width: 200,
-        },
-        {
-            field: "verified",
-            headerName: "Verified",
-            width: 150,
-            type: "boolean",
-        },
+        { field: "name", headerName: "Name", width: 150 },
+        { field: "email", headerName: "Email", width: 200 },
+        { field: "phone", headerName: "Phone", width: 200 },
+        { field: "rollNo", headerName: "Roll No", width: 150 },
+        { field: "batchNo", headerName: "Batch No", width: 150 },
+        { field: "teacher", headerName: "Teacher", width: 150 },
     ];
-    const [open, setOpen] = useState(false);
-
-    const [openMenuToggle, setOpenMenuToggle] = useState(false);
 
     useEffect(() => {
         console.log('Sidebar toggle state:', openMenuToggle);
@@ -68,6 +33,21 @@ const Students = () => {
     const OpenMenu = () => {
         setOpenMenuToggle(!openMenuToggle);
     };
+
+    const addStudent = (newStudent) => {
+        newStudent.id = rows.length + 1; // Generate new ID (or implement your own logic)  
+        setRows([...rows, newStudent]); // Add the new student to the list  
+    };
+
+    // const axiosInstance = axios.create({  
+    //     baseURL: "http://localhost:9001/api/fee/portal/students",  
+    //     headers: {  
+    //       "Authorization": `Bearer ${auth?.token}`  
+    //     }  
+    //   });  
+    //    // Log token to ensure it's valid
+    //    console.log("Token used:", auth?.token); 
+
 
     return (
         <div className="container-fluid">
@@ -84,11 +64,13 @@ const Students = () => {
                     <div className="students">
                         <div className="info">
                             <h1>All Students List</h1>
-                            <button className='std-btn' onClick={() => setOpen(true)}>Add New User</button>
+                            <Button className='std-btn' onClick={() => setOpen(true)} variant='contained' color='primary'>Add New Student</Button>
                         </div>
-                        <DataTable slug="users" columns={columns} rows={studentsData} />
 
-                        {open && <AddStudents slug="user" columns={columns} setOpen={setOpen} />}
+                        <DataTable slug="users" columns={columns} rows={rows} />
+
+
+                        <AddStudents open={open} setOpen={setOpen} addStudent={addStudent} />
                     </div>
                 </div>
             </div>

@@ -16,9 +16,11 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-          const res = await axios.post('http://localhost:9000/api/fee/portal/login', { rollNo, password })
+          const res = await axios.post('http://localhost:9001/api/fee/portal/login', { rollNo, password })
           if (res.data.success) {
             toast.success(res.data && res.data.message, { duration: 5000 })
+            // console.log(res,"check login data .");
+             
             setAuth({
               ...auth,
               user: res.data.user,
@@ -46,7 +48,7 @@ const Register = () => {
                         <p className="text-para">
                             Don't have an account?
                             <span>
-                                <Link to='/' style={{ color: "#8AC642", textDecoration: "none" }}> Register...</Link>
+                                <Link to='/register' style={{ color: "#8AC642", textDecoration: "none" }}> Register...</Link>
                             </span>
                         </p>
                         <div className="input-container">
