@@ -47,6 +47,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
 
+          {/* <Route path="/dashboard" element={<PrivateRoute />}>
+          <Route path="user" element={<Dashboard />} />
+         
+        </Route> */}
+
 
           <Route path="/dashboard" element={<AdminRoute />}>
             <Route path="admin" element={<AdminDashboard />} />
