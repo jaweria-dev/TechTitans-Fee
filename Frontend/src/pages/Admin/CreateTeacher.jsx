@@ -17,7 +17,7 @@ const CreateTeacher = () => {
   const [auth] = useAuth();  
 
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:9010/api/fee/portal/teacher",
+    baseURL: "http://localhost:9000/api/fee/portal/teacher",
     headers: {
       "Authorization": `Bearer ${auth?.token}` 
     }

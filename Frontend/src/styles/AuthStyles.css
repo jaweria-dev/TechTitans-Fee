@@ -23,6 +23,16 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
+.navbar, .footer{
+    background-color: #4b7bec;
+}
+.navbar-brand{
+    color: white;
+}
+
+.nav-item>.nav-link{
+    color: white;
+}
 .contact-form {
     background-color: white;
     position: relative;
@@ -136,6 +146,11 @@ input[type="number"]:focus {
     text-align: right;
     left: -10px;
     position: relative;
+}
+
+.text-center{
+    color: white;
+    font-size: 2rem;
 }
 
 /* =======Media Query========= */

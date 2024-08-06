@@ -1,4 +1,4 @@
-.students .info {
+/* .students .info {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -17,7 +17,7 @@
     .p-3 {
         padding: 0 !important;
     }
-}
+} */
 
 /* @media screen and (max-width: 576px){
     .teacher-heading {
@@ -25,16 +25,16 @@
     }
 } */
 
-.students .info button {
+/* .students .info button {
     padding: 5px;
     cursor: pointer;
-}
+}*/
 
 .table {
     width: 74vw;
     height: 100%;
     margin-bottom: 0 !important;
-}
+} 
 
 @media screen and (max-width: 768px) {
     .table {
@@ -66,9 +66,17 @@
     background-color: rgb(232, 53, 53);
 }
 
+.photo-btn{
+    background-color: black;
+}
+
 .teacher-heading {
     margin-left: 34px;
 }
+
+/* .btn-primary{
+    background-color: blue;
+} */
 
 /* .std-btn{
     padding: 5px;

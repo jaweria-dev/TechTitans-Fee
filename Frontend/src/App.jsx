@@ -1,22 +1,23 @@
 import { Routes, Route } from "react-router-dom";
-// import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
 import Register from "./pages/Auth/Register";
 import { Toaster } from 'react-hot-toast'
-import AdminRoute from './components/Routes/AdminRoutes';
-// import AdminRoute from './components/Routes/AdminRoute';
+import AdminRoute from './components/Routes/AdminRoutes';;
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import { useState } from 'react'
 import './App.css'
 import Login from "./pages/Auth/Login";
 import ForgotPassword from "./pages/Auth/Forgotpassword";
 import CreateTeacher from "./pages/Admin/CreateTeacher";
-import CreateProduct from "./pages/Admin/CreateProduct";
-import Students from "./pages/Admin/Students";
-// import AdminHeader from './components/Layout/AdminHeader';
-// import AdminMenu from "./components/Layout/AdminMenu"
 import "./pages/Admin/Admin.css";
-import HomePage from "../src/pages/HomePage"
+import CreateStudent from "./pages/Admin/CreateStudent";
 // import { useSpring, animated } from 'react-spring';
+import AllStudents from './pages/Admin/AllStudent';
+import StudentDetails from "./pages/StudentDetails";
+import Teachers from './pages/Teachers';
+import Search from './pages/Search';
+import UpdateStudent from './pages/Admin/UpdateStudent';
+import TeacherStudents from "./pages/TeacherStudents";
 
 
 function App() {
@@ -46,13 +47,18 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/student:slug" element={<StudentDetails />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/teacher:slug" element={<TeacherStudents />} />
 
 
           <Route path="/dashboard" element={<AdminRoute />}>
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="admin/create-teacher" element={<CreateTeacher />} />
-            <Route path="admin/create-product" element={<CreateProduct />} />
-            <Route path="admin/students" element={<Students />} />
+            <Route path="admin/create-student" element={<CreateStudent />} />
+            <Route path="admin/student:slug" element={<UpdateStudent />} />
+            <Route path="admin/students" element={<AllStudents />} />
           </Route>
 
           <Route path="/register" element={<Register />} />
