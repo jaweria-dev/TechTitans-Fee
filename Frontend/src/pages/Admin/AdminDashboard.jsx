@@ -40,32 +40,32 @@ function AdminDashboard() {
                     <div className='main-cards'>
                         <div className='card'>
                             <div className='card-inner'>
-                                <h3>STUDENTS</h3>
-                                <BsFillArchiveFill className='card_icon' />
+                                <h3 style={{color:"white"}}>STUDENTS</h3>
+                                <BsFillArchiveFill className='card_icon' style={{color:"white"}}/>
                             </div>
-                            <h1>300</h1>
+                            <h1 style={{color:"white"}}>300</h1>
                         </div>
                         <div className='card'>
                             <div className='card-inner'>
-                                <h3>BATCH</h3>
-                                <BsFillGrid3X3GapFill className='card_icon' />
+                                <h3 style={{color:"white"}}>BATCH</h3>
+                                <BsFillGrid3X3GapFill className='card_icon' style={{color:"white"}}/>
                             </div>
-                            <h1>12</h1>
+                            <h1 style={{color:"white"}}>12</h1>
                         </div>
                         <div className='card'>
                             <div className='card-inner'>
-                                <h3>TEACHERS</h3>
-                                <BsPeopleFill className='card_icon' />
+                                <h3 style={{color:"white"}}>TEACHERS</h3>
+                                <BsPeopleFill className='card_icon' style={{color:"white"}}/>
                             </div>
-                            <h1>33</h1>
+                            <h1 style={{color:"white"}}>33</h1>
                         </div>
-                        <div className='card'>
+                        {/* <div className='card'>
                             <div className='card-inner'>
                                 <h3>ALERTS</h3>
                                 <BsFillBellFill className='card_icon' />
                             </div>
                             <h1>42</h1>
-                        </div>
+                        </div> */}
                     </div>
                     <div className='charts'>
                         <ResponsiveContainer width="100%" height="100%">
