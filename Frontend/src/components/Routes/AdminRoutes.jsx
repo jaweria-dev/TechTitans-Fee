@@ -1,46 +1,57 @@
+
 import { useState, useEffect } from "react";
 import { useAuth } from "../../components/context/Context";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 import Spinner from "./Spinner";
 
-<<<<<<< HEAD
-export default function PrivateRoute() {
+export default function AdminRoutes() {
     const [ok, setOk] = useState(false);
     const [auth] = useAuth();
 
     useEffect(() => {
         const authCheck = async () => {
+            if (!auth?.token) {
+                console.error("No token provided");
+                setOk(false);
+                return;
+            }
+
             try {
                 const res = await axios.get('http://localhost:9000/api/fee/portal/admin-auth', {
                     headers: {
                         "Authorization": `Bearer ${auth?.token}`
                     }
                 });
-                if (res.data.ok) {
-                    setOk(true);
-                } else {
-                    setOk(false);
-                }
+                setOk(res.data.ok);
             } catch (error) {
                 console.error("Authorization check failed:", error);
                 setOk(false);
-=======
-export default function AdminRoutes(){
-    const[ok, setOk] = useState(false)
-    const[auth, setAuth] = useAuth()
-
-    useEffect(() => {
-        const authCheck = async() =>{
-           const res = await axios.get('http://localhost:9000/api/fee/portal/admin-auth', {
-            headers:{
-                "Authorization":auth?.token
->>>>>>> b1ab698b0908a751e974c96ddf1c982348702010
             }
         };
-        if (auth?.token) authCheck();
+
+        authCheck();
     }, [auth?.token]);
 
     return ok ? <Outlet /> : <Spinner path="" />;
 }
 
+
+// export default function AdminRoute() {
+//     const [ok, setOk] = useState(false);
+//   const [auth, setAuth] = useAuth();
+
+//   useEffect(() => {
+//     const authCheck = async () => {
+//       const res = await axios.get("http://localhost:9000/api/fee/portal/admin-auth");
+//       if (res.data.ok) {
+//         setOk(true);
+//       } else {
+//         setOk(false);
+//       }
+//     };
+//     if (auth?.token) authCheck();
+//   }, [auth?.token]);
+
+//   return ok ? <Outlet /> : <Spinner path="" />;
+// }

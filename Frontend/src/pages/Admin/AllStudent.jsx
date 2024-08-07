@@ -43,7 +43,9 @@ const AllStudents = () => {
             </div>
             <div className="col-md-9 ">
             <AdminHeader OpenMenu={OpenMenu}/>
-                <h1 className="text-center">All Students List</h1>
+            <h1 style={{ textAlign: 'center', color: 'black', fontWeight: 'bold' }}>
+  All Students List
+</h1>
                 <div className="d-flex">
                     {students?.map((s) => (
                         <Link
@@ -53,7 +55,7 @@ const AllStudents = () => {
                         >
                             <div className="card m-2" style={{ width: "18rem" }}>
                                 <img
-                                    src={`/api/fee/portal/students/student-photo/${s._id}`}
+                                    src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
                                     className="card-img-top"
                                     alt={s.name}
                                 />

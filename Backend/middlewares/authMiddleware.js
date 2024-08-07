@@ -4,9 +4,9 @@ const userModel = require("../models/userModel");
 // protected routes token base
 const requireSignIn = async (req, res, next) => {
   try {
-    console.log("Authorization Header:", req.headers.authorization); 
-    const token = req.headers.authorization?.split(" ")[1]; 
-    console.log("Extracted Token:", token); 
+    console.log("Authorization Header:", req.headers.authorization);
+    const token = req.headers.authorization?.split(" ")[1];
+    console.log("Extracted Token:", token);
     if (!token) {
       return res
         .status(401)
@@ -17,7 +17,7 @@ const requireSignIn = async (req, res, next) => {
     next();
   } catch (error) {
     console.log("JWT Error:", error);
-    return res.status(401).send({ success: false, message: "Invalid token" }); 
+    return res.status(401).send({ success: false, message: "Invalid token" });
   }
 };
 

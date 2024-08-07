@@ -10,7 +10,7 @@ const AuthProvider = ({ children = null }) => {
         user: null,
         token: ""
     });
-    
+
     useEffect(() => {
         const data = localStorage.getItem('auth');
         if (data) {
@@ -18,7 +18,7 @@ const AuthProvider = ({ children = null }) => {
             setAuth({
                 ...auth,
                 user: parseData.user,
-                'token':`Bearer ${parseData.token}`,
+                token: parseData.token,
             });
         }
         // eslint-disable-nextline
