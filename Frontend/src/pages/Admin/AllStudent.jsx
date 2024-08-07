@@ -4,14 +4,15 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from '../../components/Layout/AdminHeader';
+import "../Admin/Admin.css"
 const AllStudents = () => {
     const [students, setStudents] = useState([]);
 
-    //getall products
+    //getall students
     const getAllStudents = async () => {
         try {
             const { data } = await axios.get(
-                "http://localhost:9000/api/fee/portal/students/get-student"
+                "http://localhost:9001/api/fee/portal/students/get-student"
             );
             setStudents(data.students);
         } catch (error) {
@@ -37,6 +38,7 @@ const AllStudents = () => {
         setOpenMenuToggle(!openMenuToggle);
     };
     return (
+<<<<<<< HEAD
         <div className="row">
             <div className="col-md-3">
                 <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
@@ -62,10 +64,42 @@ const AllStudents = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{s.name}</h5>
                                     <p className="card-text">{s.rollNo}</p>
+=======
+        <div className="container-fluid">
+
+            <div className="row">
+                <div className="col-md-3">
+                    <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
+                </div>
+                <div className="col-md-9 ">
+                    <AdminHeader OpenMenu={OpenMenu} />
+                    <h1 className="text-center" style={{ color: "black" }}>All Students List</h1>
+                    <div className="d-flex">
+                        {students?.map((s) => (
+                            <Link
+                                key={s._id}
+                                to={`/dashboard/admin/students/${s.slug}`}
+                                className="student-link"
+                            >
+                                <div className="card m-2" style={{ width: "18rem" }}>
+                                    <img
+                                        src={`http://localhost:9001/api/fee/portal/students/student-photo/${s._id}`}
+                                        className="card-img-top"
+                                        alt={s.name}
+                                    />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{s.name}</h5>
+                                        <p className="card-text">{s.email}</p>
+                                        <p className="card-text">{s.phone}</p>
+                                        <p className="card-text">{s.rollNo}</p>
+                                        <p className="card-text">{s.batchNo}</p>
+                                        <p className="card-text">{s.teacher}</p>
+                                    </div>
+>>>>>>> 35dc4c4dc378903a953fb1f1e2ad72ca61dd5feb
                                 </div>
-                            </div>
-                        </Link>
-                    ))}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

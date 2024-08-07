@@ -1,5 +1,7 @@
 import React from 'react';
-import { BsCart3, BsGrid1X2Fill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill } from 'react-icons/bs';
+import { BsCart3, BsGrid1X2Fill, BsPeopleFill } from 'react-icons/bs';
+import { FaUsers } from "react-icons/fa";
+import { PiUserSoundFill } from "react-icons/pi";
 import { NavLink } from 'react-router-dom';
 
 function AdminMenu({ openMenuToggle, OpenMenu }) {
@@ -24,8 +26,13 @@ function AdminMenu({ openMenuToggle, OpenMenu }) {
                     </NavLink>
                 </li>
                 <li className='sidebar-list-item'>
+                    <NavLink to='/dashboard/admin/create-student'>
+                        <PiUserSoundFill className='icon-icon' /> Student
+                    </NavLink>
+                </li>
+                <li className='sidebar-list-item'>
                     <NavLink to='/dashboard/admin/students'>
-                        <BsFillGrid3X3GapFill className='icon-icon' /> Students
+                        <FaUsers className='icon-icon' /> All Students
                     </NavLink>
                 </li>
                 <li className='sidebar-list-item'>

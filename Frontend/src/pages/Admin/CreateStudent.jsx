@@ -97,9 +97,14 @@ const CreateStudent = () => {
         toast.error(response.data?.message || "Failed to create student");
       }
     } catch (error) {
+<<<<<<< HEAD
       // Log detailed error for debugging
       console.error("Error creating student:", error.response ? error.response.data : error.message);
       toast.error("Something went wrong");
+=======
+      console.error(error);
+      toast.error("something went wrong");
+>>>>>>> 35dc4c4dc378903a953fb1f1e2ad72ca61dd5feb
     }
   };
   
@@ -179,7 +184,7 @@ const CreateStudent = () => {
               <div className="mb-3">
                 <label className="btn-btn1 btn-outline-secondary col-md-12">
                   {photo ? photo.name : "Upload Photo"}
-                  <input className="photo-btn"
+                  <input 
                     type="file"
                     name="photo"
                     accept="image/*"
@@ -273,9 +278,9 @@ const CreateStudent = () => {
                 </Select>
               </div>
               <div className="mb-3">
-                <Button className="btn-primary" variant="contained" color="primary" onClick={handleCreate}>
+                <button className="btn-primary" onClick={handleCreate}>
                   CREATE STUDENT
-                </Button>
+                </button>
               </div>
             </div>
           </div>
