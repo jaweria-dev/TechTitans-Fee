@@ -59,7 +59,7 @@ const CreateStudent = () => {
         navigate("/dashboard/admin/students");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("something went wrong");
     }
   };
@@ -103,7 +103,7 @@ const CreateStudent = () => {
               <div className="mb-3">
                 <label className="btn-btn1 btn-outline-secondary col-md-12">
                   {photo ? photo.name : "Upload Photo"}
-                  <input className="photo-btn"
+                  <input 
                     type="file"
                     name="photo"
                     accept="image/*"
@@ -179,9 +179,9 @@ const CreateStudent = () => {
                 </Select>
               </div>
               <div className="mb-3">
-                <Button className="btn-primary" variant="contained" color="primary" onClick={handleCreate}>
+                <button className="btn-primary" onClick={handleCreate}>
                   CREATE STUDENT
-                </Button>
+                </button>
               </div>
             </div>
           </div>
