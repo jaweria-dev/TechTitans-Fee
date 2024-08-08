@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
+import Layout from "../../components/Layout/Layout";
 const { Option } = Select;
 
 const UpdateStudent = () => {
@@ -60,7 +61,7 @@ const UpdateStudent = () => {
     getAllTeacher();
   }, []);
 
-  //create teacher function
+  //create student function
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -74,7 +75,7 @@ const UpdateStudent = () => {
       studentData.append("teacher", teacher);
       const { data } = axios.put(
         `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
-        productData
+        studentData
       );
       if (data?.success) {
         toast.error(data?.message);
@@ -88,7 +89,7 @@ const UpdateStudent = () => {
     }
   };
 
-  //delete a product
+  //delete a student
   const handleDelete = async () => {
     try {
       let answer = window.prompt("Are You Sure want to delete this student ? ");
@@ -103,17 +104,30 @@ const UpdateStudent = () => {
       toast.error("Something went wrong");
     }
   };
+
+  const [openMenuToggle, setOpenMenuToggle] = useState(false);
+
+  useEffect(() => {
+    console.log('Sidebar toggle state:', openMenuToggle);
+  }, [openMenuToggle]);
+
+  const OpenMenu = () => {
+    setOpenMenuToggle(!openMenuToggle);
+  };
+
   return (
+    <Layout>
+
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3">
-          <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
+            <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
           </div>
           <div className="col-md-9">
-          <AdminHeader OpenMenu={OpenMenu}/>
+            <AdminHeader OpenMenu={OpenMenu} />
             <h1>Update Student</h1>
             <div className="m-1 w-98">
-                
+
               <Select
                 bordered={false}
                 placeholder="Select a teacher"
@@ -183,7 +197,7 @@ const UpdateStudent = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-            
+
               <div className="mb-3">
                 <input
                   type="number"
@@ -214,7 +228,6 @@ const UpdateStudent = () => {
                   onChange={(value) => {
                     setBatchNo(value);
                   }}
-                  value={shipping ? "yes" : "No"}
                 >
                   <Option value="0">9</Option>
                   <Option value="1">10</Option>
@@ -236,6 +249,7 @@ const UpdateStudent = () => {
           </div>
         </div>
       </div>
+    </Layout>
   );
 };
 

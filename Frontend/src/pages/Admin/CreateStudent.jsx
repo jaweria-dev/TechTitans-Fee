@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { Button, Select } from "antd";
+import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Option } = Select;
 import "./Students.css"
 import AdminHeader from '../../components/Layout/AdminHeader';
+import Layout from '../../components/Layout/Layout'
 
 const CreateStudent = () => {
   const navigate = useNavigate();
@@ -67,25 +68,27 @@ const CreateStudent = () => {
   const [openMenuToggle, setOpenMenuToggle] = useState(false);
 
   useEffect(() => {
-      console.log('Sidebar toggle state:', openMenuToggle);
+    console.log('Sidebar toggle state:', openMenuToggle);
   }, [openMenuToggle]);
 
   const OpenMenu = () => {
-      setOpenMenuToggle(!openMenuToggle);
+    setOpenMenuToggle(!openMenuToggle);
   };
 
   return (
+    <Layout>
+
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3">
-          <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu}/>
+            <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
           </div>
           <div className="col-md-9">
-          <AdminHeader OpenMenu={OpenMenu}/>
-            <h1 className="m-3">Create Student</h1>
+            <AdminHeader OpenMenu={OpenMenu} />
+            <h1 className="m-4">Create Student</h1>
             <div className="m-3 w-98">
               <Select
-               variant="unstyled"
+                variant="unstyled"
                 placeholder="Select a teacher"
                 size="large"
                 showSearch
@@ -103,7 +106,7 @@ const CreateStudent = () => {
               <div className="mb-3">
                 <label className="btn-btn1 btn-outline-secondary col-md-12">
                   {photo ? photo.name : "Upload Photo"}
-                  <input 
+                  <input
                     type="file"
                     name="photo"
                     accept="image/*"
@@ -187,6 +190,7 @@ const CreateStudent = () => {
           </div>
         </div>
       </div>
+    </Layout>
   );
 };
 
