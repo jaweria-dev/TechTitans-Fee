@@ -1,3 +1,35 @@
+/* .students .info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.students .info h1 {
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .students .info h1 {
+        font-size: 20px;
+    }btn-primary
+
+    .p-3 {
+        padding: 0 !important;
+    }
+} */
+
+/* @media screen and (max-width: 576px){
+    .teacher-heading {
+        margin-left: 21px !important;
+    }
+} */
+
+/* .students .info button {
+    padding: 5px;
+    cursor: pointer;
+}*/
+
 .table {
     width: 74vw;
     height: 100%;
@@ -25,15 +57,17 @@
 }
 
 .btn2 {
-    background-color: red;
+    background-color: #4b7bec;
     border-radius: 10px;
     width: 70px;
     height: 50px;
-    border: 1px solid gray;
+    border: 1px solid #4b8cfd;
+    color: #ffffff;
 }
 
+
 .btn2:hover {
-    background-color: rgb(232, 53, 53);
+    background-color: #4b8cfd;
 }
 
 .btn-btn1{
@@ -51,7 +85,8 @@
 }
 
 .teacher-heading {
-    margin-left: 34px;
+    margin: 34px;
+    /* margin-left: 34px; */
 }
 
 
@@ -75,3 +110,30 @@ border: 1px solid #8ac642;
 color: #8ac642;
 }
 
+/* .btn-primary{
+    background-color: blue;
+} */
+
+/* .std-btn{
+    padding: 5px;
+    cursor: pointer;
+    background-color: #4b7bec;
+    border: 1px solid #4b7bec;
+    border-radius: 10px;
+    height: 8vh;
+    color: #ffffff;
+} */
+
+/* .table {
+    width: 74vw;
+    height: 100%;
+    margin-bottom: 0 !important;
+} */
+/* form {
+    margin-left: 40px;
+} */
+
+/* style={{backgroundColor:"green", borderRadius:"10px", width:"70px", height:"50px", border:"1px solid gray"}} */
+
+
+/* style={{backgroundColor:"red", borderRadius:"10px", width:"70px", height:"50px", border:"1px solid gray"}} */

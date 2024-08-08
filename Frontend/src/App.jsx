@@ -21,21 +21,13 @@ import TeacherStudents from "./pages/TeacherStudents";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const spinner = document.getElementById("circles");
+  const spinner = document.getElementById("canvas1");
   if (spinner) {
     setTimeout(() => {
-      circles.style.display = "none";
+      canvas1.style.display = "none";
       setLoading(false);
-    }, 1000);
+    }, 9000);
   }
-
-
-//   const {number} = useSpring({
-//     from:{number:0},
-//     delay:200,
-//     config:{mass:1, tension: 20, friction:10},
-// })
-// return <animated.div>{number.to((n) => n.toFixed(0))}</animated.div>;
 
   return (
     !loading && (
@@ -46,22 +38,17 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/student:slug" element={<StudentDetails />} />
+          <Route path="/student/:slug" element={<StudentDetails />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/search" element={<Search />} />
           <Route path="/teacher:slug" element={<TeacherStudents />} />
-
-          {/* <Route path="/dashboard" element={<PrivateRoute />}>
-          <Route path="user" element={<Dashboard />} />
-         
-        </Route> */}
 
 
           <Route path="/dashboard" element={<AdminRoute />}>
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="admin/create-teacher" element={<CreateTeacher />} />
             <Route path="admin/create-student" element={<CreateStudent />} />
-            <Route path="admin/student:slug" element={<UpdateStudent />} />
+            <Route path="admin/students/:slug" element={<UpdateStudent />} />
             <Route path="admin/students" element={<AllStudents />} />
           </Route>
 

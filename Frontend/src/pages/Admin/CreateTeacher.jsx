@@ -7,7 +7,7 @@ import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from '../../components/Layout/AdminHeader';
 import { useAuth } from "../../components/context/Context";
 import "./Students.css"
-import Layout from "../../components/Layout/Layout";
+import Layout from '../../components/Layout/Layout'
 
 const CreateTeacher = () => {
   const [teachers, setTeachers] = useState([]);
@@ -131,10 +131,10 @@ const CreateTeacher = () => {
                     <tr key={teacher._id}>
                       <td>{teacher.name}</td>
                       <td>
-                        <button className="btn1 btn-primary ms-2" onClick={() => { setOpen(true); setUpdatedName(teacher.name); setSelected(teacher); }}>
+                        <button className="btn1  ms-2" onClick={() => { setOpen(true); setUpdatedName(teacher.name); setSelected(teacher); }}>
                           Edit
                         </button>
-                        <button className="btn2 btn-danger ms-2" onClick={() => handleDelete(teacher._id)}>
+                        <button className="btn2 ms-2" onClick={() => handleDelete(teacher._id)}>
                           Delete
                         </button>
                       </td>
