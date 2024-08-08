@@ -1,21 +1,3 @@
-// import React, {useState} from 'react'
-// import Layout from '../components/Layout/Layout'
-// import { useAuth } from './../components/context/Context';
-
-// const HomePage = () => {
-//   const [auth] = useAuth()
-//   return (
-//     <Layout>
-//       <h1>Home Page</h1>
-//       <pre>{JSON.stringify(auth, null, 4)}</pre>
-//     </Layout>
-//   )
-// }
-
-// export default HomePage
-
-
-
 import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 
@@ -34,7 +16,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  //get all cat
+  //get all teacher
   const getAllTeacher = async () => {
     try {
       const { data } = await axios.get(
@@ -57,7 +39,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:9000/api/fee/portal/students/student-list/${page}`
+        `http://localhost:8080/api/v1/product/product-list/${page}`
       );
       setLoading(false);
       setStudents(data.studnets);
@@ -71,7 +53,7 @@ const HomePage = () => {
   const getTotal = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:9000/api/fee/portal/students/student-count"
+        "http://localhost:8080/api/v1/product/product-count"
       );
       setTotal(data?.total);
     } catch (error) {
@@ -88,7 +70,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:9000/api/fee/portal/students/student-list/${page}`
+        `http://localhost:8080/api/v1/product/product-list/${page}`
       );
       setLoading(false);
       setStudents([...students, ...data?.students]);
@@ -120,7 +102,7 @@ const HomePage = () => {
   const filterStudent = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:9000/api/fee/portal/students/student-filters",
+        "http://localhost:8080/api/v1/product/product-filters",
         {
           checked,
           radio,
@@ -146,7 +128,7 @@ const HomePage = () => {
               </Checkbox>
             ))}
           </div>
-          {/* batch filter */}
+          {/* price filter */}
           <h4 className="text-center mt-4">Filter By batch</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
@@ -172,13 +154,16 @@ const HomePage = () => {
             {students?.map((s) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
+                  src={`http://localhost:9001/api/fee/portal/students/student-photo/${s._id}`}
                   className="card-img-top"
                   alt={s.name}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{s.name}</h5>
-                  <p className="card-text">{s.rollNo}</p>
+                  <p className="card-text">
+                    {p.description.substring(0, 30)}...
+                  </p>
+                  <p className="card-text"> $ {p.price}</p>
                   <button
                     className="btn btn-primary ms-1"
                     onClick={() => navigate(`/student/${s.slug}`)}

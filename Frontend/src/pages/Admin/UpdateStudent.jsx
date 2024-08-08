@@ -61,7 +61,7 @@ const UpdateStudent = () => {
     getAllTeacher();
   }, []);
 
-  //create student function
+  //create teacher function
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -162,7 +162,7 @@ const UpdateStudent = () => {
                   <div className="text-center">
                     <img
                       src={URL.createObjectURL(photo)}
-                      alt="product_photo"
+                      alt="student_photo"
                       height={"200px"}
                       className="img img-responsive"
                     />
@@ -228,6 +228,7 @@ const UpdateStudent = () => {
                   onChange={(value) => {
                     setBatchNo(value);
                   }}
+                // value={batchNO ? "yes" : "No"}
                 >
                   <Option value="0">9</Option>
                   <Option value="1">10</Option>

@@ -59,6 +59,8 @@ const Register = () => {
                 </div>
 
                 <div className="contact-form">
+                    <span className="circle one" />
+                    <span className="circle two" />
                     <form action="#" id="form" onSubmit={handleSubmit}>
                         <h3 className="title">Register</h3>
                         <p className="text-para">Already have an account please<span><Link to='/login' style={{ color: "#8AC642", textDecoration: "none" }}> Login...</Link></span></p>

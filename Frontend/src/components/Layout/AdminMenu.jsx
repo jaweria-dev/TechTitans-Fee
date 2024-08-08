@@ -35,11 +35,6 @@ function AdminMenu({ openMenuToggle, OpenMenu }) {
                         <FaUsers className='icon-icon' /> All Students
                     </NavLink>
                 </li>
-                <li className='sidebar-list-item'>
-                    <NavLink to='/dashboard/admin/create-student'>
-                        <BsFillGrid3X3GapFill className='icon-icon' /> Add Students
-                    </NavLink>
-                </li>
             </ul>
         </aside>
     );
