@@ -51,6 +51,11 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/teacher:slug" element={<TeacherStudents />} />
 
+          {/* <Route path="/dashboard" element={<PrivateRoute />}>
+          <Route path="user" element={<Dashboard />} />
+         
+        </Route> */}
+
 
           <Route path="/dashboard" element={<AdminRoute />}>
             <Route path="admin" element={<AdminDashboard />} />
