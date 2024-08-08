@@ -7,6 +7,7 @@ import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from '../../components/Layout/AdminHeader';
 import { useAuth } from "../../components/context/Context";
 import "./Students.css"
+import Layout from "../../components/Layout/Layout";
 
 const CreateTeacher = () => {
   const [teachers, setTeachers] = useState([]);
@@ -14,12 +15,12 @@ const CreateTeacher = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const [updatedName, setUpdatedName] = useState("");
-  const [auth] = useAuth();  
+  const [auth] = useAuth();
 
   const axiosInstance = axios.create({
     baseURL: "http://localhost:9000/api/fee/portal/teacher",
     headers: {
-      "Authorization": `Bearer ${auth?.token}` 
+      "Authorization": `Bearer ${auth?.token}`
     }
   });
 
@@ -97,56 +98,58 @@ const CreateTeacher = () => {
   const [openMenuToggle, setOpenMenuToggle] = useState(false);
 
   useEffect(() => {
-      console.log('Sidebar toggle state:', openMenuToggle);
+    console.log('Sidebar toggle state:', openMenuToggle);
   }, [openMenuToggle]);
 
   const OpenMenu = () => {
-      setOpenMenuToggle(!openMenuToggle);
+    setOpenMenuToggle(!openMenuToggle);
   };
 
   return (
-    <div className="container-fluid dashboard">
-      <div className="row">
-        <div className="col-md-3">
-          <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu}/>
-        </div>
-        <div className="col-md-9">
-          <AdminHeader OpenMenu={OpenMenu}/>
-          <h1 className="teacher-heading">Manage Teacher</h1>
-          <div className="p-3 w-50">
-            <TeacherForm handleSubmit={handleSubmit} value={name} setValue={setName} />
+    <Layout>
+      <div className="container-fluid dashboard">
+        <div className="row">
+          <div className="col-md-3">
+            <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
           </div>
-          <div className="w-75">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">Teacher Name</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {teachers?.map((teacher) => (
-                  <tr key={teacher._id}>
-                    <td>{teacher.name}</td>
-                    <td>
-                      <button className="btn1 btn-primary ms-2" onClick={() => { setOpen(true); setUpdatedName(teacher.name); setSelected(teacher); }}>
-                        Edit
-                      </button>
-                      <button className="btn2 btn-danger ms-2" onClick={() => handleDelete(teacher._id)}>
-                        Delete
-                      </button>
-                    </td>
+          <div className="col-md-9">
+            <AdminHeader OpenMenu={OpenMenu} />
+            <h1 className="teacher-heading">Manage Teacher</h1>
+            <div className="p-3 w-50">
+              <TeacherForm handleSubmit={handleSubmit} value={name} setValue={setName} />
+            </div>
+            <div className="w-75">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Teacher Name</th>
+                    <th scope="col">Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {teachers?.map((teacher) => (
+                    <tr key={teacher._id}>
+                      <td>{teacher.name}</td>
+                      <td>
+                        <button className="btn1 btn-primary ms-2" onClick={() => { setOpen(true); setUpdatedName(teacher.name); setSelected(teacher); }}>
+                          Edit
+                        </button>
+                        <button className="btn2 btn-danger ms-2" onClick={() => handleDelete(teacher._id)}>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <Modal onCancel={() => setOpen(false)} footer={null} open={open}>
+              <TeacherForm value={updatedName} setValue={setUpdatedName} handleSubmit={handleUpdate} />
+            </Modal>
           </div>
-          <Modal onCancel={() => setOpen(false)} footer={null} open={open}>
-            <TeacherForm value={updatedName} setValue={setUpdatedName} handleSubmit={handleUpdate} />
-          </Modal>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

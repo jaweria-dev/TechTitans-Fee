@@ -11,7 +11,6 @@ import ForgotPassword from "./pages/Auth/Forgotpassword";
 import CreateTeacher from "./pages/Admin/CreateTeacher";
 import "./pages/Admin/Admin.css";
 import CreateStudent from "./pages/Admin/CreateStudent";
-// import { useSpring, animated } from 'react-spring';
 import AllStudents from './pages/Admin/AllStudent';
 import StudentDetails from "./pages/StudentDetails";
 import Teachers from './pages/Teachers';
