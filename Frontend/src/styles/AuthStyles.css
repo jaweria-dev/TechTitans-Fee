@@ -23,16 +23,9 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-/* .navbar, .footer{
-    background-color: #4b7bec;
-} */
-
 .navbar{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
 }
-/* .navbar-brand{
-    color: black;
-} */
 
 .nav-item>.nav-link{
     color: black;
@@ -64,9 +57,6 @@ form {
     margin-top: 15px;
 }
 
-/* #form{
-    margin: 20px;
-} */
 .title {
     color: black;
     font-weight: 500;
@@ -206,10 +196,6 @@ input[type="number"]:focus {
     .text-para{
         font-size: 15px;
     }
-
-    /* form {
-        padding: 1.7rem 1.6rem;
-    } */
 
     .input {
         padding: 0.45rem 1.2rem;

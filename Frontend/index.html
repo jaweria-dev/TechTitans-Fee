@@ -11,101 +11,24 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <title>Saylani Fee Portal</title>
   <style>
-    body {
-      background-color: whitesmoke;
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
     }
 
-    .center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      top: 160px;
-    }
-
-    .circles {
-      width: 333px;
-      height: 333px;
-      position: relative;
-      perspective: 50000px;
-
-    }
-
-    .circles span {
+    canvas {
+      background-color: black;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: block;
-      background: currentColor;
-      width: 18.4%;
-      height: 18.4%;
-      border-radius: 50%;
-    }
-
-    .circles div {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-left: 13.32px solid #8ac642;
-      border-right: 5.123076px solid #4b7bec;
-      border-top: 13.32px solid white;
-      border-radius: 100%;
-    }
-
-    .circles div:nth-child(1) {
-      animation: anim-1 1s linear infinite;
-    }
-
-    .circles div:nth-child(2) {
-      animation: anim-2 1s linear infinite;
-    }
-
-    .circles div:nth-child(3) {
-      animation: anim-3 1s linear infinite;
-    }
-
-    @keyframes anim-1 {
-      from {
-        transform: rotateZ(120deg) rotateX(66deg) rotateZ(0);
-      }
-
-      to {
-        transform: rotateZ(120deg) rotateX(66deg) rotateZ(360deg);
-      }
-    }
-
-    @keyframes anim-2 {
-      from {
-        transform: rotateZ(240deg) rotateX(66deg) rotateZ(0);
-      }
-
-      to {
-        transform: rotateZ(240deg) rotateX(66deg) rotateZ(360deg);
-      }
-    }
-
-    @keyframes anim-3 {
-      from {
-        transform: rotateZ(360deg) rotateX(66deg) rotateZ(0);
-      }
-
-      to {
-        transform: rotateZ(360deg) rotateX(66deg) rotateZ(360deg);
-      }
+      top: 0;
+      left: 0;
     }
   </style>
 </head>
 
 <body>
-  <div class="center">
-    <div class="circles" id="circles">
-      <div></div>
-      <div></div>
-      <div></div>
-      <span></span>
-    </div>
-  </div>
+    <canvas id="canvas1"></canvas>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 
@@ -113,6 +36,172 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
+  <script>
+    window.addEventListener("load", function () {
+      const canvas = this.document.getElementById('canvas1')
+      const ctx = canvas.getContext('2d', {
+        willReadFrequently: true
+      });
+
+      function setCanvasSize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      setCanvasSize(); 
+
+      class Particle {
+        constructor(effect, x, y, color) {
+          this.effect = effect;
+          this.x = Math.random() * this.effect.canvasWidth;
+          this.y = this.effect.canvasHeight;
+          this.color = color;
+          this.originX = x;
+          this.originY = y;
+          this.size = this.effect.gap;
+          this.dx = 0;
+          this.dy = 0;
+          this.vx = 0;
+          this.vy = 0;
+          this.force = 0;
+          this.angle = 0;
+          this.distance = 0;
+          this.friction = Math.random() * 0.6 + 0.15;
+          this.ease = Math.random() * 0.1 + 0.005;
+        }
+
+        draw() {
+          this.effect.context.fillStyle = this.color;
+          this.effect.context.fillRect(this.x, this.y, this.size, this.size);
+        }
+
+        update() {
+          this.dx = this.effect.mouse.x - this.x;
+          this.dy = this.effect.mouse.y - this.y;
+          this.distance = this.dx * this.dx + this.dy * this.dy;
+          this.force = -this.effect.mouse.radius / this.distance;
+
+          if (this.distance < this.effect.mouse.radius) {
+            this.angle = Math.atan2(this.dy, this.dx);
+            this.vx += this.force * Math.cos(this.angle);
+            this.vy += this.force * Math.sin(this.angle);
+          }
+
+          this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
+          this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
+        }
+      }
+
+      class Effect {
+        constructor(context, canvasWidth, canvasHeight) {
+          this.context = context;
+          this.canvasWidth = canvasWidth;
+          this.canvasHeight = canvasHeight;
+          this.textX = this.canvasWidth / 2;
+          this.textY = this.canvasHeight / 2;
+          this.fontSize = 80;
+          this.lineHeight = this.fontSize;
+          this.maxTextWidth = this.canvasHeight * 0.8;
+          this.verticalOffset = 0;
+
+          // particle text
+          this.particles = [];
+          this.gap = 3;
+          this.mouse = {
+            radius: 20000,
+            x: 0,
+            y: 0,
+          };
+          window.addEventListener('mousemove', (e) => {
+            this.mouse.x = e.x;
+            this.mouse.y = e.y;
+          });
+
+          // Default text setup
+          this.wrapText('Saylani Mass IT Training Fee Portal');
+        }
+
+        wrapText(text) {
+          const gradient = this.context.createLinearGradient(0, 0, this.canvasWidth, this.canvasHeight);
+          gradient.addColorStop(0.3, "#8ac642");
+          gradient.addColorStop(0.5, "#4b7bec");
+          gradient.addColorStop(0.7, "#ffffff");
+          this.context.fillStyle = gradient;
+          this.context.textAlign = 'center';
+          this.context.textBaseline = 'middle';
+          this.context.font = this.fontSize + 'px Helvetica';
+
+          let linesArray = [];
+          let lineCounter = 0;
+          let line = '';
+          let words = text.split(' ');
+          for (let i = 0; i < words.length; i++) {
+            let testLine = line + words[i] + ' ';
+            if (this.context.measureText(testLine).width > this.maxTextWidth) {
+              line = words[i] + ' ';
+              lineCounter++;
+            } else {
+              line = testLine;
+            }
+            linesArray[lineCounter] = line;
+          }
+          let textHeight = this.lineHeight * lineCounter;
+          this.textY = this.canvasHeight / 2 - textHeight / 2 + this.verticalOffset;
+          linesArray.forEach((el, index) => {
+            this.context.fillText(el, this.textX, this.textY + (index * this.lineHeight));
+          });
+          this.convertToParticle();
+        }
+
+        convertToParticle() {
+          this.particles = [];
+          const pixels = this.context.getImageData(0, 0, this.canvasWidth, this.canvasHeight).data;
+          this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+          for (let y = 0; y < this.canvasHeight; y += this.gap) {
+            for (let x = 0; x < this.canvasWidth; x += this.gap) {
+              const index = (y * this.canvasWidth + x) * 4;
+              const alpha = pixels[index + 3];
+              if (alpha > 0) {
+                const green = pixels[index];
+                const blue = pixels[index + 1];
+                const white = pixels[index + 2];
+                const color = 'rgb(' + green + ',' + blue + ',' + white + ')';
+                this.particles.push(new Particle(this, x, y, color));
+              }
+            }
+          }
+        }
+
+        render() {
+          this.particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+          });
+        }
+      }
+
+      const effect = new Effect(ctx, canvas.width, canvas.height);
+      effect.render();
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        effect.render();
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      // Resize event listener to adjust canvas size
+      window.addEventListener('resize', () => {
+        setCanvasSize();
+        effect.canvasWidth = canvas.width;
+        effect.canvasHeight = canvas.height;
+        effect.wrapText('Saylani Mass IT Training Fee Portal');
+      });
+    });
+
+  </script>
 </body>
 
 </html>
