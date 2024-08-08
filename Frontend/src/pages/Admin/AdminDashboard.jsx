@@ -38,21 +38,21 @@ function AdminDashboard() {
                         <AdminHeader OpenMenu={OpenMenu} />
                     </div>
                     <div className='main-cards'>
-                        <div className='card'>
+                        <div className='card1'>
                             <div className='card-inner'>
                                 <h3 style={{color:"white"}}>STUDENTS</h3>
                                 <BsFillArchiveFill className='card_icon' style={{color:"white"}}/>
                             </div>
                             <h1 style={{color:"white"}}>300</h1>
                         </div>
-                        <div className='card'>
+                        <div className='card1'>
                             <div className='card-inner'>
                                 <h3 style={{color:"white"}}>BATCH</h3>
                                 <BsFillGrid3X3GapFill className='card_icon' style={{color:"white"}}/>
                             </div>
                             <h1 style={{color:"white"}}>12</h1>
                         </div>
-                        <div className='card'>
+                        <div className='card1'>
                             <div className='card-inner'>
                                 <h3 style={{color:"white"}}>TEACHERS</h3>
                                 <BsPeopleFill className='card_icon' style={{color:"white"}}/>

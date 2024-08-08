@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../../components/context/Context";
 const { Option } = Select;
 
 const UpdateStudent = () => {
@@ -14,24 +15,29 @@ const UpdateStudent = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("")
+  const [answer, setAnswer] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [batchNo, setBatchNo] = useState("");
   const [teacher, setTeacher] = useState("");
   const [photo, setPhoto] = useState("");
   const [id, setId] = useState("");
+  const [auth] = useAuth();
 
   //get single student
   const getSingleStudent = async () => {
     try {
       const { data } = await axios.get(
-        `"http://localhost:9000/api/fee/portal/students/get-student/${params.slug}`
+        `http://localhost:9000/api/fee/portal/students/get-student/${params.slug}`
       );
       setName(data.student.name);
       setId(data.student._id);
       setEmail(data.student.email);
       setPhone(data.student.phone);
       setRollNo(data.student.rollNo);
-      setShipping(data.student.batchNo);
+      setBatchNo(data.student.batchNo);
+      setPassword(data.student.password);
+      setAnswer(data.student.answer);
       setTeacher(data.student.teacher._id);
     } catch (error) {
       console.log(error);
@@ -41,6 +47,7 @@ const UpdateStudent = () => {
     getSingleStudent();
     //eslint-disable-next-line
   }, []);
+
   //get all teacher
   const getAllTeacher = async () => {
     try {
@@ -61,6 +68,46 @@ const UpdateStudent = () => {
   }, []);
 
   //create teacher function
+  // const handleUpdate = async (e) => {
+  //   e.preventDefault();
+  //   console.log(`Updating student with ID: ${id}`);
+  //   try {
+  //     const studentData = new FormData();
+  //     studentData.append("name", name);
+  //     studentData.append("email", email);
+  //     studentData.append("phone", phone);
+  //     studentData.append("password", password);
+  //     studentData.append("rollNo", rollNo); // Corrected key name if necessary
+  //     studentData.append("batchNo", batchNo); // Corrected key name if necessary
+  //     studentData.append("answer", answer);
+  //     if (photo) {
+  //       studentData.append("photo", photo);
+  //     }
+  //     studentData.append("teacher", teacher);
+  
+  //     const response = await axios.put(
+  //       `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
+  //       studentData,
+  //       {
+  //         headers: {
+  //           'Content-Type': 'multipart/form-data',
+  //         },
+  //       }
+  //     );
+  
+  //     if (response.data.success) {
+  //       toast.success("Student Updated Successfully!");
+  //       navigate("/dashboard/admin/students");
+  //     } else {
+  //       toast.error(response.data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error updating student:", error);
+  //     toast.error("Something went wrong");
+  //   }
+  // };
+  
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -68,25 +115,45 @@ const UpdateStudent = () => {
       studentData.append("name", name);
       studentData.append("email", email);
       studentData.append("phone", phone);
-      studentData.append("roll no", rollNo);
-      studentData.append("batch no", batchNo);
-      photo && studentData.append("photo", photo);
+      studentData.append("password", password);
+      studentData.append("rollNo", rollNo);  // Use correct key format if needed
+      studentData.append("batchNo", batchNo); // Ensure consistency with backend expectations
+      studentData.append("answer", answer);
+      if (photo) {
+        studentData.append("photo", photo);
+      }
       studentData.append("teacher", teacher);
-      const { data } = axios.put(
+  
+      // Debugging: Check what is being sent
+      // for (let pair of studentData.entries()) {
+      //   console.log(`${pair[0]}: ${pair[1]}`);
+      // }
+  
+      const { data } = await axios.put(
         `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
-        productData
+        studentData,
+        {
+          headers: {
+            'Authorization': `Bearer ${auth?.token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        }
       );
+  
       if (data?.success) {
-        toast.error(data?.message);
-      } else {
         toast.success("Student Updated Successfully!");
         navigate("/dashboard/admin/students");
+      } else {
+        toast.error(data?.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error("something went wrong");
+      console.error("Error updating student:", error);
+      toast.error("Something went wrong");
     }
   };
+  
+
+ 
 
   //delete a product
   const handleDelete = async () => {
@@ -103,6 +170,17 @@ const UpdateStudent = () => {
       toast.error("Something went wrong");
     }
   };
+
+  const [openMenuToggle, setOpenMenuToggle] = useState(false);
+
+  useEffect(() => {
+      console.log('Sidebar toggle state:', openMenuToggle);
+  }, [openMenuToggle]);
+
+  const OpenMenu = () => {
+      setOpenMenuToggle(!openMenuToggle);
+  };
+
   return (
       <div className="container-fluid">
         <div className="row">
@@ -193,7 +271,24 @@ const UpdateStudent = () => {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
-
+              <div className="mb-3">
+                 <input
+    type="password"
+    value={password}
+    placeholder="Enter Password"
+    className="form-control mt-2"
+    onChange={(e) => setPassword(e.target.value)}
+  />
+              </div>
+              <div className="mb-3">
+               <input
+    type="text"
+    value={answer}
+    placeholder="Enter Answer"
+    className="form-control mt-2"
+    onChange={(e) => setAnswer(e.target.value)}
+  />
+  </div>
               <div className="mb-3">
                 <input
                   type="number"
@@ -214,7 +309,7 @@ const UpdateStudent = () => {
                   onChange={(value) => {
                     setBatchNo(value);
                   }}
-                  value={shipping ? "yes" : "No"}
+                  // value={batchNO ? "yes" : "No"}
                 >
                   <Option value="0">9</Option>
                   <Option value="1">10</Option>

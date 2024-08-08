@@ -97,14 +97,10 @@ const CreateStudent = () => {
         toast.error(response.data?.message || "Failed to create student");
       }
     } catch (error) {
-<<<<<<< HEAD
-      // Log detailed error for debugging
-      console.error("Error creating student:", error.response ? error.response.data : error.message);
-      toast.error("Something went wrong");
-=======
+
       console.error(error);
       toast.error("something went wrong");
->>>>>>> 35dc4c4dc378903a953fb1f1e2ad72ca61dd5feb
+
     }
   };
   

@@ -36,22 +36,3 @@ export default function AdminRoutes() {
     return ok ? <Outlet /> : <Spinner path="" />;
 }
 
-
-// export default function AdminRoute() {
-//     const [ok, setOk] = useState(false);
-//   const [auth, setAuth] = useAuth();
-
-//   useEffect(() => {
-//     const authCheck = async () => {
-//       const res = await axios.get("http://localhost:9000/api/fee/portal/admin-auth");
-//       if (res.data.ok) {
-//         setOk(true);
-//       } else {
-//         setOk(false);
-//       }
-//     };
-//     if (auth?.token) authCheck();
-//   }, [auth?.token]);
-
-//   return ok ? <Outlet /> : <Spinner path="" />;
-// }

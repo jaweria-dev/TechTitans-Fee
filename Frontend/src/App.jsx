@@ -47,10 +47,10 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/student:slug" element={<StudentDetails />} />
+          <Route path="/students/:slug" element={<StudentDetails />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/teacher:slug" element={<TeacherStudents />} />
+          <Route path="/teacher/:slug" element={<TeacherStudents />} />
 
           {/* <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />
@@ -62,7 +62,7 @@ function App() {
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="admin/create-teacher" element={<CreateTeacher />} />
             <Route path="admin/create-student" element={<CreateStudent />} />
-            <Route path="admin/student:slug" element={<UpdateStudent />} />
+            <Route path="admin/students/:slug" element={<UpdateStudent />} />
             <Route path="admin/students" element={<AllStudents />} />
           </Route>
 
