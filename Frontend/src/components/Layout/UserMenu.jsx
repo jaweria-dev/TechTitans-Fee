@@ -1,21 +1,39 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { BsCart3, BsGrid1X2Fill, BsPeopleFill } from 'react-icons/bs';
+import { FaCommentAlt } from "react-icons/fa";
+// import { PiUserSoundFill } from "react-icons/pi";
+import { NavLink } from 'react-router-dom';
 
-const UserMenu = () => {
-  return (
-    <>
-            <div className='text-center'>
-
-                <div className="list-group">
-                    <h4>Dashboard</h4>
-                    <NavLink to="/dashboard/user/profile" className="list-group-item list-group-item-action">Profile</NavLink>
-                    <NavLink to="/dashboard/user/orders" className="list-group-item list-group-item-action">Orders</NavLink>
+function UserMenu({ openMenuToggle, OpenMenu }) {
+    return (
+        <aside id="sidebar" className={openMenuToggle ? "sidebar-responsive" : ""}>
+            <div className='sidebar-title'>
+                <div className='sidebar-brand'>
+                    <BsCart3 className='icon_header' /> Fee Portal
                 </div>
+                <span className='icon close_icon' onClick={OpenMenu}>X</span>
             </div>
 
-
-        </>
-  )
+            <ul className='sidebar-list'>
+                <li className='sidebar-list-item'>
+                    <NavLink to="/dashboard/user">
+                        <BsGrid1X2Fill className='icon-icon' /> Overview
+                    </NavLink>
+                </li>
+                <li className='sidebar-list-item'>
+                    <NavLink to="/dashboard/user/profile">
+                        <BsPeopleFill className='icon-icon' /> Profile
+                    </NavLink>
+                </li>
+                <li className='sidebar-list-item'>
+                    <NavLink to='/dashboard/user/courses'>
+                        <FaCommentAlt className='icon-icon' /> Courses
+                    </NavLink>
+                </li>
+            </ul>
+        </aside>
+    );
 }
 
-export default UserMenu
+export default UserMenu;
+
