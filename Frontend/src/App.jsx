@@ -17,6 +17,10 @@ import Teachers from './pages/Teachers';
 import Search from './pages/Search';
 import UpdateStudent from './pages/Admin/UpdateStudent';
 import TeacherStudents from "./pages/TeacherStudents";
+import Courses from "./pages/User/Courses";
+import Profile from "./pages/User/Profile";
+import UserDashboard from "./pages/User/UserDashboard";
+import PrivateRoute from "./components/Routes/UserRoutes";
 
 
 function App() {
@@ -38,10 +42,19 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/student/:slug" element={<StudentDetails />} />
+          <Route path="/students/:slug" element={<StudentDetails />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/teacher:slug" element={<TeacherStudents />} />
+          <Route path="/teacher/:slug" element={<TeacherStudents />} />
+
+
+          <Route path="/dashboard" element={<PrivateRoute />}>
+            <Route path="user" element={<UserDashboard />} />
+            <Route path="user/courses" element={<Courses />} />
+            <Route path="user/profile" element={<Profile />} />
+          </Route>
+          <Route path="/teacher/:slug" element={<TeacherStudents />} />
+
 
 
           <Route path="/dashboard" element={<AdminRoute />}>

@@ -27,6 +27,9 @@ export default function PrivateRoute(){
     return ok ? <Outlet/> : <Spinner path=""/>
 }
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
