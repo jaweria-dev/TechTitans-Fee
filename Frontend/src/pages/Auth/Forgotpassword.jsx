@@ -31,7 +31,9 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div className="contact-form" style={{margin:"70px"}}>
+    <div className="contact-form" style={{
+      margin:"70px"
+    }}>
       <form onSubmit={handleSubmit}>
         <h3 className="title">Forgot Password</h3>
         <div className="input-container">

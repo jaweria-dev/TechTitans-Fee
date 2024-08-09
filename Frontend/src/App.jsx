@@ -11,7 +11,6 @@ import ForgotPassword from "./pages/Auth/Forgotpassword";
 import CreateTeacher from "./pages/Admin/CreateTeacher";
 import "./pages/Admin/Admin.css";
 import CreateStudent from "./pages/Admin/CreateStudent";
-// import { useSpring, animated } from 'react-spring';
 import AllStudents from './pages/Admin/AllStudent';
 import StudentDetails from "./pages/StudentDetails";
 import Teachers from './pages/Teachers';
@@ -22,21 +21,13 @@ import TeacherStudents from "./pages/TeacherStudents";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const spinner = document.getElementById("circles");
+  const spinner = document.getElementById("canvas1");
   if (spinner) {
     setTimeout(() => {
-      circles.style.display = "none";
+      canvas1.style.display = "none";
       setLoading(false);
-    }, 1000);
+    }, 9000);
   }
-
-
-//   const {number} = useSpring({
-//     from:{number:0},
-//     delay:200,
-//     config:{mass:1, tension: 20, friction:10},
-// })
-// return <animated.div>{number.to((n) => n.toFixed(0))}</animated.div>;
 
   return (
     !loading && (
@@ -47,15 +38,14 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
+<<<<<<< HEAD
           <Route path="/students/:slug" element={<StudentDetails />} />
+=======
+          <Route path="/student/:slug" element={<StudentDetails />} />
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/search" element={<Search />} />
           <Route path="/teacher/:slug" element={<TeacherStudents />} />
-
-          {/* <Route path="/dashboard" element={<PrivateRoute />}>
-          <Route path="user" element={<Dashboard />} />
-         
-        </Route> */}
 
 
           <Route path="/dashboard" element={<AdminRoute />}>

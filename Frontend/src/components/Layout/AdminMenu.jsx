@@ -35,12 +35,15 @@ function AdminMenu({ openMenuToggle, OpenMenu }) {
                        <PiUserSoundFill className='icon-icon' /> Student
                     </NavLink>
                 </li>
+<<<<<<< HEAD
                 <li className='sidebar-list-item'>
                     <NavLink to='/dashboard/admin/create-student'>
                     <FaUsers className='icon-icon' /> Add Students
                         {/* <BsFillGrid3X3GapFill className='icon-icon' /> Add Students */}
                     </NavLink>
                 </li>
+=======
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
             </ul>
         </aside>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import { useSearch } from "../components/context/searchContext";
+import { useSearch } from "../components/context/SearchContext";
 const Search = () => {
   const [values, setValues] = useSearch();
   return (
@@ -15,15 +15,13 @@ const Search = () => {
             {values?.results.map((s) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`http://localhost:9000/api/fee/portal/students/student-photo/${p._id}`}
+                  src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{s.name}</h5>
-                  <p className="card-text">
-                    {s.description.substring(0, 30)}...
-                  </p>
+                  <h5 className="card-title">Name: {s.name}</h5>
+                  <p className="card-text">Roll No: {s.rollNo}</p>
                   <p className="card-text"> $ {s.rollNo}</p>
                   <button class="btn btn-primary ms-1">More Details</button>
                 </div>

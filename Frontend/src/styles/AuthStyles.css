@@ -23,15 +23,17 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.navbar, .footer{
-    background-color: #4b7bec;
-}
-.navbar-brand{
-    color: white;
+.navbar{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
 }
 
 .nav-item>.nav-link{
-    color: white;
+    color: black;
+}
+
+.dropdown{
+    width: 150px;
+    margin-top: 23px;
 }
 .contact-form {
     background-color: white;
@@ -198,10 +200,6 @@ input[type="number"]:focus {
     .text-para{
         font-size: 15px;
     }
-
-    /* form {
-        padding: 1.7rem 1.6rem;
-    } */
 
     .input {
         padding: 0.45rem 1.2rem;

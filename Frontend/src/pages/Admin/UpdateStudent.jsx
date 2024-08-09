@@ -5,7 +5,11 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
+<<<<<<< HEAD
 import { useAuth } from "../../components/context/Context";
+=======
+import Layout from "../../components/Layout/Layout";
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
 const { Option } = Select;
 
 const UpdateStudent = () => {
@@ -131,6 +135,7 @@ const UpdateStudent = () => {
   
       const { data } = await axios.put(
         `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
+<<<<<<< HEAD
         studentData,
         {
           headers: {
@@ -138,6 +143,9 @@ const UpdateStudent = () => {
             'Content-Type': 'multipart/form-data',
           },
         }
+=======
+        studentData
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
       );
   
       if (data?.success) {
@@ -155,7 +163,7 @@ const UpdateStudent = () => {
 
  
 
-  //delete a product
+  //delete a student
   const handleDelete = async () => {
     try {
       let answer = window.prompt("Are You Sure want to delete this student ? ");
@@ -174,24 +182,34 @@ const UpdateStudent = () => {
   const [openMenuToggle, setOpenMenuToggle] = useState(false);
 
   useEffect(() => {
+<<<<<<< HEAD
       console.log('Sidebar toggle state:', openMenuToggle);
   }, [openMenuToggle]);
 
   const OpenMenu = () => {
       setOpenMenuToggle(!openMenuToggle);
+=======
+    console.log('Sidebar toggle state:', openMenuToggle);
+  }, [openMenuToggle]);
+
+  const OpenMenu = () => {
+    setOpenMenuToggle(!openMenuToggle);
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
   };
 
   return (
+    <Layout>
+
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3">
-          <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
+            <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
           </div>
           <div className="col-md-9">
-          <AdminHeader OpenMenu={OpenMenu}/>
+            <AdminHeader OpenMenu={OpenMenu} />
             <h1>Update Student</h1>
             <div className="m-1 w-98">
-                
+
               <Select
                 bordered={false}
                 placeholder="Select a teacher"
@@ -226,7 +244,7 @@ const UpdateStudent = () => {
                   <div className="text-center">
                     <img
                       src={URL.createObjectURL(photo)}
-                      alt="product_photo"
+                      alt="student_photo"
                       height={"200px"}
                       className="img img-responsive"
                     />
@@ -261,7 +279,7 @@ const UpdateStudent = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-            
+
               <div className="mb-3">
                 <input
                   type="number"
@@ -309,7 +327,11 @@ const UpdateStudent = () => {
                   onChange={(value) => {
                     setBatchNo(value);
                   }}
+<<<<<<< HEAD
                   // value={batchNO ? "yes" : "No"}
+=======
+                // value={batchNO ? "yes" : "No"}
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
                 >
                   <Option value="0">9</Option>
                   <Option value="1">10</Option>
@@ -331,6 +353,7 @@ const UpdateStudent = () => {
           </div>
         </div>
       </div>
+    </Layout>
   );
 };
 

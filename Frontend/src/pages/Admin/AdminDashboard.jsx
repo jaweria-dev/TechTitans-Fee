@@ -1,9 +1,10 @@
-import React, {useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill } from 'react-icons/bs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 
 import AdminMenu from './../../components/Layout/AdminMenu';
 import AdminHeader from '../../components/Layout/AdminHeader';
+import Layout from '../../components/Layout/Layout'
 
 function AdminDashboard() {
     const data = [
@@ -27,16 +28,14 @@ function AdminDashboard() {
     };
 
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-md-3">
-                    <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
-                </div>
+        <Layout>
 
-                <div className='main-container col-md-9'>
+            <div className="container-fluid">
+                <div className="row">
                     <div className="col-md-3">
-                        <AdminHeader OpenMenu={OpenMenu} />
+                        <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
                     </div>
+<<<<<<< HEAD
                     <div className='main-cards'>
                         <div className='card1'>
                             <div className='card-inner'>
@@ -56,54 +55,82 @@ function AdminDashboard() {
                             <div className='card-inner'>
                                 <h3 style={{color:"white"}}>TEACHERS</h3>
                                 <BsPeopleFill className='card_icon' style={{color:"white"}}/>
-                            </div>
-                            <h1 style={{color:"white"}}>33</h1>
+=======
+
+                    <div className='main-container col-md-9'>
+                        <div className="col-md-3">
+                            <AdminHeader OpenMenu={OpenMenu} />
+                            <h1 className="m-3" style={{color:"black"}}>Dashboard</h1>
                         </div>
-                        {/* <div className='card'>
+                        <div className='main-cards'>
+                            <div className='card1'>
+                                <div className='card-inner'>
+                                    <h3 style={{ color: "white" }}>STUDENTS</h3>
+                                    <BsFillArchiveFill className='card_icon' style={{ color: "white" }} />
+                                </div>
+                                <h1 style={{ color: "white" }}>300</h1>
+                            </div>
+                            <div className='card1'>
+                                <div className='card-inner'>
+                                    <h3 style={{ color: "white" }}>BATCH</h3>
+                                    <BsFillGrid3X3GapFill className='card_icon' style={{ color: "white" }} />
+                                </div>
+                                <h1 style={{ color: "white" }}>12</h1>
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
+                            </div>
+                            <div className='card1'>
+                                <div className='card-inner'>
+                                    <h3 style={{ color: "white" }}>TEACHERS</h3>
+                                    <BsPeopleFill className='card_icon' style={{ color: "white" }} />
+                                </div>
+                                <h1 style={{ color: "white" }}>33</h1>
+                            </div>
+                            {/* <div className='card'>
                             <div className='card-inner'>
                                 <h3>ALERTS</h3>
                                 <BsFillBellFill className='card_icon' />
-                            </div>
+                                </div>
                             <h1>42</h1>
                         </div> */}
-                    </div>
-                    <div className='charts'>
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart
-                                width={500}
-                                height={300}
-                                data={data}
-                                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Bar dataKey="pv" fill="#4b7bec" />
-                                <Bar dataKey="uv" fill="#8ac642" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                        <ResponsiveContainer width="100%" height="100%">
-                            <LineChart
-                                width={500}
-                                height={300}
-                                data={data}
-                                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Line type="monotone" dataKey="pv" stroke="#4b7bec" activeDot={{ r: 8 }} />
-                                <Line type="monotone" dataKey="uv" stroke="#8ac642" />
-                            </LineChart>
-                        </ResponsiveContainer>
+                        </div>
+                        <div className='charts'>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <BarChart
+                                    width={500}
+                                    height={300}
+                                    data={data}
+                                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="name" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Bar dataKey="pv" fill="#4b7bec" />
+                                    <Bar dataKey="uv" fill="#8ac642" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <LineChart
+                                    width={500}
+                                    height={300}
+                                    data={data}
+                                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="name" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Line type="monotone" dataKey="pv" stroke="#4b7bec" activeDot={{ r: 8 }} />
+                                    <Line type="monotone" dataKey="uv" stroke="#8ac642" />
+                                </LineChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
 }
 

@@ -8,13 +8,6 @@ function AdminHeader({ OpenMenu }) {
             <div className='menu-icon'>
                 <BsJustify className='icon' onClick={OpenMenu} />
             </div>
-            <div className='header-left'>
-                <BsSearch className='icon' />
-            </div>
-            <div className='header-right'>
-                <BsPersonCircle className='icon'
-                />
-            </div>
         </header>
     );
 }
