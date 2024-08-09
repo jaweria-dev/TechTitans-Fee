@@ -10,6 +10,8 @@ const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware");
 // router object
 const router = express.Router();
 
+
+
 // routing
 // Register|| METHOD POST
 router.post("/register", registerController);

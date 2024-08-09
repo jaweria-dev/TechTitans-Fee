@@ -47,8 +47,8 @@
 /* Header  */
 .header {
   grid-area: header;
-  height: 10vh;
-  width: 74vw;
+  /* height: 10vh;
+  width: 74vw; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -149,7 +149,11 @@
   margin: 15px 0;
 }
 
-.card {
+<<<<<<< HEAD
+.card1 {
+=======
+.card1{
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -158,19 +162,19 @@
   margin: 10px;
 }
 
-.card:first-child {
+.card1:first-child {
   background-color: #2962ff;
 }
 
-.card:nth-child(2) {
+.card1:nth-child(2) {
   background-color: #ff6d00;
 }
 
-.card:nth-child(3) {
+.card1:nth-child(3) {
   background-color: #2e7d32;
 }
 
-.card:nth-child(4) {
+.card1:nth-child(4) {
   background-color: #d50000;
 }
 
@@ -246,7 +250,7 @@
   }
 }
 
-.btn-btn {
+.btn-btn, .btn-btn3 {
   height: 50px;
   width: 150px;
   border-radius: 10px;
@@ -263,5 +267,19 @@
 }
 
 .form-control{
+  /* margin-bottom: 34px; */
   height: 50px;
+}
+
+/* all students */
+.student-link{
+  text-decoration: none;
+<<<<<<< HEAD
+=======
+}
+
+/* teacher form */
+.teacher-from{
+  margin-top: -30px;
+>>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
 }
