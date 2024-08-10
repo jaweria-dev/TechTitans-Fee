@@ -189,7 +189,8 @@ const UpdateStudent = () => {
           <div className="m-1 w-98">
             <Select
               bordered={false}
-              placeholder="Select a teacher"
+              variant="unstyled"
+              placeholder="Update a teacher"
               size="large"
               showSearch
               className="form-select mb-3"

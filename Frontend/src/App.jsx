@@ -17,14 +17,11 @@ import Teachers from './pages/Teachers';
 import Search from './pages/Search';
 import UpdateStudent from './pages/Admin/UpdateStudent';
 import TeacherStudents from "./pages/TeacherStudents";
-<<<<<<< HEAD
 import StudentFilter from "./pages/Admin/StudentFilter";
-=======
 import Courses from "./pages/User/Courses";
 import Profile from "./pages/User/Profile";
 import UserDashboard from "./pages/User/UserDashboard";
 import PrivateRoute from "./components/Routes/UserRoutes";
->>>>>>> a632a12f1f8fe037b2b8584964ceb0145dd5bff7
 
 
 function App() {
@@ -46,11 +43,7 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-<<<<<<< HEAD
           <Route path="/student/:slug" element={<StudentDetails />} />
-=======
-          <Route path="/students/:slug" element={<StudentDetails />} />
->>>>>>> a632a12f1f8fe037b2b8584964ceb0145dd5bff7
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/search" element={<Search />} />
           <Route path="/teacher/:slug" element={<TeacherStudents />} />

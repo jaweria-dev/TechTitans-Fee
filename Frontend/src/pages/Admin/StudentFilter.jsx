@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Batch } from "./../../components/Batch";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from "../../components/Layout/AdminHeader";
+import "../Admin/Students.css";
 
 const StudentFilter = () => {
   const navigate = useNavigate();
@@ -153,7 +154,9 @@ const StudentFilter = () => {
             <AdminHeader OpenMenu={OpenMenu} />
             <div className="mt-3">
               <div className="filter-section bg-light p-3 rounded">
-                <h4 className="text-center text-dark">Filter By Teacher</h4>
+                <h4 className="text-center text-dark fs-3">
+                  Filter By Teacher
+                </h4>
                 <div className="d-flex flex-column mb-3">
                   {teachers?.map((t) => (
                     <Checkbox
@@ -165,7 +168,7 @@ const StudentFilter = () => {
                     </Checkbox>
                   ))}
                 </div>
-                <h4 className="text-center text-dark">Filter By Batch</h4>
+                <h4 className="text-center text-dark fs-3">Filter By Batch</h4>
                 <div className="d-flex flex-column mb-3">
                   <Radio.Group onChange={(e) => setRadio(e.target.value)}>
                     {Batch?.map((s) => (
@@ -179,8 +182,9 @@ const StudentFilter = () => {
                 </div>
                 <div className="d-flex justify-content-center">
                   <button
-                    className="btn-primary" style={{height:"80px", width:"200px"}}
-                    onClick={() => window.location.reload()}
+                    className="btn-primary"
+                    style={{ height: "30px", width: "150px" }}
+                    // onClick={() => window.location.reload()}
                   >
                     RESET FILTERS
                   </button>
@@ -190,7 +194,11 @@ const StudentFilter = () => {
                 <h1 className="text-center">All Students</h1>
                 <div className="d-flex flex-wrap justify-content-center">
                   {students?.map((s) => (
-                    <div className="card m-2" style={{ width: "18rem" }} key={s._id}>
+                    <div
+                      className="card m-2"
+                      style={{ width: "14rem" }}
+                      key={s._id}
+                    >
                       <img
                         src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
                         className="card-img-top"
@@ -202,9 +210,15 @@ const StudentFilter = () => {
                         }
                       />
                       <div className="card-body">
-                        <h5 className="card-title">{s.name}</h5>
+                        <h5 className="card-title">Name: {s.name}</h5>
                         <button
-                          className="btn btn-primary" style={{height:"40px"}}
+                          className="std-filter"
+                          style={{
+                            height: "40px",
+                            margin: "10px",
+                            position: "relative",
+                            left: "30px",
+                          }}
                           onClick={() => navigate(`/student/${s.slug}`)}
                         >
                           More Details
@@ -216,7 +230,8 @@ const StudentFilter = () => {
                 <div className="text-center mt-3">
                   {students && students.length < total && (
                     <button
-                      className="btn-warning" style={{height:"80px", width:"200px"}}
+                      className="btn-warning"
+                      style={{ height: "80px", width: "200px" }}
                       onClick={(e) => {
                         e.preventDefault();
                         setPage(page + 1);

@@ -236,7 +236,8 @@
   }
 }
 
-.btn-btn, .btn-btn3 {
+.btn-btn,
+.btn-btn3 {
   height: 50px;
   width: 150px;
   border-radius: 10px;
@@ -252,16 +253,126 @@
   color: #fff;
 }
 
-.form-control{
+.form-control {
   height: 50px;
 }
 
 /* all students */
-.student-link{
+.student-link {
   text-decoration: none;
 }
 
+.text-center {
+  color: #000000;
+  font-weight: bold;
+}
+
 /* teacher form */
-.teacher-from{
+.teacher-from {
   margin-top: -30px;
+
+}
+
+/* Admin.css */
+
+.card {
+  width: 18rem;
+  margin: 1rem;
+}
+
+.student-link {
+  text-decoration: none;
+}
+
+.card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.btn-btn3 {
+  width: 84px;
+  height: 34px;
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 100vw;
+    /* height: 60vh; */
+  }
+
+  .d-flex {
+    flex-direction: row;
+  }
+
+  .more-detail {
+    margin: 0;
+    position: relative;
+    left: 42px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    margin: 0;
+  }
+
+  .form-control {
+    font-size: 12px;
+  }
+
+  .menu {
+    font-size: 14px;
+  }
+
+  .ms-2,
+  .btn1,
+  .btn2 {
+    width: 52px;
+    height: 34px;
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .form-control {
+    font-size: 11px;
+  }
+
+  .btn-btn3,
+  .btn1,
+  .btn2 {
+    width: 58px;
+    height: 34px;
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 11px;
+  }
+
+  /* .btn1,
+  .btn2 {
+      width: 52px;
+      height: 34px;
+      font-size: 12px;
+  } */
+}
+
+@media (max-width:425px) {
+  .btn-primary {
+    margin: 0;
+    width: 39vw;
+    /* position: relative;
+    left: 42px; */
+  }
+
+  .form-control {
+    font-size: 10px;
+  }
 }

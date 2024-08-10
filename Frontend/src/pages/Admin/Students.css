@@ -31,36 +31,69 @@
 }*/
 
 .table {
-    width: 74vw;
+    width: 75vw;
     height: 100%;
     margin-bottom: 0 !important;
-} 
+}
+
+.btn1,
+.btn2 {
+    width: 52px;
+    height: 34px;
+    font-size: 12px;
+}
 
 @media screen and (max-width: 768px) {
     .table {
+        width: 74vw;
+    }
+
+    .btn-danger{
+        height: 5vh;
+    }
+    /* .btn-btn3 {
+        width: 74px;
+        height: 34px;
+        font-size: 12px;
+    } */ 
+}
+
+@media screen and (max-width:480px) {
+     .table {
         width: 100vw;
+    }
+
+    .crt-std-btn{
+        width: 14vw;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+    .crt-std-btn{
+        width: 115px;
+        font-size: 11px;
     }
 }
 
 .btn1 {
     background-color: #86c23d;
     border-radius: 10px;
-    width: 70px;
-    height: 50px;
+    width: 50px;
+    height: 45px;
     border: 1px solid #86c23d;
     color: #ffffff;
 }
 
 .btn1:hover {
-    /* background-color: rgb(37, 163, 37); */
     background-color: #8ac652;
 }
 
 .btn2 {
     background-color: #4b7bec;
     border-radius: 10px;
-    width: 70px;
-    height: 50px;
+    width: 50px;
+    height: 45px;
     border: 1px solid #4b8cfd;
     color: #ffffff;
 }
@@ -70,7 +103,7 @@
     background-color: #4b8cfd;
 }
 
-.btn-btn1{
+.btn-btn1 {
     border: 1px solid #8ac642;
     color: #8ac642;
     text-align: center;
@@ -78,7 +111,7 @@
     border-radius: 5px;
 }
 
-.btn-btn1:hover{
+.btn-btn1:hover {
     background-color: #8ac642;
     color: white;
     cursor: pointer;
@@ -86,32 +119,44 @@
 
 .teacher-heading {
     margin: 34px;
-    /* margin-left: 34px; */
+    font-size: 2.5rem;
 }
 
 
 /* all students css */
-.card-body{
+.card-body {
     background-color: #ffffff;
 }
 
 /* create student css */
-.btn-primary{
-    background-color:#ffffff;
-    color:#000000;
+.btn-primary , .more-detail{
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 6px;
     height: 30px;
     border: 1px solid #000000;
     font-size: 14px;
     width: 20vw;
-    /* margin-right: 10px; */
-}
-.btn-primary:hover{
-border: 1px solid #8ac642;
-color: #8ac642;
 }
 
-.btn-warning, .btn-danger{
+.crt-std-btn, .std-filter{
+    background-color: #ffffff;
+    color: #1a1919;
+    border-radius: 7px;
+    border: 1px solid #1a1919;
+    height: 5vh;
+    width: 16vw;
+    font-size: 12px;
+
+}
+
+.btn-primary:hover , .crt-std-btn:hover{
+    border: 1px solid #8ac642;
+    color: #8ac642;
+}
+
+.btn-warning,
+.btn-danger {
     background-color: #000000;
     border: 1px solid black;
     border-radius: 10px;
@@ -119,11 +164,12 @@ color: #8ac642;
     width: 15vw;
     margin-top: 10px;
     margin-left: 10px;
-  }
+}
 
-  .btn-warning:hover, .btn-danger:hover{
+.btn-warning:hover,
+.btn-danger:hover {
     background-color: #1a1919;
-  }
+}
 
 /* .btn-primary{
     background-color: blue;
@@ -152,3 +198,24 @@ color: #8ac642;
 
 
 /* style={{backgroundColor:"red", borderRadius:"10px", width:"70px", height:"50px", border:"1px solid gray"}} */
+
+
+/* update student css */
+.upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 50px;
+    width: 150px;
+    border: 1px solid #86c23d;
+    border-radius: 4px;
+    background-color: #8ac642;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .upload-btn input[type="file"] {
+    display: none;
+  }
+  
