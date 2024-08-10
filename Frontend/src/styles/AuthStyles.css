@@ -29,11 +29,12 @@
 
 .nav-item>.nav-link{
     color: black;
+    margin-top: 23px;
 }
 
 .dropdown{
     width: 150px;
-    margin-top: 23px;
+    margin-top: 0px;
 }
 .contact-form {
     background-color: white;
@@ -145,7 +146,6 @@ input[type="number"]:focus {
 }
 
 .forgotpassword {
-    text-align: right;
     left: -10px;
     position: relative;
 }
