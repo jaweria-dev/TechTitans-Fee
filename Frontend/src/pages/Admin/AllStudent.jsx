@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from "../../components/Layout/AdminHeader";
 import "../Admin/Admin.css";
+import Layout from "../../components/Layout/Layout";
 
 const AllStudents = () => {
     const [students, setStudents] = useState([]);
@@ -36,42 +37,46 @@ const AllStudents = () => {
     };
 
     return (
-        <div className="row">
-            <div className="col-md-3">
-                <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
-            </div>
-            <div className="col-md-9">
-                <AdminHeader OpenMenu={OpenMenu} />
-                <h1 className="text-center" style={{ color: "black", fontWeight: "bold" }}>
-                    All Students List
-                </h1>
-                <div className="d-flex flex-wrap">
-                    {students?.map((s) => (
-                        <Link
-                            key={s._id}
-                            to={`/dashboard/admin/students/${s.slug}`}
-                            className="student-link"
-                        >
-                            <div className="card m-2" style={{ width: "18rem" }}>
-                                <img
-                                    src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
-                                    className="card-img-top" 
-                                    alt={s.name} height="200px" width="200px"
-                                />
-                                <div className="card-body">
-                                    <h5 className="card-title">Name: {s.name}</h5>
-                                    <p className="card-text">Roll No: {s.rollNo}</p>
-                                    <p className="card-text">Email: {s.email}</p>
-                                    <p className="card-text">Phone: {s.phone}</p>
-                                    <p className="card-text">Batch No: {s.batchNo}</p>
-                                    <p className="card-text">Teacher Name: {s.teacher?.name}</p>
+        <Layout>
+
+            <div className="row">
+                <div className="col-md-3">
+                    <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
+                </div>
+                <div className="col-md-9">
+                    <AdminHeader OpenMenu={OpenMenu} />
+                    <h1 className="text-center">
+                        All Students List
+                    </h1>
+                    <div className="d-flex flex-wrap">
+                        {students?.map((s) => (
+                            <Link
+                                key={s._id}
+                                to={`/dashboard/admin/students/${s.slug}`}
+                                className="student-link"
+                            >
+                                <div className="card m-2" style={{ width: "18rem" }}>
+                                    <img
+                                        src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
+                                        className="card-img-top"
+                                        alt={s.name} height="200px" width="200px"
+                                    />
+                                    <div className="card-body">
+                                        <h5 className="card-title">Name: {s.name}</h5>
+                                        <p className="card-text">Roll No: {s.rollNo}</p>
+                                        <p className="card-text">Email: {s.email}</p>
+                                        <p className="card-text">Phone: {s.phone}</p>
+                                        <p className="card-text">Batch No: {s.batchNo}</p>
+                                        <p className="card-text">Teacher Name: {s.teacher?.name}</p>
+                                    </div>
+                                    <button className="more-detail" style={{position:"relative", left:"30px", margin:"10px"}}>Update Student</button>
                                 </div>
-                            </div>
-                        </Link>
-                    ))}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
 };
 

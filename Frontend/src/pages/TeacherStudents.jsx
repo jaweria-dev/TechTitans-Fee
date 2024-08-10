@@ -39,7 +39,7 @@ const TeacherStudents = () => {
                                     key={s._id}
                                 >
                                     <img
-                                        src={`http://localhost:9001/api/fee/portal/students/student-photo/${s._id}`}
+                                        src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
                                         className="card-img-top"
                                         alt={s.name}
                                     />

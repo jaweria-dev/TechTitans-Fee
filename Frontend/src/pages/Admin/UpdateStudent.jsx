@@ -7,6 +7,8 @@ import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../components/context/Context";
 const { Option } = Select;
+import "../Admin/Students.css"
+import Layout from "../../components/Layout/Layout";
 
 const UpdateStudent = () => {
   const navigate = useNavigate();
@@ -178,156 +180,160 @@ const UpdateStudent = () => {
   };
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-3">
-          <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
-        </div>
-        <div className="col-md-9">
-          <AdminHeader OpenMenu={OpenMenu} />
-          <h1>Update Student</h1>
-          <div className="m-1 w-98">
-            <Select
-              bordered={false}
-              variant="unstyled"
-              placeholder="Update a teacher"
-              size="large"
-              showSearch
-              className="form-select mb-3"
-              onChange={(value) => {
-                setTeacher(value);
-              }}
-              value={teachers}
-            >
-              {teachers?.map((t) => (
-                <Option key={t._id} value={t._id}>
-                  {t.name}
-                </Option>
-              ))}
-            </Select>
-            <div className="mb-3">
-              <label className="btn1 btn-outline-secondary col-md-12">
-                {photo ? photo.name : "Upload Photo"}
-                <input
-                  type="file"
-                  name="photo"
-                  accept="image/*"
-                  onChange={(e) => setPhoto(e.target.files[0])}
-                  hidden
-                />
-              </label>
-            </div>
-            <div className="mb-3">
-              {photo ? (
-                <div className="text-center">
-                  <img
-                    src={URL.createObjectURL(photo)}
-                    alt="student_photo"
-                    height={"200px"}
-                    width={"200px"}
-                    className="img img-responsive"
-                  />
-                </div>
-              ) : (
-                <div className="text-center">
-                  <img
-                    src={`http://localhost:9000/api/fee/portal/students/student-photo/${id}`}
-                    alt="student_photo"
-                    height={"200px"}
-                    width={"200px"}
-                    className="img img-responsive"
-                  />
-                </div>
-              )}
-            </div>
-            <div className="mb-3">
-              <input
-                type="text"
-                value={name}
-                placeholder="Enter Updated Name"
-                className="form-control"
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
+    <Layout>
 
-            <div className="mb-3">
-              <input
-                type="text"
-                value={email}
-                placeholder="Enter Updated Email"
-                className="form-control"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div className="mb-3">
-              <input
-                type="number"
-                value={phone}
-                placeholder="Enter Updated Phone Number"
-                className="form-control"
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="password"
-                value={password}
-                placeholder="Enter Password"
-                className="form-control mt-2"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="text"
-                value={answer}
-                placeholder="What Is Your Favourite Game"
-                className="form-control mt-2"
-                onChange={(e) => setAnswer(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="number"
-                value={rollNo}
-                placeholder="Enter Updated Roll No"
-                className="form-control"
-                onChange={(e) => setRollNo(e.target.value)}
-              />
-            </div>
-
-            <div className="mb-3">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-3">
+            <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
+          </div>
+          <div className="col-md-9">
+            <AdminHeader OpenMenu={OpenMenu} />
+            <h1>Update Student</h1>
+            <div className="m-1 w-98">
               <Select
                 bordered={false}
-                placeholder="Select Batch "
+                placeholder="Select a teacher"
                 size="large"
                 showSearch
                 className="form-select mb-3"
                 onChange={(value) => {
-                  setBatchNo(value);
+                  setTeacher(value);
                 }}
+                value={teachers}
               >
-                <Option value="0">9</Option>
-                <Option value="1">10</Option>
-                <Option value="1">11</Option>
-                <Option value="1">12</Option>
+                {teachers?.map((t) => (
+                  <Option key={t._id} value={t._id}>
+                    {t.name}
+                  </Option>
+                ))}
               </Select>
-            </div>
-            <div className="mb-3">
-              <button className="btn-primary" onClick={handleUpdate}>
-                UPDATE STUDENT
-              </button>
-            </div>
-            <div className="mb-3">
-              <button className="btn-danger" onClick={handleDelete}>
-                DELETE STUDENT
-              </button>
+              <div className="mb-3">
+                <label className="btn1 btn-outline-secondary col-md-12 upload-btn" style={{ width: "150px", textAlign: "center", height: "50px" }}>
+                  {photo ? photo.name : "Upload Photo"}
+                  <input
+                    type="file"
+                    name="photo"
+                    accept="image/*"
+                    onChange={(e) => setPhoto(e.target.files[0])}
+                    hidden
+                  />
+                </label>
+              </div>
+              <div className="mb-3">
+                {photo ? (
+                  <div className="text-center">
+                    <img
+                      src={URL.createObjectURL(photo)}
+                      alt="student_photo"
+                      height={"200px"}
+                      width={"200px"}
+                      className="img img-responsive"
+                    />
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <img
+                      src={`http://localhost:9000/api/fee/portal/students/student-photo/${id}`}
+                      alt="student_photo"
+                      height={"200px"}
+                      width={"200px"}
+                      className="img img-responsive"
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="mb-3">
+                <input
+                  type="text"
+                  value={name}
+                  placeholder="Enter Updated Name"
+                  className="form-control"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-3">
+                <input
+                  type="text"
+                  value={email}
+                  placeholder="Enter Updated Email"
+                  className="form-control"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-3">
+                <input
+                  type="number"
+                  value={phone}
+                  placeholder="Enter Updated Phone Number"
+                  className="form-control"
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="password"
+                  value={password}
+                  placeholder="Enter Password"
+                  className="form-control mt-2"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="text"
+                  value={answer}
+                  placeholder="What Is Your Favourite Game"
+                  className="form-control mt-2"
+                  onChange={(e) => setAnswer(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="number"
+                  value={rollNo}
+                  placeholder="Enter Updated Roll No"
+                  className="form-control"
+                  onChange={(e) => setRollNo(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-3">
+                <Select
+                  bordered={false}
+                  placeholder="Select Batch"
+                  size="large"
+                  showSearch
+                  className="form-select mb-3"
+                  onChange={(value) => setBatchNo(value)}
+                  value={batchNo}
+                >
+                  <Option value={9}>9</Option>
+                  <Option value={10}>10</Option>
+                  <Option value={11}>11</Option>
+                  <Option value={12}>12</Option>
+                </Select>
+
+
+
+              </div>
+              <div className="mb-3">
+                <button className=" crt-std-btn" onClick={handleUpdate}>
+                  UPDATE STUDENT
+                </button>
+              </div>
+              <div className="mb-3">
+                <button className="btn-danger" onClick={handleDelete}>
+                  DELETE STUDENT
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

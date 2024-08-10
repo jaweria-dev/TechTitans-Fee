@@ -107,7 +107,7 @@ const CreateStudent = () => {
     }
   };
 
-  // const handleCreate = async (e) => {
+  // const handleCreate = async (e) => {up
   //   e.preventDefault();
   //   try {
   //     const studentData = new FormData();
@@ -260,21 +260,21 @@ const CreateStudent = () => {
                 />
               </div>
               <div className="mb-3">
-                <Select
+              <Select
                   bordered={false}
-                  placeholder="Select Batch No "
+                  placeholder="Select Batch"
                   size="large"
                   showSearch
                   className="form-select mb-3"
-                  onChange={(value) => {
-                    setBatchNo(value);
-                  }}
+                  onChange={(value) => setBatchNo(value)}
+                  value={batchNo}
                 >
-                  <Option value="9">9</Option>
-                  <Option value="10">10</Option>
-                  <Option value="11">11</Option>
-                  <Option value="12">12</Option>
+                  <Option value={9}>9</Option>
+                  <Option value={10}>10</Option>
+                  <Option value={11}>11</Option>
+                  <Option value={12}>12</Option>
                 </Select>
+
               </div>
               <div className="mb-3">
                 <button className=" crt-std-btn" onClick={handleCreate}>
