@@ -27,23 +27,25 @@ function AdminMenu({ openMenuToggle, OpenMenu }) {
                 </li>
                 <li className='sidebar-list-item'>
                     <NavLink to='/dashboard/admin/create-student'>
-                        <PiUserSoundFill className='icon-icon' /> Student
+                        <PiUserSoundFill className='icon-icon' /> Add Student
                     </NavLink>
                 </li>
                 <li className='sidebar-list-item'>
                     <NavLink to='/dashboard/admin/students'>
-                       <PiUserSoundFill className='icon-icon' /> Student
+                       <PiUserSoundFill className='icon-icon' /> All Student
                     </NavLink>
                 </li>
-<<<<<<< HEAD
+
                 <li className='sidebar-list-item'>
+                    <NavLink to="/dashboard/admin/all-students">
+                    <FaUsers className='icon-icon' /> All Students Data
+                    </NavLink>
+                </li>
+                 {/* <li className='sidebar-list-item'>
                     <NavLink to='/dashboard/admin/create-student'>
                     <FaUsers className='icon-icon' /> Add Students
-                        {/* <BsFillGrid3X3GapFill className='icon-icon' /> Add Students */}
                     </NavLink>
-                </li>
-=======
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
+                </li> */}
             </ul>
         </aside>
     );

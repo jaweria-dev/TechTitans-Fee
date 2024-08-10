@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import AdminMenu from "./../../components/Layout/AdminMenu";
-import AdminHeader from '../../components/Layout/AdminHeader';
+import AdminHeader from "../../components/Layout/AdminHeader";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
-<<<<<<< HEAD
 import { useAuth } from "../../components/context/Context";
-=======
-import Layout from "../../components/Layout/Layout";
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
 const { Option } = Select;
 
 const UpdateStudent = () => {
@@ -19,7 +15,7 @@ const UpdateStudent = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("");
   const [answer, setAnswer] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [batchNo, setBatchNo] = useState("");
@@ -88,7 +84,7 @@ const UpdateStudent = () => {
   //       studentData.append("photo", photo);
   //     }
   //     studentData.append("teacher", teacher);
-  
+
   //     const response = await axios.put(
   //       `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
   //       studentData,
@@ -98,7 +94,7 @@ const UpdateStudent = () => {
   //         },
   //       }
   //     );
-  
+
   //     if (response.data.success) {
   //       toast.success("Student Updated Successfully!");
   //       navigate("/dashboard/admin/students");
@@ -110,7 +106,6 @@ const UpdateStudent = () => {
   //     toast.error("Something went wrong");
   //   }
   // };
-  
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -120,34 +115,30 @@ const UpdateStudent = () => {
       studentData.append("email", email);
       studentData.append("phone", phone);
       studentData.append("password", password);
-      studentData.append("rollNo", rollNo);  // Use correct key format if needed
+      studentData.append("rollNo", rollNo); // Use correct key format if needed
       studentData.append("batchNo", batchNo); // Ensure consistency with backend expectations
       studentData.append("answer", answer);
       if (photo) {
         studentData.append("photo", photo);
       }
       studentData.append("teacher", teacher);
-  
+
       // Debugging: Check what is being sent
       // for (let pair of studentData.entries()) {
       //   console.log(`${pair[0]}: ${pair[1]}`);
       // }
-  
+
       const { data } = await axios.put(
         `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
-<<<<<<< HEAD
         studentData,
         {
           headers: {
-            'Authorization': `Bearer ${auth?.token}`,
-            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${auth?.token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
-=======
-        studentData
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
       );
-  
+
       if (data?.success) {
         toast.success("Student Updated Successfully!");
         navigate("/dashboard/admin/students");
@@ -159,11 +150,8 @@ const UpdateStudent = () => {
       toast.error("Something went wrong");
     }
   };
-  
 
- 
-
-  //delete a student
+  //delete a product
   const handleDelete = async () => {
     try {
       let answer = window.prompt("Are You Sure want to delete this student ? ");
@@ -182,178 +170,163 @@ const UpdateStudent = () => {
   const [openMenuToggle, setOpenMenuToggle] = useState(false);
 
   useEffect(() => {
-<<<<<<< HEAD
-      console.log('Sidebar toggle state:', openMenuToggle);
-  }, [openMenuToggle]);
-
-  const OpenMenu = () => {
-      setOpenMenuToggle(!openMenuToggle);
-=======
-    console.log('Sidebar toggle state:', openMenuToggle);
+    console.log("Sidebar toggle state:", openMenuToggle);
   }, [openMenuToggle]);
 
   const OpenMenu = () => {
     setOpenMenuToggle(!openMenuToggle);
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
   };
 
   return (
-    <Layout>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-3">
+          <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
+        </div>
+        <div className="col-md-9">
+          <AdminHeader OpenMenu={OpenMenu} />
+          <h1>Update Student</h1>
+          <div className="m-1 w-98">
+            <Select
+              bordered={false}
+              placeholder="Select a teacher"
+              size="large"
+              showSearch
+              className="form-select mb-3"
+              onChange={(value) => {
+                setTeacher(value);
+              }}
+              value={teachers}
+            >
+              {teachers?.map((t) => (
+                <Option key={t._id} value={t._id}>
+                  {t.name}
+                </Option>
+              ))}
+            </Select>
+            <div className="mb-3">
+              <label className="btn1 btn-outline-secondary col-md-12">
+                {photo ? photo.name : "Upload Photo"}
+                <input
+                  type="file"
+                  name="photo"
+                  accept="image/*"
+                  onChange={(e) => setPhoto(e.target.files[0])}
+                  hidden
+                />
+              </label>
+            </div>
+            <div className="mb-3">
+              {photo ? (
+                <div className="text-center">
+                  <img
+                    src={URL.createObjectURL(photo)}
+                    alt="student_photo"
+                    height={"200px"}
+                    width={"200px"}
+                    className="img img-responsive"
+                  />
+                </div>
+              ) : (
+                <div className="text-center">
+                  <img
+                    src={`http://localhost:9000/api/fee/portal/students/student-photo/${id}`}
+                    alt="student_photo"
+                    height={"200px"}
+                    width={"200px"}
+                    className="img img-responsive"
+                  />
+                </div>
+              )}
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                value={name}
+                placeholder="Enter Updated Name"
+                className="form-control"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
 
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-3">
-            <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
-          </div>
-          <div className="col-md-9">
-            <AdminHeader OpenMenu={OpenMenu} />
-            <h1>Update Student</h1>
-            <div className="m-1 w-98">
+            <div className="mb-3">
+              <input
+                type="text"
+                value={email}
+                placeholder="Enter Updated Email"
+                className="form-control"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
+            <div className="mb-3">
+              <input
+                type="number"
+                value={phone}
+                placeholder="Enter Updated Phone Number"
+                className="form-control"
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="password"
+                value={password}
+                placeholder="Enter Password"
+                className="form-control mt-2"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                value={answer}
+                placeholder="What Is Your Favourite Game"
+                className="form-control mt-2"
+                onChange={(e) => setAnswer(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="number"
+                value={rollNo}
+                placeholder="Enter Updated Roll No"
+                className="form-control"
+                onChange={(e) => setRollNo(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3">
               <Select
                 bordered={false}
-                placeholder="Select a teacher"
+                placeholder="Select Batch "
                 size="large"
                 showSearch
                 className="form-select mb-3"
                 onChange={(value) => {
-                  setTeacher(value);
+                  setBatchNo(value);
                 }}
-                value={teachers}
               >
-                {teachers?.map((t) => (
-                  <Option key={t._id} value={t._id}>
-                    {t.name}
-                  </Option>
-                ))}
+                <Option value="0">9</Option>
+                <Option value="1">10</Option>
+                <Option value="1">11</Option>
+                <Option value="1">12</Option>
               </Select>
-              <div className="mb-3">
-                <label className="btn btn-outline-secondary col-md-12">
-                  {photo ? photo.name : "Upload Photo"}
-                  <input
-                    type="file"
-                    name="photo"
-                    accept="image/*"
-                    onChange={(e) => setPhoto(e.target.files[0])}
-                    hidden
-                  />
-                </label>
-              </div>
-              <div className="mb-3">
-                {photo ? (
-                  <div className="text-center">
-                    <img
-                      src={URL.createObjectURL(photo)}
-                      alt="student_photo"
-                      height={"200px"}
-                      className="img img-responsive"
-                    />
-                  </div>
-                ) : (
-                  <div className="text-center">
-                    <img
-                      src={`http://localhost:9000/api/fee/portal/students/student-photo/${id}`}
-                      alt="student_photo"
-                      height={"200px"}
-                      className="img img-responsive"
-                    />
-                  </div>
-                )}
-              </div>
-              <div className="mb-3">
-                <input
-                  type="text"
-                  value={name}
-                  placeholder="Enter Updated Name"
-                  className="form-control"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3">
-                <input
-                  type="text"
-                  value={email}
-                  placeholder="Enter Updated Email"
-                  className="form-control"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3">
-                <input
-                  type="number"
-                  value={phone}
-                  placeholder="Enter Updated Phone Number"
-                  className="form-control"
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-              <div className="mb-3">
-                 <input
-    type="password"
-    value={password}
-    placeholder="Enter Password"
-    className="form-control mt-2"
-    onChange={(e) => setPassword(e.target.value)}
-  />
-              </div>
-              <div className="mb-3">
-               <input
-    type="text"
-    value={answer}
-    placeholder="Enter Answer"
-    className="form-control mt-2"
-    onChange={(e) => setAnswer(e.target.value)}
-  />
-  </div>
-              <div className="mb-3">
-                <input
-                  type="number"
-                  value={rollNo}
-                  placeholder="Enter Updated Roll No"
-                  className="form-control"
-                  onChange={(e) => setRollNo(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3">
-                <Select
-                  bordered={false}
-                  placeholder="Select Batch "
-                  size="large"
-                  showSearch
-                  className="form-select mb-3"
-                  onChange={(value) => {
-                    setBatchNo(value);
-                  }}
-<<<<<<< HEAD
-                  // value={batchNO ? "yes" : "No"}
-=======
-                // value={batchNO ? "yes" : "No"}
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
-                >
-                  <Option value="0">9</Option>
-                  <Option value="1">10</Option>
-                  <Option value="1">11</Option>
-                  <Option value="1">12</Option>
-                </Select>
-              </div>
-              <div className="mb-3">
-                <button className="btn1 btn-primary" onClick={handleUpdate}>
-                  UPDATE STUDENT
-                </button>
-              </div>
-              <div className="mb-3">
-                <button className="btn2 btn-danger" onClick={handleDelete}>
-                  DELETE STUDENT
-                </button>
-              </div>
+            </div>
+            <div className="mb-3">
+              <button className="btn-primary" onClick={handleUpdate}>
+                UPDATE STUDENT
+              </button>
+            </div>
+            <div className="mb-3">
+              <button className="btn-danger" onClick={handleDelete}>
+                DELETE STUDENT
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

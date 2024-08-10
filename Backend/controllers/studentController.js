@@ -203,6 +203,7 @@ const deleteStudentController = async (req, res) => {
 };
 
 // filter syudent by teacher
+
 const getStudentDataByTeacherId = async (req, res) => {
   try {
     const { teacherId } = req.params;
@@ -220,6 +221,58 @@ const getStudentDataByTeacherId = async (req, res) => {
     });
   }
 };
+
+const studentFiltersController = async (req, res) => {
+  try {
+    const { checked, radio } = req.body;
+    let args = {};
+
+    // Apply filter by teacher if provided
+    if (checked.length > 0) {
+      args.teacher = checked;
+    }
+
+    // Apply filter by batchNo range if provided
+    if (radio.length) {
+      args.batchNo = { $gte: radio[0], $lte: radio[1] };
+    }
+
+    // Find students based on the filters
+    const students = await studentModel.find(args);
+    res.status(200).send({
+      success: true,
+      students,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error While Filtering Students",
+      error,
+    });
+  }
+};
+
+// const studentFiltersController = async (req, res) => {
+//   try {
+//     const { checked, radio } = req.body;
+//     let args = {};
+//     if (checked.length > 0) args.category = checked;
+//     if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
+//     const products = await studentModel.find(args);
+//     res.status(200).send({
+//       success: true,
+//       products,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).send({
+//       success: false,
+//       message: "Error WHile Filtering Products",
+//       error,
+//     });
+//   }
+// };
 
 // Search Student ny keyword
 const searchStudentController = async (req, res) => {
@@ -299,6 +352,48 @@ const getStudentsByTeacherController = async (req, res) => {
   }
 };
 
+// student count
+const studentCountController = async (req, res) => {
+  try {
+    const total = await studentModel.find({}).estimatedDocumentCount();
+    res.status(200).send({
+      success: true,
+      total,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      message: "Error in product count",
+      error,
+      success: false,
+    });
+  }
+};
+
+const studentListController = async (req, res) => {
+  try {
+    const perPage = 6;
+    const page = req.params.page ? req.params.page : 1;
+    const students = await studentModel
+      .find({})
+      .select("-photo")
+      .skip((page - 1) * perPage)
+      .limit(perPage)
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      students,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "error in per page ctrl",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createStudentController,
   getStudentController,
@@ -310,4 +405,7 @@ module.exports = {
   searchStudentController,
   relatedStudentController,
   getStudentsByTeacherController,
+  studentCountController,
+  studentListController,
+  studentFiltersController,
 };

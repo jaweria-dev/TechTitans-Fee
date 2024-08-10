@@ -12,6 +12,9 @@ const {
   searchStudentController,
   relatedStudentController,
   getStudentsByTeacherController,
+  studentCountController,
+  studentListController,
+  studentFiltersController,
 } = require("../controllers/studentController");
 
 // router object
@@ -44,11 +47,17 @@ router.get("/get-student/:slug", getSingleStudentController);
 //get photo
 router.get("/student-photo/:sid", studentPhotoController);
 
-//delete rproduct
+//delete student
 router.delete("/delete-student/:sid", deleteStudentController);
 
 // get student by teacher filter
 router.get("/get-student-data/:teacherId", getStudentDataByTeacherId);
+
+//student count
+router.get("/student-count", studentCountController);
+
+//student per page
+router.get("/student-list/:page", studentListController);
 
 // search student
 router.get("/search-student/:keyword", searchStudentController);
@@ -59,5 +68,7 @@ router.get("/related-students/:sid/:tid", relatedStudentController);
 // teacher wise student
 router.get("/students-teacher/:slug", getStudentsByTeacherController);
 
+//filter product
+router.post("/student-filters", studentFiltersController);
 
 module.exports = router;

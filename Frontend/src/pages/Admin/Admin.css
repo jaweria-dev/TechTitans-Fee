@@ -149,11 +149,7 @@
   margin: 15px 0;
 }
 
-<<<<<<< HEAD
 .card1 {
-=======
-.card1{
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -274,12 +270,9 @@
 /* all students */
 .student-link{
   text-decoration: none;
-<<<<<<< HEAD
-=======
 }
 
 /* teacher form */
 .teacher-from{
   margin-top: -30px;
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
 }

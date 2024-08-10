@@ -1,8 +1,11 @@
 import React from "react";
-import { useSearch } from "../components/context/SearchContext";
+import { useSearch } from "../components/context/searchContext";
+import Layout from "../components/Layout/Layout";
 const Search = () => {
   const [values, setValues] = useSearch();
+  console.log("Search values:", values);
   return (
+    <Layout>
       <div className="container">
         <div className="text-center">
           <h1>Search Resuts</h1>
@@ -17,19 +20,25 @@ const Search = () => {
                 <img
                   src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
                   className="card-img-top"
-                  alt={p.name}
+                  alt={s.name}
                 />
                 <div className="card-body">
                   <h5 className="card-title">Name: {s.name}</h5>
                   <p className="card-text">Roll No: {s.rollNo}</p>
-                  <p className="card-text"> $ {s.rollNo}</p>
-                  <button class="btn btn-primary ms-1">More Details</button>
+                  <button
+                    className="btn btn-primary ms-1"
+                    style={{ height: "40px" }}
+                    onClick={() => navigate(`/student/${s.slug}`)}
+                  >
+                    More Details
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+    </Layout>
   );
 };
 

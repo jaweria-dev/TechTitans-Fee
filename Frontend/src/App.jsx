@@ -17,6 +17,7 @@ import Teachers from './pages/Teachers';
 import Search from './pages/Search';
 import UpdateStudent from './pages/Admin/UpdateStudent';
 import TeacherStudents from "./pages/TeacherStudents";
+import StudentFilter from "./pages/Admin/StudentFilter";
 
 
 function App() {
@@ -38,11 +39,7 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-<<<<<<< HEAD
-          <Route path="/students/:slug" element={<StudentDetails />} />
-=======
           <Route path="/student/:slug" element={<StudentDetails />} />
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/search" element={<Search />} />
           <Route path="/teacher/:slug" element={<TeacherStudents />} />
@@ -54,6 +51,7 @@ function App() {
             <Route path="admin/create-student" element={<CreateStudent />} />
             <Route path="admin/students/:slug" element={<UpdateStudent />} />
             <Route path="admin/students" element={<AllStudents />} />
+            <Route path="admin/all-students" element={<StudentFilter />} />
           </Route>
 
           <Route path="/register" element={<Register />} />

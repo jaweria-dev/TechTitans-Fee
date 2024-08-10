@@ -104,11 +104,26 @@
     border: 1px solid #000000;
     font-size: 14px;
     width: 20vw;
+    /* margin-right: 10px; */
 }
 .btn-primary:hover{
 border: 1px solid #8ac642;
 color: #8ac642;
 }
+
+.btn-warning, .btn-danger{
+    background-color: #000000;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: #ffffff;
+    width: 15vw;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .btn-warning:hover, .btn-danger:hover{
+    background-color: #1a1919;
+  }
 
 /* .btn-primary{
     background-color: blue;
