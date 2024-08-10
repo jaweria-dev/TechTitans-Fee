@@ -35,27 +35,6 @@ function AdminDashboard() {
                     <div className="col-md-3">
                         <AdminMenu openMenuToggle={openMenuToggle} OpenMenu={OpenMenu} />
                     </div>
-<<<<<<< HEAD
-                    <div className='main-cards'>
-                        <div className='card1'>
-                            <div className='card-inner'>
-                                <h3 style={{color:"white"}}>STUDENTS</h3>
-                                <BsFillArchiveFill className='card_icon' style={{color:"white"}}/>
-                            </div>
-                            <h1 style={{color:"white"}}>300</h1>
-                        </div>
-                        <div className='card1'>
-                            <div className='card-inner'>
-                                <h3 style={{color:"white"}}>BATCH</h3>
-                                <BsFillGrid3X3GapFill className='card_icon' style={{color:"white"}}/>
-                            </div>
-                            <h1 style={{color:"white"}}>12</h1>
-                        </div>
-                        <div className='card1'>
-                            <div className='card-inner'>
-                                <h3 style={{color:"white"}}>TEACHERS</h3>
-                                <BsPeopleFill className='card_icon' style={{color:"white"}}/>
-=======
 
                     <div className='main-container col-md-9'>
                         <div className="col-md-3">
@@ -76,7 +55,6 @@ function AdminDashboard() {
                                     <BsFillGrid3X3GapFill className='card_icon' style={{ color: "white" }} />
                                 </div>
                                 <h1 style={{ color: "white" }}>12</h1>
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
                             </div>
                             <div className='card1'>
                                 <div className='card-inner'>

@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import AdminMenu from "./../../components/Layout/AdminMenu";
-import AdminHeader from '../../components/Layout/AdminHeader';
+import AdminHeader from "../../components/Layout/AdminHeader";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
-<<<<<<< HEAD
 import { useAuth } from "../../components/context/Context";
-=======
-import Layout from "../../components/Layout/Layout";
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
 const { Option } = Select;
+import "../Admin/Students.css"
+import Layout from "../../components/Layout/Layout";
 
 const UpdateStudent = () => {
   const navigate = useNavigate();
@@ -19,7 +17,7 @@ const UpdateStudent = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("");
   const [answer, setAnswer] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [batchNo, setBatchNo] = useState("");
@@ -88,7 +86,7 @@ const UpdateStudent = () => {
   //       studentData.append("photo", photo);
   //     }
   //     studentData.append("teacher", teacher);
-  
+
   //     const response = await axios.put(
   //       `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
   //       studentData,
@@ -98,7 +96,7 @@ const UpdateStudent = () => {
   //         },
   //       }
   //     );
-  
+
   //     if (response.data.success) {
   //       toast.success("Student Updated Successfully!");
   //       navigate("/dashboard/admin/students");
@@ -110,7 +108,6 @@ const UpdateStudent = () => {
   //     toast.error("Something went wrong");
   //   }
   // };
-  
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -120,34 +117,30 @@ const UpdateStudent = () => {
       studentData.append("email", email);
       studentData.append("phone", phone);
       studentData.append("password", password);
-      studentData.append("rollNo", rollNo);  // Use correct key format if needed
+      studentData.append("rollNo", rollNo); // Use correct key format if needed
       studentData.append("batchNo", batchNo); // Ensure consistency with backend expectations
       studentData.append("answer", answer);
       if (photo) {
         studentData.append("photo", photo);
       }
       studentData.append("teacher", teacher);
-  
+
       // Debugging: Check what is being sent
       // for (let pair of studentData.entries()) {
       //   console.log(`${pair[0]}: ${pair[1]}`);
       // }
-  
+
       const { data } = await axios.put(
         `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
-<<<<<<< HEAD
         studentData,
         {
           headers: {
-            'Authorization': `Bearer ${auth?.token}`,
-            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${auth?.token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
-=======
-        studentData
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
       );
-  
+
       if (data?.success) {
         toast.success("Student Updated Successfully!");
         navigate("/dashboard/admin/students");
@@ -159,11 +152,8 @@ const UpdateStudent = () => {
       toast.error("Something went wrong");
     }
   };
-  
 
- 
-
-  //delete a student
+  //delete a product
   const handleDelete = async () => {
     try {
       let answer = window.prompt("Are You Sure want to delete this student ? ");
@@ -182,19 +172,11 @@ const UpdateStudent = () => {
   const [openMenuToggle, setOpenMenuToggle] = useState(false);
 
   useEffect(() => {
-<<<<<<< HEAD
-      console.log('Sidebar toggle state:', openMenuToggle);
-  }, [openMenuToggle]);
-
-  const OpenMenu = () => {
-      setOpenMenuToggle(!openMenuToggle);
-=======
-    console.log('Sidebar toggle state:', openMenuToggle);
+    console.log("Sidebar toggle state:", openMenuToggle);
   }, [openMenuToggle]);
 
   const OpenMenu = () => {
     setOpenMenuToggle(!openMenuToggle);
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
   };
 
   return (
@@ -209,7 +191,6 @@ const UpdateStudent = () => {
             <AdminHeader OpenMenu={OpenMenu} />
             <h1>Update Student</h1>
             <div className="m-1 w-98">
-
               <Select
                 bordered={false}
                 placeholder="Select a teacher"
@@ -228,7 +209,7 @@ const UpdateStudent = () => {
                 ))}
               </Select>
               <div className="mb-3">
-                <label className="btn btn-outline-secondary col-md-12">
+                <label className="btn1 btn-outline-secondary col-md-12 upload-btn" style={{ width: "150px", textAlign: "center", height: "50px" }}>
                   {photo ? photo.name : "Upload Photo"}
                   <input
                     type="file"
@@ -246,6 +227,7 @@ const UpdateStudent = () => {
                       src={URL.createObjectURL(photo)}
                       alt="student_photo"
                       height={"200px"}
+                      width={"200px"}
                       className="img img-responsive"
                     />
                   </div>
@@ -255,6 +237,7 @@ const UpdateStudent = () => {
                       src={`http://localhost:9000/api/fee/portal/students/student-photo/${id}`}
                       alt="student_photo"
                       height={"200px"}
+                      width={"200px"}
                       className="img img-responsive"
                     />
                   </div>
@@ -290,23 +273,23 @@ const UpdateStudent = () => {
                 />
               </div>
               <div className="mb-3">
-                 <input
-    type="password"
-    value={password}
-    placeholder="Enter Password"
-    className="form-control mt-2"
-    onChange={(e) => setPassword(e.target.value)}
-  />
+                <input
+                  type="password"
+                  value={password}
+                  placeholder="Enter Password"
+                  className="form-control mt-2"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <div className="mb-3">
-               <input
-    type="text"
-    value={answer}
-    placeholder="Enter Answer"
-    className="form-control mt-2"
-    onChange={(e) => setAnswer(e.target.value)}
-  />
-  </div>
+                <input
+                  type="text"
+                  value={answer}
+                  placeholder="What Is Your Favourite Game"
+                  className="form-control mt-2"
+                  onChange={(e) => setAnswer(e.target.value)}
+                />
+              </div>
               <div className="mb-3">
                 <input
                   type="number"
@@ -320,32 +303,29 @@ const UpdateStudent = () => {
               <div className="mb-3">
                 <Select
                   bordered={false}
-                  placeholder="Select Batch "
+                  placeholder="Select Batch"
                   size="large"
                   showSearch
                   className="form-select mb-3"
-                  onChange={(value) => {
-                    setBatchNo(value);
-                  }}
-<<<<<<< HEAD
-                  // value={batchNO ? "yes" : "No"}
-=======
-                // value={batchNO ? "yes" : "No"}
->>>>>>> aa4a421899d4d079850f2bb27e39155bdfe8176d
+                  onChange={(value) => setBatchNo(value)}
+                  value={batchNo}
                 >
-                  <Option value="0">9</Option>
-                  <Option value="1">10</Option>
-                  <Option value="1">11</Option>
-                  <Option value="1">12</Option>
+                  <Option value={9}>9</Option>
+                  <Option value={10}>10</Option>
+                  <Option value={11}>11</Option>
+                  <Option value={12}>12</Option>
                 </Select>
+
+
+
               </div>
               <div className="mb-3">
-                <button className="btn1 btn-primary" onClick={handleUpdate}>
+                <button className=" crt-std-btn" onClick={handleUpdate}>
                   UPDATE STUDENT
                 </button>
               </div>
               <div className="mb-3">
-                <button className="btn2 btn-danger" onClick={handleDelete}>
+                <button className="btn-danger" onClick={handleDelete}>
                   DELETE STUDENT
                 </button>
               </div>

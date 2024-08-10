@@ -28,7 +28,7 @@ const StudentDetails = () => {
     const getSimilarStudent = async (sid, tid) => {
         try {
             const { data } = await axios.get(
-                `http://localhost:9001/api/fee/portal/students/related-students/${sid}/${tid}`
+                `http://localhost:9000/api/fee/portal/students/related-students/${sid}/${tid}`
             );
             setRelatedStudents(data?.students);
         } catch (error) {
@@ -40,7 +40,7 @@ const StudentDetails = () => {
             <div className="row container mt-2">
                 <div className="col-md-6">
                     <img
-                        src={`http://localhost:9001/api/fee/portal/students/student-photo/${student._id}`}
+                        src={`http://localhost:9000/api/fee/portal/students/student-photo/${student._id}`}
                         className="card-img-top"
                         alt={student.name}
                         height="300"
@@ -65,7 +65,7 @@ const StudentDetails = () => {
                     {relatedStudents?.map((p) => (
                         <div className="card m-2" style={{ width: "18rem" }}>
                             <img
-                                src={`http://localhost:9001/api/fee/portal/students/student-photo//${s?._id}`}
+                                src={`http://localhost:9000/api/fee/portal/students/student-photo//${s?._id}`}
                                 className="card-img-top"
                                 alt={p.name}
                                 />

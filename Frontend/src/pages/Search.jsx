@@ -1,5 +1,5 @@
 import React from "react";
-import { useSearch } from "../components/context/SearchContext";
+import { useSearch } from "../components/context/searchContext";
 const Search = () => {
   const [values, setValues] = useSearch();
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { useSearch, SearchProvider } from "../context/SearchContext";
+import { useSearch, SearchProvider } from "../context/searchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
