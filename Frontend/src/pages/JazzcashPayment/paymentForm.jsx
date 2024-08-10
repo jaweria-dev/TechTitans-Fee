@@ -152,7 +152,7 @@ const PaymentForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/jazzcash",
+        "http://localhost:9000/api/jazzcash",
         {
           amount: 1000,
           customerEmail: email,
