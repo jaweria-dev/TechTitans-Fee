@@ -181,7 +181,7 @@ const StudentFilter = () => {
                 <div className="d-flex justify-content-center">
                   <button
                     className="btn-primary" style={{height:"30px", width:"150px"}}
-                    // onClick={() => window.location.reload()}
+                    onClick={() => window.location.reload()}
                   >
                     RESET FILTERS
                   </button>

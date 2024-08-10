@@ -23,19 +23,20 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.navbar{
+.navbar {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
 }
 
-.nav-item>.nav-link{
+.nav-item>.nav-link {
     color: black;
     margin-top: 23px;
 }
 
-.dropdown{
+.dropdown {
     width: 150px;
     margin-top: 0px;
 }
+
 .contact-form {
     background-color: white;
     position: relative;
@@ -59,9 +60,6 @@ form {
     margin-top: 15px;
 }
 
-/* #form{
-    margin: 20px;
-} */
 .title {
     color: black;
     font-weight: 500;
@@ -145,12 +143,12 @@ input[type="number"]:focus {
     font-size: 1.6rem;
 }
 
-.forgotpassword {
+/* .forgotpassword {
     left: -10px;
     position: relative;
-}
+} */
 
-.text-center{
+.text-center {
     color: white;
     font-size: 2rem;
 }
@@ -186,6 +184,12 @@ input[type="number"]:focus {
     .social-media {
         padding: 1.5rem 0 0 0;
     }
+
+    .forgotpassword {
+        left: 278px;
+        position: relative;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -197,7 +201,7 @@ input[type="number"]:focus {
         display: none;
     }
 
-    .text-para{
+    .text-para {
         font-size: 15px;
     }
 
@@ -209,4 +213,17 @@ input[type="number"]:focus {
         padding: 0.45rem 1.2rem;
         font-size: 20px;
     }
+
+    .forgotpassword {
+        left: -104px;
+        position: relative;
+        font-size: 0.9rem;
+    }
 }
+
+/* @media (max-width:375px) {
+    .forgotpassword {
+        left: -2x;
+        position: relative;
+    }
+} */

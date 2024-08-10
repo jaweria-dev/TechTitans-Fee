@@ -139,35 +139,6 @@
     background-color: #1a1919;
 }
 
-/* .btn-primary{
-    background-color: blue;
-} */
-
-/* .std-btn{
-    padding: 5px;
-    cursor: pointer;
-    background-color: #4b7bec;
-    border: 1px solid #4b7bec;
-    border-radius: 10px;
-    height: 8vh;
-    color: #ffffff;
-} */
-
-/* .table {
-    width: 74vw;
-    height: 100%;
-    margin-bottom: 0 !important;
-} */
-/* form {
-    margin-left: 40px;
-} */
-
-/* style={{backgroundColor:"green", borderRadius:"10px", width:"70px", height:"50px", border:"1px solid gray"}} */
-
-
-/* style={{backgroundColor:"red", borderRadius:"10px", width:"70px", height:"50px", border:"1px solid gray"}} */
-
-
 /* update student css */
 .upload-btn {
     display: flex;

@@ -8,7 +8,7 @@ const StudentDetails = () => {
    const [student, setStudent]  = useState({});
     const [relatedStudents, setRelatedStudents] = useState([]);
 
-    //initalp details
+    //inital details
     useEffect(() => {
         if (params?.slug) getStudent();
     }, [params?.slug]);

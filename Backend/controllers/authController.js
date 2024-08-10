@@ -74,35 +74,46 @@ const registerController = async (req, res) => {
 
 const loginController = async (req, res) => {
   try {
-    const { rollNo, password } = req.body;
-    // validation
-    if (!rollNo || !password) {
-      return res.status(404).send({
+    const { rollNo, email, password } = req.body;
+
+    // Validation
+    if (!password || (!rollNo && !email)) {
+      return res.status(400).send({
         success: false,
-        message: "Invalid Roll No or Password",
+        message: "Roll No or Email and Password are required",
       });
     }
-    // check user
-    const user = await userModel.findOne({ rollNo });
+
+    // Check user
+    let user;
+    if (rollNo) {
+      user = await userModel.findOne({ rollNo });
+    } else if (email) {
+      user = await userModel.findOne({ email });
+    }
+
     if (!user) {
       return res.status(404).send({
         success: false,
-        message: "rollNo not register",
+        message: "User not found",
       });
     }
+
     const match = await comparePassword(password, user.password);
     if (!match) {
-      return res.status(200).send({
+      return res.status(400).send({
         success: false,
         message: "Invalid Password",
       });
     }
+
     const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
+
     return res.status(200).send({
       success: true,
-      message: "Login successfully",
+      message: "Login successful",
       user: {
         _id: user._id,
         name: user.name,
@@ -116,6 +127,7 @@ const loginController = async (req, res) => {
       token,
     });
   } catch (error) {
+    console.error("Error in login:", error);
     res.status(500).send({
       success: false,
       message: "Error in login",
@@ -124,34 +136,47 @@ const loginController = async (req, res) => {
   }
 };
 
-
 // forgot Password Controller
 const forgotPasswordController = async (req, res) => {
   try {
-    const { rollNo, answer, newPassword } = req.body;
-    if (!rollNo) {
-      res.status(400).send({ message: "Roll No is required" });
+    const { rollNo, email, answer, newPassword } = req.body;
+
+    // Validation
+    if (!rollNo && !email) {
+      return res.status(400).send({ message: "Roll No or Email is required" });
     }
     if (!answer) {
-      res.status(400).send({ message: "answer is required" });
+      return res.status(400).send({ message: "Answer is required" });
     }
     if (!newPassword) {
-      res.status(400).send({ message: "New Password is required" });
+      return res.status(400).send({ message: "New Password is required" });
     }
-    //check
-    const user = await userModel.findOne({ rollNo, answer });
-    //validation
+
+    // Check user
+    let user;
+    if (rollNo) {
+      user = await userModel.findOne({ rollNo, answer });
+    } else if (email) {
+      user = await userModel.findOne({ email, answer });
+    }
+
+    // Validation
     if (!user) {
       return res.status(404).send({
         success: false,
-        message: "Wrong RollNo Or Answer",
+        message: "Wrong Roll No/Email or Answer",
       });
     }
+
+    // Hash new password
     const hashed = await hashPassword(newPassword);
+
+    // Update password
     await userModel.findByIdAndUpdate(user._id, { password: hashed });
+
     res.status(200).send({
       success: true,
-      message: "Password Reset Successfully",
+      message: "Password reset successfully",
     });
   } catch (error) {
     console.log(error);
@@ -163,15 +188,14 @@ const forgotPasswordController = async (req, res) => {
   }
 };
 
-
 // test controller
 const testController = (req, res) => {
   res.send("Protected Routes");
 };
 
-
 module.exports = {
   registerController,
   loginController,
-  forgotPasswordController, testController
+  forgotPasswordController,
+  testController,
 };

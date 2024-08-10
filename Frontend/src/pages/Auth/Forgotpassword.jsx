@@ -1,42 +1,101 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import "../../styles/AuthStyles.css";
-import "../../styles/Forgot.css"
-import { toast } from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import "../../styles/Forgot.css";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ForgotPassword = () => {
-  const [rollNo, setRollNo] = useState("")
-  const [newPassword, setNewPassword] = useState("")
-  const [answer, setAnswer] = useState("")
+  const [rollNo, setRollNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [answer, setAnswer] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // handel submit function
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const res = await axios.post('http://localhost:9000/api/fee/portal/forgot-password', { rollNo, newPassword, answer, })
-      if (res && res.data.success) {
-        toast.success(res.data && res.data.message, { duration: 5000 })
+    e.preventDefault();
 
-        navigate('/login')
+    // Create an object to hold either rollNo or email, along with newPassword and answer
+    const data = {
+      newPassword,
+      answer,
+    };
+
+    // Include rollNo or email based on what is provided
+    if (rollNo) {
+      data.rollNo = rollNo;
+    } else if (email) {
+      data.email = email;
+    }
+
+    try {
+      const res = await axios.post(
+        "http://localhost:9000/api/fee/portal/forgot-password",
+        data
+      );
+      if (res && res.data.success) {
+        toast.success(res.data.message, { duration: 5000 });
+        navigate("/login");
       } else {
-        toast.error(res.data.message, { duration: 5000 })
+        toast.error(res.data.message, { duration: 5000 });
       }
     } catch (error) {
-      console.log(error)
-      toast.error('Something Went Wrong', { duration: 5000 })
+      console.log(error);
+      toast.error("Something Went Wrong", { duration: 5000 });
     }
-  }
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   try {
+  //     const res = await axios.post('http://localhost:9000/api/fee/portal/forgot-password', { rollNo, newPassword, answer, })
+  //     if (res && res.data.success) {
+  //       toast.success(res.data && res.data.message, { duration: 5000 })
+
+  //       navigate('/login')
+  //     } else {
+  //       toast.error(res.data.message, { duration: 5000 })
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //     toast.error('Something Went Wrong', { duration: 5000 })
+  //   }
+  // }
 
   return (
-    <div className="contact-form" style={{
-      margin:"70px"
-    }}>
+    <div
+      className="contact-form"
+      style={{
+        margin: "70px",
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <h3 className="title">Forgot Password</h3>
         <div className="input-container">
+          <input
+            type="text" // use "text" to accept both email and roll number
+            value={rollNo || email}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (isNaN(value)) {
+                setEmail(value);
+                setRollNo("");
+              } else {
+                setRollNo(value);
+                setEmail("");
+              }
+            }}
+            name="identifier"
+            className="input"
+            autoComplete="off"
+            placeholder="Enter Your Roll No or Email"
+            required
+          />
+        </div>
+
+        {/* <div className="input-container">
           <input
             type="number"
             value={rollNo}
@@ -47,7 +106,7 @@ const ForgotPassword = () => {
             placeholder="Enter Your Roll No"
             required
           />
-        </div>
+        </div> */}
 
         <div className="input-container">
           <input
@@ -77,12 +136,16 @@ const ForgotPassword = () => {
           />
         </div>
 
-        <button type="submit" className="btn" style={{width:"270px", fontSize:"18px"}}>
+        <button
+          type="submit"
+          className="btn"
+          style={{ width: "270px", fontSize: "18px" }}
+        >
           FORGOT PASSWORD
         </button>
       </form>
     </div>
   );
-}
+};
 
-export default ForgotPassword
+export default ForgotPassword;
