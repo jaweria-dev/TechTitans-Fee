@@ -20,11 +20,7 @@ function UserMenu({ openMenuToggle, OpenMenu }) {
                         <BsGrid1X2Fill className='icon-icon' /> Overview
                     </NavLink>
                 </li>
-                <li className='sidebar-list-item'>
-                    <NavLink to="/dashboard/user/profile">
-                        <BsPeopleFill className='icon-icon' /> Profile
-                    </NavLink>
-                </li>
+            
                 <li className='sidebar-list-item'>
                     <NavLink to='/dashboard/user/courses'>
                         <FaCommentAlt className='icon-icon' /> Courses

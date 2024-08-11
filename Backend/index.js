@@ -9,7 +9,6 @@ const stripe = require("stripe")(
   "sk_test_51Pg5eaRunlLVaZ2Qz31ndkSbxMlj66WYait44gI1xE5HHuEU6UCCxqUhSSqg956BL97pGKMjJbIjG1nK7aKCyyZD00lKHFIqiL"
 );
 
-const userApp = require("./app");
 const connectToDatabase = require("./config/db");
 
 // Import routes
@@ -28,8 +27,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-// User backend
-// userApp();
 
 // Routes
 app.use("/api/fee/portal", authRoutes);
@@ -64,7 +61,7 @@ app.get("/", (req, res) => {
 connectToDatabase();
 
 // Port
-const Port = process.env.Port || 9001;
+const Port = process.env.Port || 3000;
 
 // Run listening
 app.listen(Port, () => {
