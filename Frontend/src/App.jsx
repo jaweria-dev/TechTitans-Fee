@@ -38,8 +38,7 @@ function App() {
       <>
         <Toaster position="top-center" reverseOrder={false} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/student/:slug" element={<StudentDetails />} />
+          <Route path="/home-page" element={<HomePage />} />
           <Route path="/students/:slug" element={<StudentDetails />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/search" element={<Search />} />
@@ -62,7 +61,7 @@ function App() {
           </Route>
 
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
         </Routes>
       </>

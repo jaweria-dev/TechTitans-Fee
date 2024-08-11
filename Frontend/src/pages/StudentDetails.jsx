@@ -18,7 +18,7 @@ const StudentDetails = () => {
   const getStudent = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:9000/api/fee/portal/students/get-student/${params.slug}`
+        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/get-student/${params.slug}`
       );
       setStudent(data?.student);
       // Fetch related students
@@ -32,7 +32,7 @@ const StudentDetails = () => {
   const getSimilarStudent = async (sid, tid) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:9000/api/fee/portal/students/related-students/${sid}/${tid}`
+        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/related-students/${sid}/${tid}`
       );
       setRelatedStudents(Array.isArray(data?.students) ? data?.students : []);
     } catch (error) {
@@ -45,7 +45,7 @@ const StudentDetails = () => {
       <div className="row container mt-2">
         <div className="col-md-6">
           <img
-            src={`http://localhost:9000/api/fee/portal/students/student-photo/${student._id}`}
+            src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${student._id}`}
             className="card-img-top"
             alt={student.name}
             height="300"
@@ -55,9 +55,11 @@ const StudentDetails = () => {
         <div className="col-md-6 " >
           <h1 className="m-3 fw-bold">Student Details</h1>
           <h6 className="m-3 fs-5">Name : {student.name}</h6>
+          <h6 className="m-3 fs-5">Email: {student.email}</h6>
           <h6 className="m-3 fs-5">Roll No: {student.rollNo}</h6>
           <h6 className="m-3 fs-5">Batch No : {student.batchNo}</h6>
           <h6 className="m-3 fs-5" >Teacher Name : {student?.teacher?.name}</h6>
+
         </div>
         <br />
         <hr />
@@ -70,7 +72,7 @@ const StudentDetails = () => {
             {relatedStudents?.map((s) => (
               <div className="card m-2" style={{ width: "18rem" }} key={s._id}>
                 <img
-                  src={`http://localhost:9000/api/fee/portal/students/student-photo/${s?._id}`}
+                  src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${s?._id}`}
                   className="card-img-top" height="200px" width="200px"
                   alt={s.name}
                 />

@@ -21,7 +21,7 @@ const StudentFilter = () => {
   const getAllTeachers = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:9000/api/fee/portal/teacher/get-teacher"
+        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/teacher/get-teacher"
       );
       if (data.success) {
         setTeachers(data.teacher);
@@ -42,7 +42,7 @@ const StudentFilter = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:9000/api/fee/portal/students/student-list/${page}`
+        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-list/${page}`
       );
       const studentsData = response.data.students;
       if (studentsData) {
@@ -63,7 +63,7 @@ const StudentFilter = () => {
   const getTotal = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:9000/api/fee/portal/students/student-count"
+        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-count"
       );
       setTotal(response.data?.total || 0);
     } catch (error) {
@@ -84,7 +84,7 @@ const StudentFilter = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:9000/api/fee/portal/students/student-list/${page}`
+        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-list/${page}`
       );
       setStudents((prevStudents) => [
         ...prevStudents,
@@ -125,7 +125,7 @@ const StudentFilter = () => {
   const filterStudent = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:9000/api/fee/portal/students/student-filters",
+        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-filters",
         {
           checked,
           radio,
@@ -200,7 +200,7 @@ const StudentFilter = () => {
                       key={s._id}
                     >
                       <img
-                        src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
+                        src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${s._id}`}
                         className="card-img-top"
                         alt={s.name}
                         height="200px"

@@ -18,7 +18,7 @@ const Search = () => {
             {values?.results.map((s) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
+                  src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${s._id}`}
                   className="card-img-top"
                   alt={s.name}
                 />

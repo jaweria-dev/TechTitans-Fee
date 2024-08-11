@@ -39,7 +39,7 @@ const TeacherStudents = () => {
                                     key={s._id}
                                 >
                                     <img
-                                        src={`http://localhost:9001/api/fee/portal/students/student-photo/${s._id}`}
+                                        src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${s._id}`}
                                         className="card-img-top"
                                         alt={s.name}
                                     />
@@ -55,9 +55,6 @@ const TeacherStudents = () => {
                                         >
                                             More Details
                                         </button>
-                                        {/* <button className="btn btn-secondary ms-1">
-                                        ADD TO CART
-                                    </button> */}
                                     </div>
                                 </div>
                             ))}

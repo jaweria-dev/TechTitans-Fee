@@ -18,7 +18,7 @@ export default function AdminRoutes() {
 
       try {
         const res = await axios.get(
-          "http://localhost:9000/api/fee/portal/admin-auth",
+          "https://tech-titans-fee-portal.vercel.app/api/fee/portal/admin-auth",
           {
             headers: {
               Authorization: `Bearer ${auth?.token}`,

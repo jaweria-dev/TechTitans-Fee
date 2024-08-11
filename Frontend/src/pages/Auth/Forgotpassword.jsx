@@ -17,13 +17,11 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create an object to hold either rollNo or email, along with newPassword and answer
     const data = {
       newPassword,
       answer,
     };
 
-    // Include rollNo or email based on what is provided
     if (rollNo) {
       data.rollNo = rollNo;
     } else if (email) {
@@ -32,12 +30,12 @@ const ForgotPassword = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:9000/api/fee/portal/forgot-password",
+        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/forgot-password",
         data
       );
       if (res && res.data.success) {
         toast.success(res.data.message, { duration: 5000 });
-        navigate("/login");
+        navigate("/");
       } else {
         toast.error(res.data.message, { duration: 5000 });
       }
@@ -47,22 +45,6 @@ const ForgotPassword = () => {
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   try {
-  //     const res = await axios.post('http://localhost:9000/api/fee/portal/forgot-password', { rollNo, newPassword, answer, })
-  //     if (res && res.data.success) {
-  //       toast.success(res.data && res.data.message, { duration: 5000 })
-
-  //       navigate('/login')
-  //     } else {
-  //       toast.error(res.data.message, { duration: 5000 })
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //     toast.error('Something Went Wrong', { duration: 5000 })
-  //   }
-  // }
 
   return (
     <div
@@ -75,7 +57,7 @@ const ForgotPassword = () => {
         <h3 className="title">Forgot Password</h3>
         <div className="input-container">
           <input
-            type="text" // use "text" to accept both email and roll number
+            type="text" 
             value={rollNo || email}
             onChange={(e) => {
               const value = e.target.value;
@@ -94,19 +76,6 @@ const ForgotPassword = () => {
             required
           />
         </div>
-
-        {/* <div className="input-container">
-          <input
-            type="number"
-            value={rollNo}
-            onChange={(e) => setRollNo(e.target.value)}
-            name="rollno"
-            className="input"
-            autoComplete="off"
-            placeholder="Enter Your Roll No"
-            required
-          />
-        </div> */}
 
         <div className="input-container">
           <input

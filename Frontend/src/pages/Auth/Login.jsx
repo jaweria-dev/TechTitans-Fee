@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../components/context/Context";
 
 const Register = () => {
-  //   const [loginIdentifier, setLoginIdentifier] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,8 +16,6 @@ const Register = () => {
   // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Ensure that either rollNo or email is populated, but not both
     const data = {};
     if (rollNo) {
       data.rollNo = rollNo;
@@ -30,7 +27,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:9000/api/fee/portal/login",
+        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/login",
         data
       );
       if (res.data.success) {
@@ -42,7 +39,7 @@ const Register = () => {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(location.state || "/");
+        navigate(location.state || "/home");
       } else {
         toast.error(res.data.message, { duration: 5000 });
       }

@@ -5,14 +5,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const SearchInput = () => {
-  const [values, setValues] = useSearch(); // Ensure this is correct
+  const [values, setValues] = useSearch(); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `http://localhost:9000/api/fee/portal/students/search-student/${values.keyword}`
+        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/search-student/${values.keyword}`
       );
       setValues({ ...values, results: data });
       navigate("/search");
@@ -21,26 +21,6 @@ const SearchInput = () => {
     }
   };
 
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault();
-
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:9000/api/fee/portal/students/search-student/${values.keyword}`
-  //       );
-
-  //       const students = response.data.students || [];
-
-  //       setValues((prevValues) => ({
-  //         ...prevValues,
-  //         results: students,
-  //       }));
-
-  //       navigate("/search");
-  //     } catch (error) {
-  //       console.error("Error fetching search results:", error);
-  //     }
-  //   };
 
   return (
     <div>
