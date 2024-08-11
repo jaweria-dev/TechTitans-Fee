@@ -49,47 +49,51 @@ const StudentDetails = () => {
             className="card-img-top"
             alt={student.name}
             height="300"
-            width={"350px"} style={{margin:"10px"}}
+            width={"350px"}
+            style={{ margin: "10px" }}
           />
         </div>
-        <div className="col-md-6 " >
+        <div className="col-md-6">
           <h1 className="m-3 fw-bold">Student Details</h1>
           <h6 className="m-3 fs-5">Name : {student.name}</h6>
           <h6 className="m-3 fs-5">Email: {student.email}</h6>
           <h6 className="m-3 fs-5">Roll No: {student.rollNo}</h6>
           <h6 className="m-3 fs-5">Batch No : {student.batchNo}</h6>
-          <h6 className="m-3 fs-5" >Teacher Name : {student?.teacher?.name}</h6>
-
+          <h6 className="m-3 fs-5">Teacher Name : {student?.teacher?.name}</h6>
         </div>
-        <br />
-        <hr />
-        <div className="row container">
-          <h6 className="fw-bold fs-2">Similar Students</h6>
-          {relatedStudents.length < 1 && (
-            <p className="text-center">No Similar Students found</p>
-          )}
-          <div className="d-flex flex-wrap">
-            {relatedStudents?.map((s) => (
-              <div className="card m-2" style={{ width: "18rem" }} key={s._id}>
-                <img
-                  src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${s?._id}`}
-                  className="card-img-top" height="200px" width="200px"
-                  alt={s.name}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Name: {s.name}</h5>
-                  <p className="card-text">Roll No: {s.rollNo}</p>
-                  <p className="card-text">Batch No: {s.batch}</p>
-                  <button
-                    className="btn btn-primary ms-1"
-                    onClick={() => navigate(`/student/${s.slug}`)}
-                  >
-                    More Details
-                  </button>
-                </div>
+      </div>
+
+      <br />
+      <hr />
+
+      <div className="row container">
+        <h6 className="fw-bold fs-2">Similar Students</h6>
+        {relatedStudents.length < 1 && (
+          <p className="text-center">No Similar Students found</p>
+        )}
+        <div className="d-flex flex-wrap">
+          {relatedStudents?.map((s) => (
+            <div className="card m-2" style={{ width: "18rem" }} key={s._id}>
+              <img
+                src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${s?._id}`}
+                className="card-img-top"
+                height="200px"
+                width="200px"
+                alt={s.name}
+              />
+              <div className="card-body">
+                <h5 className="card-title">Name: {s.name}</h5>
+                <p className="card-text">Roll No: {s.rollNo}</p>
+                <p className="card-text">Batch No: {s.batch}</p>
+                <button
+                  className="btn btn-primary ms-1"
+                  onClick={() => navigate(`/student/${s.slug}`)}
+                >
+                  More Details
+                </button>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </Layout>

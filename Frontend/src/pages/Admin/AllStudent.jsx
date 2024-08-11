@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import AdminHeader from "../../components/Layout/AdminHeader";
 import "../Admin/Admin.css";
+import Layout from "../../components/Layout/Layout";
 
 const AllStudents = () => {
   const [students, setStudents] = useState([]);
@@ -13,7 +14,7 @@ const AllStudents = () => {
   const getAllStudents = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:9000/api/fee/portal/students/get-student"
+        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/get-student"
       );
       setStudents(data.students);
     } catch (error) {

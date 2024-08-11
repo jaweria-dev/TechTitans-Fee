@@ -25,7 +25,7 @@ export default function AdminRoutes() {
             },
           }
         );
-        console.log("Authorization response:", res.data); // Debugging
+        console.log("Authorization response:", res.data);
         setOk(res.data.ok);
       } catch (error) {
         console.error(

@@ -90,6 +90,44 @@ const CreateStudent = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+  // const handleCreate = async (e) => {up
+  //   e.preventDefault();
+  //   try {
+  //     const studentData = new FormData();
+  //     studentData.append("name", name);
+  //     studentData.append("email", email);
+  //     studentData.append("phone", phone);
+  //     studentData.append("rollno", rollNo);
+  //     studentData.append("batchno", batchNo);
+  //     studentData.append("teacher", teacher);
+  //     studentData.append("answer", answer);
+  //     studentData.append("password", password);
+  //     studentData.append("photo", photo);
+
+  //     console.log(studentData,'studentData');
+
+  //     const { data } = axios.post(
+  //       "http://localhost:9000/api/fee/portal/students/create-student",
+  //       studentData,
+
+  //       {  headers:{
+  //           'Authorization': `Bearer ${auth?.token}`,
+  //         }}
+  //     );
+  //     if (data?.success) {
+  //       toast.error(data?.message);
+  //     } else {
+  //       toast.success("Student Created Successfully");
+  //       navigate("/dashboard/admin/students");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error("something went wrong");
+  //   }
+  // };
+>>>>>>> 0a5c16b8264eff1f1d7eafd7a29280da075aeffb
 
   const [openMenuToggle, setOpenMenuToggle] = useState(false);
 
@@ -208,21 +246,21 @@ const CreateStudent = () => {
                 />
               </div>
               <div className="mb-3">
-                <Select
+              <Select
                   bordered={false}
-                  placeholder="Select Batch No "
+                  placeholder="Select Batch"
                   size="large"
                   showSearch
                   className="form-select mb-3"
-                  onChange={(value) => {
-                    setBatchNo(value);
-                  }}
+                  onChange={(value) => setBatchNo(value)}
+                  value={batchNo}
                 >
-                  <Option value="9">9</Option>
-                  <Option value="10">10</Option>
-                  <Option value="11">11</Option>
-                  <Option value="12">12</Option>
+                  <Option value={9}>9</Option>
+                  <Option value={10}>10</Option>
+                  <Option value={11}>11</Option>
+                  <Option value={12}>12</Option>
                 </Select>
+
               </div>
               <div className="mb-3">
                 <button className=" crt-std-btn" onClick={handleCreate}>

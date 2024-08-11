@@ -39,7 +39,11 @@ const TeacherStudents = () => {
                                     key={s._id}
                                 >
                                     <img
+<<<<<<< HEAD
                                         src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${s._id}`}
+=======
+                                        src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
+>>>>>>> 0a5c16b8264eff1f1d7eafd7a29280da075aeffb
                                         className="card-img-top"
                                         alt={s.name}
                                     />
