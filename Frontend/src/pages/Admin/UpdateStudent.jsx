@@ -30,7 +30,7 @@ const UpdateStudent = () => {
   const getSingleStudent = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:9000/api/fee/portal/students/get-student/${params.slug}`
+        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/get-student/${params.slug}`
       );
       setName(data.student.name);
       setId(data.student._id);
@@ -47,14 +47,13 @@ const UpdateStudent = () => {
   };
   useEffect(() => {
     getSingleStudent();
-    //eslint-disable-next-line
   }, []);
 
   //get all teacher
   const getAllTeacher = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:9000/api/fee/portal/teacher/get-teacher"
+        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/teacher/get-teacher"
       );
       if (data?.success) {
         setTeachers(data?.teacher);
@@ -69,69 +68,28 @@ const UpdateStudent = () => {
     getAllTeacher();
   }, []);
 
-  //create teacher function
-  // const handleUpdate = async (e) => {
-  //   e.preventDefault();
-  //   console.log(`Updating student with ID: ${id}`);
-  //   try {
-  //     const studentData = new FormData();
-  //     studentData.append("name", name);
-  //     studentData.append("email", email);
-  //     studentData.append("phone", phone);
-  //     studentData.append("password", password);
-  //     studentData.append("rollNo", rollNo); // Corrected key name if necessary
-  //     studentData.append("batchNo", batchNo); // Corrected key name if necessary
-  //     studentData.append("answer", answer);
-  //     if (photo) {
-  //       studentData.append("photo", photo);
-  //     }
-  //     studentData.append("teacher", teacher);
-
-  //     const response = await axios.put(
-  //       `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
-  //       studentData,
-  //       {
-  //         headers: {
-  //           'Content-Type': 'multipart/form-data',
-  //         },
-  //       }
-  //     );
-
-  //     if (response.data.success) {
-  //       toast.success("Student Updated Successfully!");
-  //       navigate("/dashboard/admin/students");
-  //     } else {
-  //       toast.error(response.data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error updating student:", error);
-  //     toast.error("Something went wrong");
-  //   }
-  // };
-
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
+      if (photo && photo.size > 1024 * 1024) {
+        toast.error("The uploaded photo should be less than 1 MB.");
+        return;
+      }
       const studentData = new FormData();
       studentData.append("name", name);
       studentData.append("email", email);
       studentData.append("phone", phone);
       studentData.append("password", password);
-      studentData.append("rollNo", rollNo); // Use correct key format if needed
-      studentData.append("batchNo", batchNo); // Ensure consistency with backend expectations
+      studentData.append("rollNo", rollNo);
+      studentData.append("batchNo", batchNo);
       studentData.append("answer", answer);
       if (photo) {
         studentData.append("photo", photo);
       }
       studentData.append("teacher", teacher);
 
-      // Debugging: Check what is being sent
-      // for (let pair of studentData.entries()) {
-      //   console.log(`${pair[0]}: ${pair[1]}`);
-      // }
-
       const { data } = await axios.put(
-        `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
+        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/update-student/${id}`,
         studentData,
         {
           headers: {
@@ -159,7 +117,7 @@ const UpdateStudent = () => {
       let answer = window.prompt("Are You Sure want to delete this student ? ");
       if (!answer) return;
       const { data } = await axios.delete(
-        `http://localhost:9000/api/fee/portal/students/delete-student/${id}`
+        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/delete-student/${id}`
       );
       toast.success("Student Deleted Succfully");
       navigate("/dashboard/admin/students");
@@ -240,7 +198,7 @@ const UpdateStudent = () => {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`http://localhost:9000/api/fee/portal/students/student-photo/${id}`}
+                      src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${id}`}
                       alt="student_photo"
                       height={"200px"}
                       width={"200px"}
