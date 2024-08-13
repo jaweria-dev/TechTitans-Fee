@@ -30,7 +30,7 @@ const ForgotPassword = () => {
 
     try {
       const res = await axios.post(
-        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/forgot-password",
+        "http://localhost:9000/api/fee/portal/forgot-password",
         data
       );
       if (res && res.data.success) {

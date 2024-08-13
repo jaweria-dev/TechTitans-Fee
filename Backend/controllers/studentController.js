@@ -6,8 +6,7 @@ const teacherModel = require("../models/teacherModel");
 
 const createStudentController = async (req, res) => {
   try {
-    const { name, email, phone, rollNo, batchNo, teacher, password, answer } =
-      req.fields;
+    const { name, email, phone, rollNo, batchNo, teacher } = req.fields;
     const { photo } = req.files;
     //alidation
     switch (true) {
@@ -23,10 +22,10 @@ const createStudentController = async (req, res) => {
         return res.status(500).send({ error: "batchNo is Required" });
       case !teacher:
         return res.status(500).send({ error: "Teacher is Required" });
-      case !password:
-        return res.status(500).send({ error: "Password is Required" });
-      case !answer:
-        return res.status(500).send({ error: "Answer is Required" });
+      // case !password:
+      //   return res.status(500).send({ error: "Password is Required" });
+      // case !answer:
+      //   return res.status(500).send({ error: "Answer is Required" });
       case photo && photo.size > 1000000:
         return res
           .status(500)
@@ -34,11 +33,11 @@ const createStudentController = async (req, res) => {
     }
 
     // Hash password
-    const hashedPassword = await hashPassword(password);
+    // const hashedPassword = await hashPassword(password);
 
     const students = new studentModel({
       ...req.fields,
-      password: hashedPassword,
+      // password: hashedPassword,
       slug: slugify(name),
     });
     if (photo) {
@@ -129,8 +128,7 @@ const studentPhotoController = async (req, res) => {
 //update student
 const updateStudentController = async (req, res) => {
   try {
-    const { name, email, phone, rollNo, batchNo, teacher, password, answer } =
-      req.fields;
+    const { name, email, phone, rollNo, batchNo, teacher } = req.fields;
     const { photo } = req.files;
 
     // Validation
@@ -147,19 +145,23 @@ const updateStudentController = async (req, res) => {
         return res.status(400).send({ error: "BatchNo is Required" });
       case !teacher:
         return res.status(400).send({ error: "Teacher is Required" });
-      case !password:
-        return res.status(400).send({ error: "Password is Required" });
-      case !answer:
-        return res.status(400).send({ error: "Answer is Required" });
+      // case !password:
+      //   return res.status(400).send({ error: "Password is Required" });
+      // case !answer:
+      //   return res.status(400).send({ error: "Answer is Required" });
       case photo && photo.size > 1000000:
         return res.status(400).send({ error: "Photo should be less than 1MB" });
     }
     // Hash password
-    const hashedPassword = await hashPassword(password);
+    // const hashedPassword = await hashPassword(password);
 
     const student = await studentModel.findByIdAndUpdate(
       req.params.sid,
-      { ...req.fields, password: hashedPassword, slug: slugify(name) },
+      {
+        ...req.fields,
+        //  password: hashedPassword,
+        slug: slugify(name),
+      },
       { new: true }
     );
 
@@ -226,18 +228,12 @@ const studentFiltersController = async (req, res) => {
   try {
     const { checked, radio } = req.body;
     let args = {};
-
-    // Apply filter by teacher if provided
     if (checked.length > 0) {
       args.teacher = checked;
     }
-
-    // Apply filter by batchNo range if provided
     if (radio.length) {
       args.batchNo = { $gte: radio[0], $lte: radio[1] };
     }
-
-    // Find students based on the filters
     const students = await studentModel.find(args);
     res.status(200).send({
       success: true,
@@ -253,26 +249,6 @@ const studentFiltersController = async (req, res) => {
   }
 };
 
-// const studentFiltersController = async (req, res) => {
-//   try {
-//     const { checked, radio } = req.body;
-//     let args = {};
-//     if (checked.length > 0) args.category = checked;
-//     if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
-//     const products = await studentModel.find(args);
-//     res.status(200).send({
-//       success: true,
-//       products,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).send({
-//       success: false,
-//       message: "Error WHile Filtering Products",
-//       error,
-//     });
-//   }
-// };
 
 // Search Student ny keyword
 const searchStudentController = async (req, res) => {

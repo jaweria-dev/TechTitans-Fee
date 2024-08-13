@@ -23,6 +23,7 @@ import UserDashboard from "./pages/User/UserDashboard";
 import PrivateRoute from "./components/Routes/UserRoutes";
 import PaymentsTable from "./pages/User/PaymentTable";
 
+
 function App() {
   const [loading, setLoading] = useState(true);
   const spinner = document.getElementById("canvas1");
@@ -41,9 +42,8 @@ function App() {
           reverseOrder={false}
         />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/home-page" element={<HomePage />} />
           <Route path="/student/:slug" element={<StudentDetails />} />
-          <Route path="/students/:slug" element={<StudentDetails />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/search" element={<Search />} />
           <Route path="/teacher/:slug" element={<TeacherStudents />} />
@@ -54,9 +54,7 @@ function App() {
             <Route path="user/courses" element={<Courses />} />
             <Route path="user/payment-method" element={<PaymentsTable />} />
           </Route>
-          <Route path="/teacher/:slug" element={<TeacherStudents />} />
-
-
+    
 
           <Route path="/dashboard" element={<AdminRoute />}>
             <Route path="admin" element={<AdminDashboard />} />
@@ -68,7 +66,7 @@ function App() {
           </Route>
 
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
         </Routes>
 

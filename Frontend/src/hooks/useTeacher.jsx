@@ -7,7 +7,9 @@ export default function useTeacher() {
   //get teacher
   const getTeachers = async () => {
     try {
-      const { data } = await axios.get("https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/get-student");
+      const { data } = await axios.get(
+        "http://localhost:9000/api/fee/portal/students/get-student"
+      );
       setTeachers(data?.teacher);
     } catch (error) {
       console.log(error);

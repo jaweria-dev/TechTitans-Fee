@@ -29,11 +29,12 @@
 
 .nav-item>.nav-link {
     color: black;
-    margin-top: 23px;
+    /* margin-top: 23px; */
+    margin-left: 15px;
 }
 
 .dropdown {
-    width: 150px;
+    width: 180px;
     margin-top: 0px;
 }
 
@@ -227,3 +228,5 @@ input[type="number"]:focus {
         position: relative;
     }
 } */
+
+

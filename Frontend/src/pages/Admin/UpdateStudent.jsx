@@ -30,7 +30,7 @@ const UpdateStudent = () => {
   const getSingleStudent = async () => {
     try {
       const { data } = await axios.get(
-        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/get-student/${params.slug}`
+        `http://localhost:9000/api/fee/portal/students/get-student/${params.slug}`
       );
       setName(data.student.name);
       setId(data.student._id);
@@ -53,7 +53,7 @@ const UpdateStudent = () => {
   const getAllTeacher = async () => {
     try {
       const { data } = await axios.get(
-        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/teacher/get-teacher"
+        "http://localhost:9000/api/fee/portal/teacher/get-teacher"
       );
       if (data?.success) {
         setTeachers(data?.teacher);
@@ -79,7 +79,7 @@ const UpdateStudent = () => {
       studentData.append("name", name);
       studentData.append("email", email);
       studentData.append("phone", phone);
-      studentData.append("password", password);
+      // studentData.append("password", password);
       studentData.append("rollNo", rollNo);
       studentData.append("batchNo", batchNo);
       studentData.append("answer", answer);
@@ -89,7 +89,7 @@ const UpdateStudent = () => {
       studentData.append("teacher", teacher);
 
       const { data } = await axios.put(
-        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/update-student/${id}`,
+        `http://localhost:9000/api/fee/portal/students/update-student/${id}`,
         studentData,
         {
           headers: {
@@ -117,7 +117,7 @@ const UpdateStudent = () => {
       let answer = window.prompt("Are You Sure want to delete this student ? ");
       if (!answer) return;
       const { data } = await axios.delete(
-        `https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/delete-student/${id}`
+        `http://localhost:9000/api/fee/portal/students/delete-student/${id}`
       );
       toast.success("Student Deleted Succfully");
       navigate("/dashboard/admin/students");
@@ -157,7 +157,7 @@ const UpdateStudent = () => {
                 onChange={(value) => {
                   setTeacher(value);
                 }}
-                value={teachers}
+                // value={teachers}
               >
                 {teachers?.map((t) => (
                   <Option key={t._id} value={t._id}>
@@ -198,7 +198,7 @@ const UpdateStudent = () => {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${id}`}
+                      src={`http://localhost:9000/api/fee/portal/students/student-photo/${id}`}
                       alt="student_photo"
                       height={"200px"}
                       width={"200px"}
@@ -236,7 +236,7 @@ const UpdateStudent = () => {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <input
                   type="password"
                   value={password}
@@ -244,8 +244,8 @@ const UpdateStudent = () => {
                   className="form-control mt-2"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-              </div>
-              <div className="mb-3">
+              </div> */}
+              {/* <div className="mb-3">
                 <input
                   type="text"
                   value={answer}
@@ -253,7 +253,7 @@ const UpdateStudent = () => {
                   className="form-control mt-2"
                   onChange={(e) => setAnswer(e.target.value)}
                 />
-              </div>
+              </div> */}
               <div className="mb-3">
                 <input
                   type="number"
@@ -267,7 +267,7 @@ const UpdateStudent = () => {
               <div className="mb-3">
                 <Select
                   bordered={false}
-                  placeholder="Select Batch"
+                  placeholder="Update your Batch"
                   size="large"
                   showSearch
                   className="form-select mb-3"

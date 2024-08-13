@@ -44,7 +44,7 @@ const CreateTeacher = () => {
   const getAllTeachers = async () => {
     try {
       console.log("Fetching all teachers");
-      const { data } = await axios.get("https://tech-titans-fee-portal.vercel.app/api/fee/portal/teacher/get-teacher");
+      const { data } = await axios.get("http://localhost:9000/api/fee/portal/teacher/get-teacher");
       console.log("Response data:", data);
       if (data.success) {
         setTeachers(data.teacher);

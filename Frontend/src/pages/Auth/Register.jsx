@@ -28,7 +28,7 @@ const Register = () => {
         }
 
         try {
-            const res = await axios.post('https://tech-titans-fee-portal.vercel.app/api/fee/portal/register', { name, email, password, phone, Trainer, batchNo, rollNo, answer });
+            const res = await axios.post('http://localhost:9000/api/fee/portal/register', { name, email, password, phone, Trainer, batchNo, rollNo, answer });
             if (res.data.success) {
                 toast.success(res.data.message, { duration: 5000 });
                 navigate('/');
@@ -59,10 +59,9 @@ const Register = () => {
                 </div>
 
                 <div className="contact-form">
-                    <span className="circle one" />
-                    <span className="circle two" />
                     <form action="#" id="form" onSubmit={handleSubmit}>
-                        <h3 className="title">Register</h3>
+                        <h3 className="title">Reg
+                            ister</h3>
                         <p className="text-para">Already have an account please<span><Link to='/' style={{ color: "#8AC642", textDecoration: "none" }}> Login...</Link></span></p>
                         <div className="input-container">
                             <label htmlFor=""></label>

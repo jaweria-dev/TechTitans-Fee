@@ -9,7 +9,7 @@ const UserDashboard = () => {
   const navigate = useNavigate();
 
   const handleViewClick = () => {
-    navigate('/main');
+    navigate('/dashboard/user/payment-method');
   };
 
   const [openMenuToggle, setOpenMenuToggle] = useState(false);
@@ -33,7 +33,7 @@ const UserDashboard = () => {
             <div className="container-md col-md-9">
               <div className="col-md-3">
                 <UserHeader OpenMenu={OpenMenu} />
-                <h1 className="m-3" style={{ color: "black" }}>Dashboard</h1>
+                <h1 className="m-3" style={{ color: "#8ac642" }}>Dashboard</h1>
               </div>
               <div className="row frst m-3">
                 <div className="col-12 rap">
@@ -53,7 +53,7 @@ const UserDashboard = () => {
                 </div>
               </div>
               <div className="container-md flex col-md-9">
-                <div className="row m-3" style={{gap:"10px"}}>
+                <div className="row m-3" style={{gap:"65px"}}>
                   <div className="col-5 red">
                     <div className="pay">
                       <div className="pack">

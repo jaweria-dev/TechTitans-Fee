@@ -22,12 +22,14 @@ const CreateStudent = () => {
   const [batchNo, setBatchNo] = useState("");
   const [teacher, setTeacher] = useState("");
   const [photo, setPhoto] = useState("");
+  const [feeStatus, setFeeStatus] = useState(""); // Add feeStatus state
   const [auth] = useAuth();
+  const [studentDetails, setStudentDetails] = useState(null);
 
   const getAllTeacher = async () => {
     try {
       const response = await axios.get(
-        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/teacher/get-teacher"
+        "http://localhost:9000/api/fee/portal/teacher/get-teacher"
       );
       if (response.data?.success) {
         setTeachers(response.data.teacher);
@@ -39,7 +41,7 @@ const CreateStudent = () => {
         "Error fetching teachers:",
         error.response ? error.response.data : error.message
       );
-      toast.error("Something went wrong in getting students");
+      toast.error("Something went wrong in getting teachers");
     }
   };
 
@@ -47,7 +49,6 @@ const CreateStudent = () => {
     getAllTeacher();
   }, []);
 
-  //create student function
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
@@ -65,15 +66,15 @@ const CreateStudent = () => {
       studentData.append("answer", answer);
       studentData.append("password", password);
       studentData.append("photo", photo);
-      console.log("FormData:", studentData);
+      studentData.append("feeStatus", feeStatus); // Append feeStatus
 
       const response = await axios.post(
-        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/create-student",
+        "http://localhost:9000/api/fee/portal/students/create-student",
         studentData,
         {
           headers: {
             Authorization: `Bearer ${auth?.token}`,
-            "Content-Type": "multipart/form-data", 
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -86,54 +87,35 @@ const CreateStudent = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("something went wrong");
+      toast.error("Something went wrong");
     }
   };
 
-<<<<<<< HEAD
-=======
-  // const handleCreate = async (e) => {up
-  //   e.preventDefault();
-  //   try {
-  //     const studentData = new FormData();
-  //     studentData.append("name", name);
-  //     studentData.append("email", email);
-  //     studentData.append("phone", phone);
-  //     studentData.append("rollno", rollNo);
-  //     studentData.append("batchno", batchNo);
-  //     studentData.append("teacher", teacher);
-  //     studentData.append("answer", answer);
-  //     studentData.append("password", password);
-  //     studentData.append("photo", photo);
+  const handleViewDetails = async (studentId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:9000/api/fee/portal/students/${studentId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      );
 
-  //     console.log(studentData,'studentData');
-
-  //     const { data } = axios.post(
-  //       "http://localhost:9000/api/fee/portal/students/create-student",
-  //       studentData,
-
-  //       {  headers:{
-  //           'Authorization': `Bearer ${auth?.token}`,
-  //         }}
-  //     );
-  //     if (data?.success) {
-  //       toast.error(data?.message);
-  //     } else {
-  //       toast.success("Student Created Successfully");
-  //       navigate("/dashboard/admin/students");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error("something went wrong");
-  //   }
-  // };
->>>>>>> 0a5c16b8264eff1f1d7eafd7a29280da075aeffb
+      if (response.data?.success) {
+        setStudentDetails(response.data);
+      } else {
+        toast.error(
+          response.data?.message || "Failed to fetch student details"
+        );
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    }
+  };
 
   const [openMenuToggle, setOpenMenuToggle] = useState(false);
-
-  useEffect(() => {
-    console.log("Sidebar toggle state:", openMenuToggle);
-  }, [openMenuToggle]);
 
   const OpenMenu = () => {
     setOpenMenuToggle(!openMenuToggle);
@@ -218,7 +200,7 @@ const CreateStudent = () => {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <input
                   type="password"
                   value={password}
@@ -226,16 +208,16 @@ const CreateStudent = () => {
                   className="form-control mt-2"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-              </div>
-              <div className="mb-3">
-                <input
-                  type="text"
-                  value={answer}
-                  placeholder="What Is Your Favourite Game"
-                  className="form-control mt-2"
-                  onChange={(e) => setAnswer(e.target.value)}
-                />
-              </div>
+              </div> */}
+              {/* <div className="mb-3">
+              <input
+              type="text"
+              value={answer}
+              placeholder="What Is Your Favourite Game"
+              className="form-control mt-2"
+              onChange={(e) => setAnswer(e.target.value)}
+              />
+              </div> */}
               <div className="mb-3">
                 <input
                   type="number"
@@ -246,26 +228,52 @@ const CreateStudent = () => {
                 />
               </div>
               <div className="mb-3">
-              <Select
+                <Select
                   bordered={false}
-                  placeholder="Select Batch"
+                  placeholder="Select Batch No "
                   size="large"
                   showSearch
                   className="form-select mb-3"
-                  onChange={(value) => setBatchNo(value)}
-                  value={batchNo}
+                  onChange={(value) => {
+                    setBatchNo(value);
+                  }}
                 >
-                  <Option value={9}>9</Option>
-                  <Option value={10}>10</Option>
-                  <Option value={11}>11</Option>
-                  <Option value={12}>12</Option>
+                  <Option value="9">9</Option>
+                  <Option value="10">10</Option>
+                  <Option value="11">11</Option>
+                  <Option value="12">12</Option>
                 </Select>
-
               </div>
               <div className="mb-3">
-                <button className=" crt-std-btn" onClick={handleCreate}>
+                <button className="crt-std-btn" onClick={handleCreate}>
                   CREATE STUDENT
                 </button>
+              </div>
+              <div className="mt-3">
+                {studentDetails && (
+                  <div>
+                    <h2>Student Details</h2>
+                    <p>
+                      <strong>Name:</strong> {studentDetails.student.name}
+                    </p>
+                    <p>
+                      <strong>Email:</strong> {studentDetails.student.email}
+                    </p>
+                    <p>
+                      <strong>Phone:</strong> {studentDetails.student.phone}
+                    </p>
+                    <p>
+                      <b className="fw-300">Roll No:</b> {studentDetails.student.rollNo}
+                    </p>
+                    <p>
+                      <strong>Batch No:</strong>{" "}
+                      {studentDetails.student.batchNo}
+                    </p>
+                    <p>
+                      <strong>Fee Status:</strong> {studentDetails.feeStatus}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

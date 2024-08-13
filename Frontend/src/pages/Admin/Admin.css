@@ -28,7 +28,7 @@
 }
 
 .close_icon {
-  color: red;
+  color: white;
   margin-left: 30px;
   margin-top: 10px;
   cursor: pointer;
@@ -154,16 +154,16 @@
 }
 
 .card1:nth-child(2) {
-  background-color: #ff6d00;
+  background-color: #2962ff;
 }
 
-.card1:nth-child(3) {
+/* .card1:nth-child(3) {
   background-color: #2e7d32;
-}
+} */
 
-.card1:nth-child(4) {
+/* .card1:nth-child(4) {
   background-color: #d50000;
-}
+} */
 
 .card-inner {
   display: flex;
@@ -275,17 +275,68 @@
 
 /* Admin.css */
 
-.card {
+/* .card {
   width: 18rem;
   margin: 1rem;
+} */
+
+
+.card {
+  width: 100%;
+  max-width: 18rem; /* Maximum width for larger screens */
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+  0 -4px 8px rgba(0, 0, 0, 0.1),
+  4px 0 8px rgba(0, 0, 0, 0.1),
+  -4px 0 8px rgba(0, 0, 0, 0.1);
+
 }
+
+.card:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* .card img {
+  width: 100%;
+  height: auto; 
+  object-fit: cover;
+} */
+
+.card-body {
+  padding: 15px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: calc(50% - 20px); /* Two cards per row on medium screens */
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    width: calc(33.33% - 20px); /* Three cards per row on large screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .card {
+    width: calc(25% - 20px); /* Four cards per row on extra-large screens */
+  }
+}
+
+
 
 .student-link {
   text-decoration: none;
 }
 
 .card-img-top {
-  height: 200px;
+  /* height: 200px; */
   width: 100%;
   object-fit: cover;
 }
@@ -317,25 +368,24 @@
     margin: 0;
   }
 
-  .form-control {
-    font-size: 12px;
-  }
+
+
 
   .menu {
     font-size: 14px;
   }
 
-  .ms-2,
+  /* .ms-2,
   .btn1,
   .btn2 {
     width: 52px;
     height: 34px;
     font-size: 12px;
-  }
+  } */
 
-  td {
+  /* td {
     font-size: 12px;
-  }
+  } */
 
 }
 
@@ -352,16 +402,14 @@
     font-size: 12px;
   }
 
+  .btn-searchinp{
+    margin-top: 10px;
+  }
+
   td {
     font-size: 11px;
   }
 
-  /* .btn1,
-  .btn2 {
-      width: 52px;
-      height: 34px;
-      font-size: 12px;
-  } */
 }
 
 @media (max-width:425px) {

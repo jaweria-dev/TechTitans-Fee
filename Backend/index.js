@@ -27,7 +27,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-
 // Routes
 app.use("/api/fee/portal", authRoutes);
 app.use("/api/fee/portal/teacher", teacherRoutes);
@@ -61,7 +60,7 @@ app.get("/", (req, res) => {
 connectToDatabase();
 
 // Port
-const Port = process.env.Port || 3000;
+const Port = process.env.Port || 9000;
 
 // Run listening
 app.listen(Port, () => {

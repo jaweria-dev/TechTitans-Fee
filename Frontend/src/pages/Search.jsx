@@ -1,9 +1,10 @@
 import React from "react";
 import { useSearch } from "../components/context/searchContext";
+import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
-
 const Search = () => {
   const [values, setValues] = useSearch();
+  const navigate = useNavigate();
   console.log("Search values:", values);
   return (
     <Layout>
@@ -19,7 +20,7 @@ const Search = () => {
             {values?.results.map((s) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`https://tech-titans-fee-portal.vercel.app/api/fee/portal/students/student-photo/${s._id}`}
+                  src={`http://localhost:9000/api/fee/portal/students/student-photo/${s._id}`}
                   className="card-img-top"
                   alt={s.name}
                 />
@@ -27,7 +28,7 @@ const Search = () => {
                   <h5 className="card-title">Name: {s.name}</h5>
                   <p className="card-text">Roll No: {s.rollNo}</p>
                   <button
-                    className="btn btn-primary ms-1"
+                    className="btn-primary ms-1"
                     style={{ height: "40px" }}
                     onClick={() => navigate(`/student/${s.slug}`)}
                   >

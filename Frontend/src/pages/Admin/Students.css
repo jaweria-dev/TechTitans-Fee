@@ -16,31 +16,14 @@
         width: 74vw;
     }
 
-    .btn-danger{
+    .btn-danger {
         height: 5vh;
-    }
-
-    .crt-std-btn{
-        font-size: small;
-    
     }
 }
 
 @media screen and (max-width:480px) {
-     .table {
+    .table {
         width: 100vw;
-    }
-
-    .more-detail{
-        font-size: 10px;
-    }
-
-}
-
-@media screen and (max-width: 425px) {
-    .crt-std-btn{
-        width: 115px;
-        font-size: 11px;
     }
 }
 
@@ -66,7 +49,6 @@
     color: #ffffff;
 }
 
-
 .btn2:hover {
     background-color: #4b8cfd;
 }
@@ -87,7 +69,7 @@
 
 .teacher-heading {
     margin: 34px;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 
@@ -97,46 +79,93 @@
 }
 
 /* create student css */
-.btn-primary , .more-detail{
+.btn-primary {
     background-color: #ffffff;
     color: #000000;
     border-radius: 6px;
     height: 30px;
     border: 1px solid #000000;
-    font-size: 12px;
-    width: 13vw;
+    font-size: 14px;
+    width: 11vw;
 }
 
-.crt-std-btn, .std-filter{
+.more-detail {
+    padding: 10px 20px;
+    font-size: 16px;
+    /* font-weight: bold; */
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #000000;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    margin: 10px auto;
+    position: relative;
+    left: 0;
+}
+
+.more-detail:hover {
+    color: #86c23d;
+    border: 1px solid #86c23d;
+}
+
+@media (max-width: 768px) {
+    .more-detail {
+        padding: 8px 16px;
+        font-size: 14px;
+        margin: 8px;
+        width: 60%;
+        left: 38px;
+    }
+}
+
+@media (max-width: 576px) {
+    .more-detail {
+        padding: 6px 12px;
+        font-size: 12px;
+        width: 60%;
+        margin: 10px;
+        left: 37px;
+    }
+}
+
+.crt-std-btn,
+.std-filter, .btn-danger {
     background-color: #ffffff;
     color: #1a1919;
     border-radius: 7px;
     border: 1px solid #1a1919;
     height: 5vh;
-    width: 12vw;
-    font-size: 12px;
+    width: 23vw;
+    font-size: 11px;
 
 }
 
-.btn-primary:hover , .crt-std-btn:hover{
+.btn-primary:hover,
+.crt-std-btn:hover,
+.std-filter:hover {
     border: 1px solid #8ac642;
     color: #8ac642;
 }
 
-.btn-warning,
-.btn-danger {
+.btn-warning {
     background-color: #000000;
     border: 1px solid black;
     border-radius: 10px;
     color: #ffffff;
-    width: 15vw;
+    width: 12vw;
     margin-top: 10px;
+    font-size: 12px;
     margin-left: 10px;
 }
 
 .btn-warning:hover,
 .btn-danger:hover {
     background-color: #1a1919;
+    color: white;
 }
 
 /* update student css */
@@ -152,9 +181,68 @@
     background-color: #8ac642;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .upload-btn input[type="file"] {
+}
+
+.upload-btn input[type="file"] {
     display: none;
-  }
-  
+}
+
+
+@media (max-width: 768px) {
+    .crt-std-btn, .btn-danger {
+        padding: 4px 16px;
+        font-size: 13px;
+        width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .crt-std-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+        width: 100%;
+    }
+}
+
+.card {
+    margin: 10px;
+    flex: 1 1 calc(33.33% - 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+
+.card-body {
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .card {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(100% - 20px);
+    }
+}
+.teacher-filter,
+.batch-filter {
+    min-width: 250px;
+}
+
+
+@media (max-width: 768px) {
+
+    .teacher-filter,
+    .batch-filter {
+        min-width: 0;
+        margin-bottom: 15px;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/AuthStyles.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -12,6 +12,22 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (setAuth) {
+      // Show loader before redirecting
+      const redirectToDashboard = () => {
+        if (setAuth.role === "admin") {
+          navigate("/dashboard/admin");
+        } else if (setAuth.role === "user") {
+          navigate("/dashboard/user");
+        }
+      };
+      setTimeout(() => {
+        redirectToDashboard();
+      }, 1000); // Adjust delay as needed (1000ms = 1 second)
+    }
+  }, [setAuth, navigate]);
 
   // form function
   const handleSubmit = async (e) => {
@@ -27,7 +43,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        "https://tech-titans-fee-portal.vercel.app/api/fee/portal/login",
+        "http://localhost:9000/api/fee/portal/login",
         data
       );
       if (res.data.success) {
@@ -39,7 +55,16 @@ const Register = () => {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(location.state || "/home");
+
+        // Redirect based on user role
+        const userRole = res.data.user.role;
+        if (userRole === 1) {
+          navigate("/dashboard/admin");
+        } else if (userRole === 0) {
+          navigate("/dashboard/user");
+        } else {
+          navigate("/home-page"); // Fallback to home page if role is undefined
+        }
       } else {
         toast.error(res.data.message, { duration: 5000 });
       }
@@ -48,13 +73,10 @@ const Register = () => {
       toast.error("Something Went Wrong", { duration: 5000 });
     }
   };
-
   return (
     <div className="container" style={{ marginTop: "40px" }}>
       <div className="form">
         <div className="contact-form">
-          <span className="circle one" />
-          <span className="circle two" />
           <form onSubmit={handleSubmit}>
             <h3 className="title">Login</h3>
             <p className="text-para">

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill } from 'react-icons/bs';
+import { BsFillGrid3X3GapFill, BsPeopleFill } from 'react-icons/bs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
-
+import { FaUsers } from "react-icons/fa";
 import AdminMenu from './../../components/Layout/AdminMenu';
 import AdminHeader from '../../components/Layout/AdminHeader';
 import Layout from '../../components/Layout/Layout'
+import { Link } from 'react-router-dom';
 
 function AdminDashboard() {
     const data = [
@@ -29,7 +30,6 @@ function AdminDashboard() {
 
     return (
         <Layout>
-
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-3">
@@ -39,16 +39,19 @@ function AdminDashboard() {
                     <div className='main-container col-md-9'>
                         <div className="col-md-3">
                             <AdminHeader OpenMenu={OpenMenu} />
-                            <h1 className="m-3" style={{color:"black"}}>Dashboard</h1>
+                            <h1 className="m-3" style={{ color: "#8ac642" }}>Dashboard</h1>
                         </div>
                         <div className='main-cards'>
-                            <div className='card1'>
-                                <div className='card-inner'>
-                                    <h3 style={{ color: "white" }}>STUDENTS</h3>
-                                    <BsFillArchiveFill className='card_icon' style={{ color: "white" }} />
+                            <Link to="/dashboard/admin/students" style={{ textDecoration: "none" }}>
+                                <div className='card1'>
+                                    <div className='card-inner'>
+                                        <h3 style={{ color: "white" }}>STUDENTS</h3>
+                                        <FaUsers className='card_icon' style={{ color: "white" }} />
+                                    </div>
+                                    <h1 style={{ color: "white" }}>300+</h1>
                                 </div>
-                                <h1 style={{ color: "white" }}>300</h1>
-                            </div>
+                            </Link>
+
                             <div className='card1'>
                                 <div className='card-inner'>
                                     <h3 style={{ color: "white" }}>BATCH</h3>
@@ -56,13 +59,23 @@ function AdminDashboard() {
                                 </div>
                                 <h1 style={{ color: "white" }}>12</h1>
                             </div>
-                            <div className='card1'>
-                                <div className='card-inner'>
-                                    <h3 style={{ color: "white" }}>TEACHERS</h3>
-                                    <BsPeopleFill className='card_icon' style={{ color: "white" }} />
+
+                            <Link to="/dashboard/admin/create-teacher" style={{ textDecoration: "none" }}>
+                                <div className='card1'>
+                                    <div className='card-inner'>
+                                        <h3 style={{ color: "white" }}>TEACHERS</h3>
+                                        <BsPeopleFill className='card_icon' style={{ color: "white" }} />
+                                    </div>
+                                    <h1 style={{ color: "white" }}>10+</h1>
                                 </div>
-                                <h1 style={{ color: "white" }}>33</h1>
-                            </div>
+                            </Link>
+                            {/* <div className='card'>
+                            <div className='card-inner'>
+                                <h3>ALERTS</h3>
+                                <BsFillBellFill className='card_icon' />
+                                </div>
+                            <h1>42</h1>
+                        </div> */}
                         </div>
                         <div className='charts'>
                             <ResponsiveContainer width="100%" height="100%">

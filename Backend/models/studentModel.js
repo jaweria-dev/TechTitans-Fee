@@ -35,11 +35,11 @@ const studentSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: false,
     },
     answer: {
       type: String,
-      required: true,
+      required: false,
     },
     photo: {
       data: Buffer,
