@@ -1,33 +1,35 @@
-.alert-message {
-  max-width: 600px;
-  width: 100%;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  background-color: #cce5ff;
-  border: 1px solid #b8daff;
-  color: #004085;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+.btn-outline-primary{
+  /* width: 70vw; */
+  height: 80px;
+  /* font-size: 1rem; */
 }
 
-.alert-message .alert-primary {
-  background-color: #cce5ff;
-  border-color: #b8daff;
-  color: #004085;
+@media (max-width:850px){
+  .btn-outline-primary{
+      width: 35vw;
+  }
 }
 
-/* .mt-2{
-  width: 15vw;
-  text-align: center;
-  background-color: #8AC642;
+@media (max-width:375){
+  .btn-outline-primary{
+      width: 20vw;
+  }
+}
+
+.generate-voucher{
+  background-color: #8ac642;
   color: white;
   border: 1px solid white;
-  position: relative;
-  left: 15px;
-} */
+  /* position: relative;
+  left: 15px; */
+  font-size: 0.9rem;
+}
 
-/* .mt-2:hover{
+.generate-voucher:hover{
   color: white;
   border: 1px solid #8AC642;
-} */
+}
+
+.generate-voucher:focus{
+  border: 1px solid #8AC642;
+}

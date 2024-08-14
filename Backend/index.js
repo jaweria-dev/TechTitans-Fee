@@ -26,13 +26,14 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+// app.use(notificationRoutes);
 
 // Routes
 app.use("/api/fee/portal", authRoutes);
 app.use("/api/fee/portal/teacher", teacherRoutes);
 app.use("/api/fee/portal/students", studentsRoutes);
-app.use("/api/qrcode", qrCodeRoutes); // Easypaisa
-app.use("/api/payment", paymentRoute); // JazzCash
+app.use("/api/qrcode", qrCodeRoutes);
+app.use("/api/payment", paymentRoute);
 
 // Payment Intent Route (Stripe)
 app.post("/create-payment-intent", async (req, res) => {

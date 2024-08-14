@@ -3,7 +3,7 @@
   margin: 0;
 }
 
-.row>* {
+.row > * {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -39,8 +39,8 @@
   grid-template-columns: 260px 1fr 1fr 1fr;
   grid-template-rows: 0.2fr 3fr;
   grid-template-areas:
-    'sidebar header header header'
-    'sidebar main main main';
+    "sidebar header header header"
+    "sidebar main main main";
   height: 100vh;
 }
 
@@ -78,7 +78,7 @@
   margin-bottom: 30px;
 }
 
-.sidebar-title>span {
+.sidebar-title > span {
   display: none;
 }
 
@@ -105,7 +105,7 @@
   cursor: pointer;
 }
 
-.sidebar-list-item>a {
+.sidebar-list-item > a {
   text-decoration: none;
   color: white;
 }
@@ -117,7 +117,6 @@
 }
 
 /* End Sidebar  */
-
 
 /* Main  */
 .main-container {
@@ -171,7 +170,7 @@
   justify-content: space-between;
 }
 
-.card-inner>.card_icon {
+.card-inner > .card_icon {
   font-size: 25px;
 }
 
@@ -185,18 +184,16 @@
 
 /* End Main  */
 
-
 /* Medium <= 992px */
 @media screen and (max-width: 992px) {
   .grid-container {
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 3fr;
     grid-template-areas:
-      'header'
-      'main';
+      "header"
+      "main";
   }
 }
-
 
 /* Small <= 768px */
 @media screen and (max-width: 768px) {
@@ -216,7 +213,6 @@
   }
 }
 
-
 /* Extra Small <= 576px */
 @media screen and (max-width: 576px) {
   .hedaer-left {
@@ -231,7 +227,7 @@
     display: inline;
   }
 
-  .sidebar-title>span {
+  .sidebar-title > span {
     display: inline;
   }
 }
@@ -243,7 +239,7 @@
   border-radius: 10px;
   font-size: 16px;
   text-align: center;
-  background-color: #8AC642;
+  background-color: #8ac642;
   border: 2px solid #fafafa;
   color: white;
 }
@@ -270,7 +266,6 @@
 /* teacher form */
 .teacher-from {
   margin-top: -30px;
-
 }
 
 /* Admin.css */
@@ -280,7 +275,6 @@
   margin: 1rem;
 } */
 
-
 .card {
   width: 100%;
   max-width: 18rem; /* Maximum width for larger screens */
@@ -289,11 +283,8 @@
   border-radius: 5px;
   overflow: hidden;
   transition: transform 0.2s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
-  0 -4px 8px rgba(0, 0, 0, 0.1),
-  4px 0 8px rgba(0, 0, 0, 0.1),
-  -4px 0 8px rgba(0, 0, 0, 0.1);
-
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -4px 8px rgba(0, 0, 0, 0.1),
+    4px 0 8px rgba(0, 0, 0, 0.1), -4px 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
@@ -309,6 +300,10 @@
 .card-body {
   padding: 15px;
   text-align: center;
+}
+
+.card1:nth-child(3) {
+  background-color: #2962ff;
 }
 
 @media (min-width: 768px) {
@@ -328,8 +323,6 @@
     width: calc(25% - 20px); /* Four cards per row on extra-large screens */
   }
 }
-
-
 
 .student-link {
   text-decoration: none;
@@ -368,9 +361,6 @@
     margin: 0;
   }
 
-
-
-
   .menu {
     font-size: 14px;
   }
@@ -386,7 +376,6 @@
   /* td {
     font-size: 12px;
   } */
-
 }
 
 @media (max-width: 480px) {
@@ -402,17 +391,16 @@
     font-size: 12px;
   }
 
-  .btn-searchinp{
+  .btn-searchinp {
     margin-top: 10px;
   }
 
   td {
     font-size: 11px;
   }
-
 }
 
-@media (max-width:425px) {
+@media (max-width: 425px) {
   .btn-primary {
     margin: 0;
     width: 39vw;

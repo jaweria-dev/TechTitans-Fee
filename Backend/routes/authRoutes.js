@@ -3,14 +3,12 @@ const {
   registerController,
   loginController,
   forgotPasswordController,
-  testController
+  testController,
 } = require("../controllers/authController");
 const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware");
 
 // router object
 const router = express.Router();
-
-
 
 // routing
 // Register|| METHOD POST
@@ -28,6 +26,7 @@ router.get("/test", requireSignIn, isAdmin, testController);
 // protected user route auth
 router.get("/user-auth", requireSignIn, (req, res) => {
   res.status(200).send({ ok: true });
+  
 });
 
 // protected admin route auth
