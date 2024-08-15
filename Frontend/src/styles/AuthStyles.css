@@ -453,3 +453,17 @@ input[type="number"]:focus {
         position: relative;
     }
 } */
+
+.footer {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -4px 8px rgba(0, 0, 0, 0.1),
+    4px 0 8px rgba(0, 0, 0, 0.1), -4px 0 8px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+
+.footer span {
+  color: #8ac642;
+}
+
+.footer .footer-span {
+  color: #4b7bec;
+}
