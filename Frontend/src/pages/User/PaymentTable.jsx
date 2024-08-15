@@ -6,7 +6,7 @@ import "./PaymentTable.css";
 import SweetAlert from "sweetalert2";
 import { Modal, Button } from "react-bootstrap";
 import styled from "styled-components";
-import axios from "axios"; // Add this to make API calls
+// import axios from "axios"; // Add this to make API calls
 
 const CustomModalHeader = styled(Modal.Header)`
   background-color: #007bff;
@@ -102,10 +102,9 @@ const PaymentTable = () => {
   const [showStripe, setShowStripe] = useState(false);
   const [showJazzCash, setShowJazzCash] = useState(false);
   const [showEasyPaisa, setShowEasyPaisa] = useState(false);
-  const [voucherGenerated, setVoucherGenerated] = useState(false);
+  // const [voucherGenerated, setVoucherGenerated] = useState(false);
 
-  // Assuming user data is stored in state or context after login
-  const userId = "replace_with_actual_user_id"; // Replace with the actual user ID retrieved from auth
+
 
   const handleStripePay = () => {
     setShowStripe(true);
@@ -125,33 +124,16 @@ const PaymentTable = () => {
     setShowEasyPaisa(false);
   };
 
-  const handleGenerateVoucher = async () => {
-    try {
-      // API call to generate voucher
-      const response = await axios.post(
-        "http://localhost:9001/api/voucher/generate",
-        {
-          userId: userId, // Use the logged-in user's ID
-          month: new Date().toLocaleString("default", { month: "long" }),
-        }
-      );
-
-      if (response.status === 200) {
-        setVoucherGenerated(true);
-        SweetAlert.fire({
-          icon: "success",
-          title:
-            "Voucher for the current month has been generated and the admin has been notified.",
-        });
-      }
-    } catch (error) {
-      console.error("Error generating voucher:", error);
-      SweetAlert.fire({
-        icon: "error",
-        title: "There was an issue generating the voucher. Please try again.",
-      });
-    }
+  const handleGenerateVoucher = () => {
+    SweetAlert.fire({
+      icon: "info",
+      title:
+        "Your request has been sent to the admin. The admin will generate your voucher shortly.",
+      confirmButtonText: "OK",
+    });
   };
+
+
   return (
     <div className="container d-flex flex-column align-items-center mt-5">
       <div className="row w-100">
@@ -163,7 +145,7 @@ const PaymentTable = () => {
             onStripePay={handleStripePay}
             onJazzCashPay={handleJazzCashPay}
             onEasyPaisaPay={handleEasyPaisaPay}
-            onGenerateVoucher={handleGenerateVoucher} // Pass the generate voucher function
+            onGenerateVoucher={handleGenerateVoucher} 
           />
         </div>
       </div>
