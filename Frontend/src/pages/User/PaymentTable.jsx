@@ -70,7 +70,7 @@ const PaymentsTable = ({
             style={{ display: "flex", gap: "10px" }}
           >
             <button
-              className="crt-std-btn btn-outline-primary fs-6"
+              className="crt-std-btn btn-outline-primary fs-6 w-100"
               onClick={onEasyPaisaPay}
             >
               Pay via EasyPaisa
@@ -78,7 +78,7 @@ const PaymentsTable = ({
           </div>
           <div className="col-12 col-md-4 mb-3">
             <button
-              className="crt-std-btn btn-outline-primary fs-6"
+              className="crt-std-btn btn-outline-primary fs-6 w-100"
               onClick={onJazzCashPay}
             >
               Pay via JazzCash
@@ -86,7 +86,7 @@ const PaymentsTable = ({
           </div>
           <div className="col-12 col-md-4 mb-3">
             <button
-              className="crt-std-btn btn-outline-primary fs-6"
+              className="crt-std-btn btn-outline-primary fs-6 w-100"
               onClick={onStripePay}
             >
               Pay via Stripe
@@ -98,7 +98,7 @@ const PaymentsTable = ({
   );
 };
 
-const FeePortal = () => {
+const PaymentTable = () => {
   const [showStripe, setShowStripe] = useState(false);
   const [showJazzCash, setShowJazzCash] = useState(false);
   const [showEasyPaisa, setShowEasyPaisa] = useState(false);
@@ -210,4 +210,4 @@ const FeePortal = () => {
   );
 };
 
-export default FeePortal;
+export default PaymentTable;

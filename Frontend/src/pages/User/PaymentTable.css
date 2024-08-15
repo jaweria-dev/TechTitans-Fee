@@ -1,35 +1,37 @@
-.btn-outline-primary{
+.btn-outline-primary {
   /* width: 70vw; */
   height: 80px;
-  /* font-size: 1rem; */
+  background-color: #4b7bec;
+  color: white;
+  border: #4b7bec;
+  /* font-size: 14px; */
 }
 
-@media (max-width:850px){
-  .btn-outline-primary{
-      width: 35vw;
+.btn-outline-primary:hover {
+  background-color: #5988f7;
+  color: white;
+}
+
+/* .btn-outline-primary */
+
+@media (max-width: 850px) {
+  .btn-outline-primary {
+    width: 35vw;
   }
 }
 
-@media (max-width:375){
-  .btn-outline-primary{
-      width: 20vw;
-  }
-}
-
-.generate-voucher{
+.generate-voucher {
   background-color: #8ac642;
   color: white;
   border: 1px solid white;
-  /* position: relative;
-  left: 15px; */
   font-size: 0.9rem;
 }
 
-.generate-voucher:hover{
+.generate-voucher:hover {
   color: white;
-  border: 1px solid #8AC642;
+  border: 1px solid #8ac642;
 }
 
-.generate-voucher:focus{
-  border: 1px solid #8AC642;
+.generate-voucher:focus {
+  border: 1px solid #8ac642;
 }

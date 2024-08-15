@@ -45,19 +45,18 @@ const ForgotPassword = () => {
     }
   };
 
-
   return (
     <div
       className="contact-form"
       style={{
-        margin: "70px",
+        margin: "20px",
       }}
     >
       <form onSubmit={handleSubmit}>
         <h3 className="title">Forgot Password</h3>
         <div className="input-container">
           <input
-            type="text" 
+            type="text"
             value={rollNo || email}
             onChange={(e) => {
               const value = e.target.value;
@@ -108,7 +107,7 @@ const ForgotPassword = () => {
         <button
           type="submit"
           className="btn"
-          style={{ width: "270px", fontSize: "18px" }}
+          style={{ width: "228px", fontSize: "18px" }}
         >
           FORGOT PASSWORD
         </button>
