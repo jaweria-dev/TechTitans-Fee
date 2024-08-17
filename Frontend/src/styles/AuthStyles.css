@@ -250,12 +250,13 @@ input[type="number"]:focus {
 
 .navbar {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* height: 10vh; */
 }
 
 .nav-item > .nav-link {
   color: black;
   /* margin-top: 23px; */
-  margin-left: 70px;
+  margin-left: 40px;
 }
 
 .dropdown {
@@ -458,7 +459,7 @@ input[type="number"]:focus {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -4px 8px rgba(0, 0, 0, 0.1),
     4px 0 8px rgba(0, 0, 0, 0.1), -4px 0 8px rgba(0, 0, 0, 0.1);
   font-size: 1rem;
-  height: 10px;
+  height: 50%;
 }
 
 .footer span {

@@ -5,10 +5,10 @@ const router = express.Router();
 
 router.post('/jazzcash', async (req, res) => {
   const { amount, customerEmail, customerPhone, name, course } = req.body;
-
+console.log(pp_ReturnURL)
   const pp_MerchantID = 'MC112922';
   const pp_Password = '01234567890';
-  const pp_ReturnURL = 'http://localhost:5173';
+  const pp_ReturnURL = process.env.RETURN_URL;
   const pp_TxnRefNo = `T${Date.now()}`;
   const date = new Date();
   const pp_TxnDateTime = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}${String(date.getHours()).padStart(2, '0')}${String(date.getMinutes()).padStart(2, '0')}${String(date.getSeconds()).padStart(2, '0')}`;
