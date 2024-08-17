@@ -1,6 +1,69 @@
-.contact-form {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
-              0 -4px 8px rgba(0, 0, 0, 0.1),
-              4px 0 8px rgba(0, 0, 0, 0.1),
-              -4px 0 8px rgba(0, 0, 0, 0.1);
+.forgot-form {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -4px 8px rgba(0, 0, 0, 0.1),
+    4px 0 8px rgba(0, 0, 0, 0.1), -4px 0 8px rgba(0, 0, 0, 0.1);
+
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 70px;
+  width: 100%;
+}
+
+.forgot-title {
+  font-size: 2rem;
+}
+
+.forgot-btn {
+  padding: 1rem 3rem;
+  background-color: #8ac642;
+  border: 2px solid #fafafa;
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 1;
+  border-radius: 0 20px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 180px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .forgot-form {
+    padding: 15px;
+  }
+
+  .forgot-form .input-container {
+    margin-bottom: 15px;
+  }
+
+  .forgot-form .input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .forgot-form .btn {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .forgot-form {
+    padding: 10px;
+  }
+
+  .forgot-form .input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .forgot-form .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-// import Footer from './Footer';
+import Footer from './Footer';
 import { Toaster } from "react-hot-toast";
 
 const Layout = (props) => {
@@ -13,7 +13,7 @@ const Layout = (props) => {
         <Toaster />
         {props.children}
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
