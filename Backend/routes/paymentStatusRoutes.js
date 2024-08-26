@@ -1,11 +1,9 @@
-// routes/paymentRoutes.js
 
 const express = require("express");
 const router = express.Router();
 const Payment = require("../models/paymentStatusModel");
 const Student = require("../models/studentModel");
 
-// Save a payment for a student
 router.post("/save", async (req, res) => {
   const { studentId, month, amount } = req.body;
 
@@ -14,7 +12,7 @@ router.post("/save", async (req, res) => {
       studentId,
       month,
       amount,
-      status: "Completed", // You can change this depending on your logic
+      status: "Completed", 
     });
 
     await payment.save();
